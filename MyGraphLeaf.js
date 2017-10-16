@@ -33,6 +33,9 @@ function MyGraphLeaf(graph, xmlelem) {
         case 'triangle':
         this.obj = new MyTriangle(this.graph.scene,parseFloat(this.args[0]),parseFloat(this.args[1]),parseFloat(this.args[2]),parseFloat(this.args[3]),parseFloat(this.args[4]),parseFloat(this.args[5]),parseFloat(this.args[6]),parseFloat(this.args[7]),parseFloat(this.args[8]));
         break;
+        case 'patch':
+        //this.obj= new Patch(this.graph.scene,)
+        break;
     }
 
 
