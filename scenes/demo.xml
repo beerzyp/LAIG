@@ -66,7 +66,7 @@
 
     <!-- Tree trunk -->
     <TEXTURE id="bridge">
-        <file path="images/unnamed.png" />               
+        <file path="images/marble.jpg" />               
         <amplif_factor s="2" t="2" />                           
     </TEXTURE>
 
@@ -419,7 +419,7 @@
         <!-- The Bridge -->
      <NODE id="bridge">       
         <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="null" />       			
+        <TEXTURE id="bridge" />       			
 
         <DESCENDANTS>
             <NODEREF id="bridge1" /> 
@@ -537,9 +537,9 @@
     <NODE id="bridgeWall2">       
         <MATERIAL id="null" />     
         <TEXTURE id="null" />
-		<TRANSLATION x="-20" y="-26" z="7.91" />
+		<TRANSLATION x="-20" y="-26" z="7.87888" />
 		<ROTATION axis="x" angle="0" />
-		<SCALE sx="4" sy="8" sz="0.15" />    
+		<SCALE sx="4" sy="8" sz="0.149" />    
          <DESCENDANTS> 	
          <NODEREF id="faceCubo1" />
             <NODEREF id="faceCubo2" />
