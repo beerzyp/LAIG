@@ -94,7 +94,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="root" />     
+    <ROOT id="curve" />     
 
     <!-- The root node -->
     <NODE id="root">       
@@ -419,7 +419,7 @@
         <!-- The Bridge -->
      <NODE id="bridge">       
         <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="bridge" />       			
+        <TEXTURE id="null" />       			
  		<TRANSLATION x="0" y="0" z="0" />
  		<ROTATION axis="y" angle="180" /> 
         <DESCENDANTS>
@@ -654,8 +654,12 @@
 				</CPLINE>
 			</LEAF>
         </DESCENDANTS>
-        
+
     </NODE>
+
+
+
+	
 
 	
 

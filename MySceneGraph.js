@@ -1348,42 +1348,6 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 							this.warn("Error in leaf");
 						console.log(type);
 						//parse leaf
-						if(type=='patch'){
-						   var tamanho=descendants[j].children.length;
-						   var controlPointsInPairs = new Array();
-						   for(var i=0;i<tamanho;i++){
-						       var Point1= new Array();
-						       var Point2= new Array();
-						       var Linha = new Array();
-						       //console.log(descendants[j].children[i].children[0]);
-						       var x0=descendants[j].children[i].children[0].getAttributeNode("xx");
-						       var y0=descendants[j].children[i].children[0].getAttributeNode("yy");
-						       var z0=descendants[j].children[i].children[0].getAttributeNode("zz");
-						       var w0=descendants[j].children[i].children[0].getAttributeNode("ww"); //weight
-						       Point1.push(x0);
-						       Point1.push(y0);
-						       Point1.push(z0);
-						       Point1.push(w0);
-						       Linha.push(Point1);
-                               var x1=descendants[j].children[i].children[1].getAttributeNode("xx");
-						       var y1=descendants[j].children[i].children[1].getAttributeNode("yy");
-						       var z1=descendants[j].children[i].children[1].getAttributeNode("zz");
-						       var w1=descendants[j].children[i].children[1].getAttributeNode("ww");
-						       Point2.push(x0);
-						       Point2.push(y0);
-						       Point2.push(z0);
-						       Point2.push(w0);
-						       Linha.push(Point2);
-                              /* console.log(x1);
-						       console.log(y1);
-						       console.log(z1);
-						       console.log(w1);
-						        console.log("\n");*/
-						        controlPointsInPairs.push(Linha);
-						   }
-						    
-
-						}
 						this.nodes[nodeID].addLeaf(new MyGraphLeaf(this,descendants[j]));
 						
                         
