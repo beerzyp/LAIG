@@ -115,8 +115,8 @@
         <MATERIAL id="null" />    
         <TEXTURE id="ocean" />       			
 
-        <SCALE sx="6" sy="1" sz="5" />
-        <TRANSLATION x="0" y="0" z="4" />
+        <SCALE sx="64" sy="1" sz="64" />
+        <TRANSLATION x="-2" y="0" z="1" />
         <ROTATION axis="x" angle="-90" />
 
         <DESCENDANTS>
@@ -480,7 +480,7 @@
         <DESCENDANTS>
         	<NODEREF id="bridge1Rect" /> 
         	<NODEREF id="bridgeCylinderPart" />
-        	<NODEREF id="bridgeWall" />
+        	<NODEREF id="bridgeWalls" />
 
         </DESCENDANTS>
 
@@ -505,20 +505,51 @@
 
     </NODE>
 	
-
-	<!--Bridge Wall -->
-    <NODE id="bridgeWall">       
+	<!--Bridge Walls -->
+    <NODE id="bridgeWalls">       
         <MATERIAL id="null" />     
-        <TEXTURE id="null" />
-		<TRANSLATION x="-20" y="0" z="-23" />
-		<ROTATION axis="x" angle="90" />
-		<SCALE sx="4" sy="4" sz="10" />    
+        <TEXTURE id="null" /> 
          <DESCENDANTS> 	
-          <NODEREF id="basePiramide" /> 		
-        </DESCENDANTS>
+            <NODEREF id="bridgeWall1" />
+            <NODEREF id="bridgeWall2" />		
+       </DESCENDANTS>
 
     </NODE>
 
+	<!--Bridge Wall -->
+    <NODE id="bridgeWall1">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+		<TRANSLATION x="-20" y="-26" z="-7.4" />
+		<ROTATION axis="x" angle="0" />
+		<SCALE sx="4" sy="8" sz="0.15" />    
+         <DESCENDANTS> 	
+         <NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />  		
+       </DESCENDANTS>
+
+    </NODE>
+<!--Bridge Wall -->
+    <NODE id="bridgeWall2">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+		<TRANSLATION x="-20" y="-26" z="7.91" />
+		<ROTATION axis="x" angle="0" />
+		<SCALE sx="4" sy="8" sz="0.15" />    
+         <DESCENDANTS> 	
+         <NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />  		
+       </DESCENDANTS>
+
+    </NODE>
 
 
 	
