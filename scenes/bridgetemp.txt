@@ -1,0 +1,67 @@
+	/**<!-- Bridge -->
+    <NODE id="ponte">       
+        <MATERIAL id="lightMaterial" />     
+        <TEXTURE id="banco" />  
+		
+        <DESCENDANTS>
+            <NODEREF id="suporte1" />
+            <NODEREF id="suporte2" /> 
+			<NODEREF id="parteCimaPonte" /> 				
+        </DESCENDANTS>
+	</NODE>
+	
+	<!-- Bridge Up Part -->
+     <NODE id="parteCimaPonte">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />       			
+
+		<TRANSLATION x="6" y="4" z="-25" />
+        <SCALE sx="1.2" sy="1" sz="7" />
+		
+        <DESCENDANTS>
+       		<NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />       
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<!-- Suporte 1 -->
+    <NODE id="suporte1">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+		
+		<TRANSLATION x="12" y="8" z="24" />  
+
+        <DESCENDANTS>
+			<NODEREF id="cilindros" />
+        </DESCENDANTS>
+
+    </NODE>
+	
+    <!-- Suporte 2 -->
+    <NODE id="suporte2">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />  
+		
+		<TRANSLATION x="12" y="8" z="-4" />
+        
+        <DESCENDANTS>
+			<NODEREF id="cilindros" />
+        </DESCENDANTS>
+
+    </NODE>
+	
+	 <!-- Cilindro Ponte -->
+	 <NODE id="cilindros">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />  
+		<ROTATION axis="x" angle="90" />
+		<DESCENDANTS>
+			<LEAF type="cylinder" args="8 3 2 20 20" /> 
+        </DESCENDANTS>
+    </NODE>
+	
