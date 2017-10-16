@@ -9,7 +9,7 @@ function MySphere(scene, radius, slices, stacks) function
  function Cylinder(scene, height, bottomRadius, topRadius, stacks, slices,  texture)
  Square(scene, minX, minY, maxX, maxY)
 function MyTriangle(scene, x1,y1,z1,x2,y2,z2,x3,y3,z3)
-descendants[j].getAttributeNode("args").value[ ] 0 2 4 6
+descendants[j].getAttributeNode("args").value[ ] 0 2 4 6 
 
 **/
 function MyGraphLeaf(graph, xmlelem) {
