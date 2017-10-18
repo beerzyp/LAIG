@@ -6,9 +6,9 @@ function Square(scene, minX, minY, maxX, maxY) {
 	CGFobject.call(this,scene);
 
 	this.minS = 0;
-	this.maxS = 1;
+	this.maxS = maxX - minX;
 	this.minT = 0;
-	this.maxT = 1;
+	this.maxT = maxY - minY;
 
 	this.minX = minX;
 	this.maxX = maxX;

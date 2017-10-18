@@ -75,9 +75,13 @@ function MyGraphLeaf(graph, xmlelem) {
 
 MyGraphLeaf.prototype.display = function() {
    if(this.obj != null)
-   {
+   {   
 	   this.obj.display();
    }		
+}
+
+MyGraphLeaf.prototype.scaleTexCoords = function(ampS, ampT) {
+    this.obj.scaleTexCoords(ampS, ampT);
 }
 
 

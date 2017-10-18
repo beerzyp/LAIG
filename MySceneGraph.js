@@ -1452,11 +1452,14 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	if(node.textureID != "null" && node.textureID != "clear")
 	{
 		tex = this.textures[node.textureID][0];
+		this.scene.currentTexture = this.textures[node.textureID];
 	} else if(node.textureID == "clear")
 		{
 			
 			tex = null;
 	}
+// 	else //Null
+// 	   this.scene.activeTexture = this.textures[node.textureID];
 	
 	
 	this.scene.pushMatrix();
@@ -1476,8 +1479,8 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
         }
         
         if(tex != null){
-			tex.bind();
-			
+            node.leaves[k].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
+            tex.bind();
 		}
         node.leaves[k].display();
     }

@@ -47,7 +47,7 @@
  };
 
  
-Square.prototype.scaleTexCoords = function(ampS, ampT) {
+MySphere.prototype.scaleTexCoords = function(ampS, ampT) {
 	
 	for (var i = 0; i < this.texCoords.length; i += 2) {
 			this.texCoords[i] = this.originalTexCoords[i] / ampS;
