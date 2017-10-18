@@ -14,7 +14,7 @@
 
 <!-- Illumination and clear colour -->
 <ILLUMINATION>
-    <ambient r="0.2" g="0.2" b="0.2" a="1" />       
+    <ambient r="0.5" g="0.5" b="0.5" a="1" />       
     <background r="0" g="0" b="0" a="1" />          
 </ILLUMINATION>
 
@@ -69,6 +69,12 @@
         <file path="images/marble.jpg" />               
         <amplif_factor s="2" t="2" />                           
     </TEXTURE>
+	
+	<!-- London Shore-->
+	<TEXTURE id="shore">
+        <file path="images/margem_londres.jpg" />               
+        <amplif_factor s="2" t="2" />                           
+    </TEXTURE>
 
 </TEXTURES>
 
@@ -94,7 +100,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="curve" />     
+    <ROOT id="root" />     
 
     <!-- The root node -->
     <NODE id="root">       
@@ -102,7 +108,7 @@
         <TEXTURE id="null" />  
 
         <DESCENDANTS>
-
+			<NODEREF id="margem" />
             <NODEREF id="luzes" />    
             <NODEREF id="chao" />
             <NODEREF id="bridge" />
@@ -111,6 +117,20 @@
     </NODE>
 
     <!-- The floor -->
+	<NODE id="margem">
+		<MATERIAL id="null" />    
+        <TEXTURE id="shore" />       			
+
+        <SCALE sx="1" sy="32" sz="50" />
+        <TRANSLATION x="-128" y="0" z="1.3" />
+        <ROTATION axis="y" angle="90" />
+		
+
+        <DESCENDANTS>
+			<LEAF  type="rectangle" args="0 4 5 0" />        
+		</DESCENDANTS>
+	</NODE>
+	
     <NODE id="chao">      
         <MATERIAL id="null" />    
         <TEXTURE id="ocean" />       			
@@ -632,27 +652,25 @@
 
 	<NODE id="curve">
         <MATERIAL id="null" />         
-        <TEXTURE id="ocean" />  
+        <TEXTURE id="null" />  
 
         <DESCENDANTS>
 			<LEAF type="patch" args="20 20" >
 				<CPLINE>
 					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
 					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
-					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
-					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 				<CPLINE>
 					<CPOINT xx="-1" yy="-1" zz="1" ww="1" />
 					<CPOINT xx="-1" yy="1" zz="1" ww="1" />
-					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
-					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 				<CPLINE>
 					<CPOINT xx="1" yy="-1" zz="1" ww="1" />
 					<CPOINT xx="1" yy="1" zz="1" ww="1" />
-					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
-					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 			</LEAF>
         </DESCENDANTS>
