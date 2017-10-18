@@ -24,7 +24,7 @@
 	<LIGHT id="light0">                                    
         <enable value ="1" />                   	       
         <position  x="0" y="10" z="0" w="1" />       	   
-        <ambient r="0.8" g="0.8" b="0.8" a="1.0" />        	 
+        <ambient r="0.2" g="0.2" b="0.2" a="1.0" />        	 
         <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />        
         <specular r="1.0" g="1.0" b="1.0" a="1.0" />      
     </LIGHT>
@@ -94,7 +94,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="root" />     
+    <ROOT id="curve" />     
 
     <!-- The root node -->
     <NODE id="root">       
@@ -419,8 +419,9 @@
         <!-- The Bridge -->
      <NODE id="bridge">       
         <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="bridge" />       			
-
+        <TEXTURE id="null" />       			
+ 		<TRANSLATION x="0" y="0" z="0" />
+ 		<ROTATION axis="y" angle="180" /> 
         <DESCENDANTS>
             <NODEREF id="bridge1" /> 
             <NODEREF id="bridge2" /> 
@@ -537,9 +538,8 @@
     <NODE id="bridgeWall2">       
         <MATERIAL id="null" />     
         <TEXTURE id="null" />
-		<TRANSLATION x="-20" y="-26" z="7.87888" />
-		<ROTATION axis="x" angle="0" />
-		<SCALE sx="4" sy="8" sz="0.149" />    
+		<TRANSLATION x="-20" y="-26" z="7.8787" />
+		<SCALE sx="4" sy="8" sz="0.15" />    
          <DESCENDANTS> 	
          <NODEREF id="faceCubo1" />
             <NODEREF id="faceCubo2" />
@@ -628,6 +628,38 @@
         </DESCENDANTS>
 
     </NODE>
+
+
+	<NODE id="curve">
+        <MATERIAL id="null" />         
+        <TEXTURE id="null" />  
+
+        <DESCENDANTS>
+			<LEAF type="patch" args="20 20" >
+				<CPLINE>
+					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="-1" yy="-1" zz="1" ww="1" />
+					<CPOINT xx="-1" yy="1" zz="1" ww="1" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="1" yy="-1" zz="1" ww="1" />
+					<CPOINT xx="1" yy="1" zz="1" ww="1" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="1" yy="1" zz="0" ww="1" />
+				</CPLINE>
+			</LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+
+
+
+	
 
 	
 

@@ -1340,7 +1340,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                 else
 					if (descendants[j].nodeName == "LEAF")
 					{
-						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle']);
+						var type=this.reader.getItem(descendants[j], 'type', ['rectangle', 'cylinder', 'sphere', 'triangle','patch']);
 						
 						if (type != null)
 							this.log("   Leaf: "+ type);
@@ -1349,7 +1349,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 						console.log(type);
 						//parse leaf
 						this.nodes[nodeID].addLeaf(new MyGraphLeaf(this,descendants[j]));
-						//console.log("tipo" + descendants[j].getAttributeNode("type").value + "   valores  "  + descendants[j].getAttributeNode("args"));
+						
                         
                         sizeChildren++;
 
