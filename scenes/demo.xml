@@ -632,25 +632,27 @@
 
 	<NODE id="curve">
         <MATERIAL id="null" />         
-        <TEXTURE id="null" />  
+        <TEXTURE id="ocean" />  
 
         <DESCENDANTS>
 			<LEAF type="patch" args="20 20" >
 				<CPLINE>
 					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
 					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 				<CPLINE>
 					<CPOINT xx="-1" yy="-1" zz="1" ww="1" />
 					<CPOINT xx="-1" yy="1" zz="1" ww="1" />
+					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 				<CPLINE>
 					<CPOINT xx="1" yy="-1" zz="1" ww="1" />
 					<CPOINT xx="1" yy="1" zz="1" ww="1" />
-				</CPLINE>
-				<CPLINE>
-					<CPOINT xx="1" yy="-1" zz="0" ww="1" />
-					<CPOINT xx="1" yy="1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="-1" zz="0" ww="1" />
+					<CPOINT xx="-1" yy="1" zz="0" ww="1" />
 				</CPLINE>
 			</LEAF>
         </DESCENDANTS>

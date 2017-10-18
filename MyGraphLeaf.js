@@ -20,43 +20,32 @@ function MyGraphLeaf(graph, xmlelem) {
     if(type=='patch'){
        var tamanho=this.xmlelem.children.length;
        var controlPoints = new Array();
+       var vdivs=0;
        
        for(var i=0;i<tamanho;i++){
-//            var Point1= new Array();
-//            var Point2= new Array();
-           //console.log(xmlelem.children[i].children[0]);
+           bigArray = new Array();
+           var size=xmlelem.children[i].children.length;
+           vdivs=0;
+           for(var k=0;k<size;k++){
+           vdivs++;
            pointArray = new Array();
-           pointArray2 = new Array();
-         
-           var x0=xmlelem.children[i].children[0].getAttributeNode("xx").value;
-           var y0=xmlelem.children[i].children[0].getAttributeNode("yy").value;
-           var z0=xmlelem.children[i].children[0].getAttributeNode("zz").value;
-           var w0=xmlelem.children[i].children[0].getAttributeNode("ww").value; //weight
+           var x0=parseFloat(xmlelem.children[i].children[k].getAttributeNode("xx").value);
+           var y0=parseFloat(xmlelem.children[i].children[k].getAttributeNode("yy").value);
+           var z0=parseFloat(xmlelem.children[i].children[k].getAttributeNode("zz").value);
+           var w0=parseFloat(xmlelem.children[i].children[k].getAttributeNode("ww").value); //weight
            pointArray.push(x0,y0,z0,w0);
-           controlPoints.push(pointArray);
-//            Point1.push(x0);
-//            Point1.push(y0);
-//            Point1.push(z0);
-//            Point1.push(w0);
-//            Linha.push(Point1);
-           var x1=xmlelem.children[i].children[1].getAttributeNode("xx").value;
-           var y1=xmlelem.children[i].children[1].getAttributeNode("yy").value;
-           var z1=xmlelem.children[i].children[1].getAttributeNode("zz").value;
-           var w1=xmlelem.children[i].children[1].getAttributeNode("ww").value;
-            pointArray2.push(x1,y1,z1,w1);
-            controlPoints.push()
-//            Point1.push(x0);
-//            Point2.push(y0);
-//            Point2.push(z0);
-//            Point2.push(w0);
-           controlPoints.push(pointArray2);
-          /* console.log(y1);
-           console.log(z1);
-           console.log(w1);
-            console.log("\n");*/
+           bigArray.push(pointArray);
+           }
+           controlPoints.push(bigArray);
+         
        }
        this.divs=this.xmlelem.getAttributeNode("args").value.split(" ");
+       this.divs[0]=parseFloat(this.divs[0]);
+       this.divs[1]=parseFloat(this.divs[1]);
+       this.divs.push(parseFloat(tamanho-1));
+       this.divs.push(parseFloat(vdivs-1));
        this.divs.push(controlPoints);
+
 
     } 
     else{               
