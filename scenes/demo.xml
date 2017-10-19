@@ -336,14 +336,161 @@
 
     </NODE>
 
-    <!-- A pyramid -->
+        <!-- The Bridge -->
+     <NODE id="bridge">       
+        <MATERIAL id="defaultMaterial" />    
+        <TEXTURE id="null" />       			
+ 		<TRANSLATION x="60" y="0" z="-30" />
+ 		<ROTATION axis="y" angle="180" /> 
+        <DESCENDANTS>
+            <NODEREF id="bridge1" /> 
+            <NODEREF id="bridge2" /> 
+            <NODEREF id="connector1"/> 
+            <NODEREF id="connector2"/> 
+              	        	      	    
+        </DESCENDANTS>
+
+    </NODE>
+
+
+     <NODE id="connector1">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />  
+        <TRANSLATION x="-200" y="4" z="15" />
+        <ROTATION axis="y" angle="90" />  			
+		<SCALE sx="2.8" sy="0.3" sz="50" />
+        <DESCENDANTS>
+       		<NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />       
+        </DESCENDANTS>
+
+    </NODE>
+
+      <NODE id="connector2">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+        <TRANSLATION x="30" y="50" z="0" /> 
+        <SCALE sx="0.4" sy="1" sz="1" />
+        <DESCENDANTS>
+      		 <NODEREF id="connector1" />  
+        </DESCENDANTS>
+
+    </NODE>
+
+
+	 <!-- The first Bridge -->
+     <NODE id="bridge2">       
+        <MATERIAL id="defaultMaterial" />    
+        <TEXTURE id="null" />  	
+        <TRANSLATION x="100" y="0" z="0" />
+        <DESCENDANTS>
+        
+        	<NODEREF id="bridge1" />
+        </DESCENDANTS>
+
+    </NODE>
+
+    <!-- The first Bridge -->
+     <NODE id="bridge1">       
+        <MATERIAL id="defaultMaterial" />    
+        <TEXTURE id="null" />  	
+        <DESCENDANTS>
+        	<NODEREF id="bridge1Rect" /> 
+        	<NODEREF id="bridgeCylinderPart" />
+        	<NODEREF id="bridgeWalls" />
+
+        </DESCENDANTS>
+
+    </NODE>
+	
+		<!--First  Bridge Up Part -->
+     <NODE id="bridge1Rect">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+
+		<TRANSLATION x="-20" y="100" z="-23" />
+		<ROTATION axis="x" angle="90" />
+		<SCALE sx="4" sy="4" sz="10" />  			
+        <DESCENDANTS>
+			<NODEREF id="cone1" />
+			<NODEREF id="cone2" />
+			<NODEREF id="cone3" />
+			<NODEREF id="cone4" />
+			<NODEREF id="piramide" />
+       		<NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />       
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<!--First Cone -->
+     <NODE id="cone1">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="7" y="4.5" z="1.5" />	
+        <DESCENDANTS>
+			<LEAF id="cylinder1" type="cylinder" args="1 0 0.5 20 20" />      
+        </DESCENDANTS>
+
+    </NODE>
+	<!--Second Cone -->
+     <NODE id="cone2">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="3" y="4.5" z="1.5" />	
+        <DESCENDANTS>
+			<LEAF id="cylinder2" type="cylinder" args="1 0 0.5 20 20" />     
+        </DESCENDANTS>
+
+    </NODE>
+	<!--Third Cone -->
+     <NODE id="cone3">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="7" y="7.5" z="1.5" />
+        <DESCENDANTS>
+			<LEAF id="cylinder3" type="cylinder" args="1 0 0.5 20 20" />      
+        </DESCENDANTS>
+
+    </NODE>
+	<!--Fourth Cone -->
+     <NODE id="cone4">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="3" y="7.5" z="1.5" />	
+        <DESCENDANTS>
+			<LEAF id="cylinder4" type="cylinder" args="1 0 0.5 20 20" />      
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<!--Bridge Walls -->
+    <NODE id="bridgeWalls">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" /> 
+         <DESCENDANTS> 	
+            <NODEREF id="bridgeWall1" />
+            <NODEREF id="bridgeWall2" />		
+       </DESCENDANTS>
+
+    </NODE>
+
+	<!-- A pyramid -->
     <NODE id="piramide">       
 
         <MATERIAL id="defaultMaterial" />      
         <TEXTURE id="null" />       			
-
-        <TRANSLATION x="12" y="5.8" z="4.75" />
-        <SCALE sx="0.4" sy="2" sz="0.4" />
+		<ROTATION axis="x" angle="-90" />
+        <TRANSLATION x="3.5" y="-2" z="3.5" />
+        <SCALE sx="0.2" sy="0.3" sz="0.2" />
 
         <DESCENDANTS>
        		<NODEREF id="meiaPiramide1" /> 
@@ -435,109 +582,7 @@
         </DESCENDANTS>
 
     </NODE>
-
-
-        <!-- The Bridge -->
-     <NODE id="bridge">       
-        <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="null" />       			
- 		<TRANSLATION x="60" y="0" z="-30" />
- 		<ROTATION axis="y" angle="180" /> 
-        <DESCENDANTS>
-            <NODEREF id="bridge1" /> 
-            <NODEREF id="bridge2" /> 
-            <NODEREF id="connector1"/> 
-            <NODEREF id="connector2"/> 
-              	        	      	    
-        </DESCENDANTS>
-
-    </NODE>
-
-
-     <NODE id="connector1">       
-        <MATERIAL id="null" />     
-        <TEXTURE id="null" /> >  
-        <TRANSLATION x="-200" y="4" z="15" />
-        <ROTATION axis="y" angle="90" />  			
-		<SCALE sx="2.8" sy="0.3" sz="50" />
-        <DESCENDANTS>
-       		<NODEREF id="faceCubo1" />
-            <NODEREF id="faceCubo2" />
-            <NODEREF id="faceCubo3" />
-            <NODEREF id="faceCubo4" />
-            <NODEREF id="faceCubo5" />
-            <NODEREF id="faceCubo6" />       
-        </DESCENDANTS>
-
-    </NODE>
-
-      <NODE id="connector2">       
-        <MATERIAL id="null" />     
-        <TEXTURE id="null" /> > 
-        <TRANSLATION x="30" y="50" z="0" /> 
-        <SCALE sx="0.4" sy="1" sz="1" />
-        <DESCENDANTS>
-      		 <NODEREF id="connector1" />  
-        </DESCENDANTS>
-
-    </NODE>
-
-
-	 <!-- The first Bridge -->
-     <NODE id="bridge2">       
-        <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="null" />  	
-        <TRANSLATION x="100" y="0" z="0" />
-        <DESCENDANTS>
-        
-        	<NODEREF id="bridge1" />
-        </DESCENDANTS>
-
-    </NODE>
-
-    <!-- The first Bridge -->
-     <NODE id="bridge1">       
-        <MATERIAL id="defaultMaterial" />    
-        <TEXTURE id="null" />  	
-        <DESCENDANTS>
-        	<NODEREF id="bridge1Rect" /> 
-        	<NODEREF id="bridgeCylinderPart" />
-        	<NODEREF id="bridgeWalls" />
-
-        </DESCENDANTS>
-
-    </NODE>
 	
-		<!--First  Bridge Up Part -->
-     <NODE id="bridge1Rect">       
-        <MATERIAL id="null" />     
-        <TEXTURE id="null" />     
-
-		<TRANSLATION x="-20" y="100" z="-23" />
-		<ROTATION axis="x" angle="90" />
-		<SCALE sx="4" sy="4" sz="10" />  			
-        <DESCENDANTS>
-       		<NODEREF id="faceCubo1" />
-            <NODEREF id="faceCubo2" />
-            <NODEREF id="faceCubo3" />
-            <NODEREF id="faceCubo4" />
-            <NODEREF id="faceCubo5" />
-            <NODEREF id="faceCubo6" />       
-        </DESCENDANTS>
-
-    </NODE>
-	
-	<!--Bridge Walls -->
-    <NODE id="bridgeWalls">       
-        <MATERIAL id="null" />     
-        <TEXTURE id="null" /> 
-         <DESCENDANTS> 	
-            <NODEREF id="bridgeWall1" />
-            <NODEREF id="bridgeWall2" />		
-       </DESCENDANTS>
-
-    </NODE>
-
 	<!--Bridge Wall -->
     <NODE id="bridgeWall1">       
         <MATERIAL id="null" />     
@@ -555,7 +600,8 @@
        </DESCENDANTS>
 
     </NODE>
-<!--Bridge Wall -->
+	
+	<!--Bridge Wall -->
     <NODE id="bridgeWall2">       
         <MATERIAL id="null" />     
         <TEXTURE id="null" />
