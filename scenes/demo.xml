@@ -345,8 +345,8 @@
      <NODE id="bridge">       
         <MATERIAL id="defaultMaterial" />    
         <TEXTURE id="bridge" />       			
- 		<TRANSLATION x="60" y="0" z="-30" />
- 		<ROTATION axis="y" angle="90" /> 
+ 		<TRANSLATION x="-39" y="0" z="-70" />
+ 		
         <DESCENDANTS>
             <NODEREF id="bridge1" /> 
             <NODEREF id="bridge2" /> 
@@ -361,9 +361,9 @@
      <NODE id="connector1">       
         <MATERIAL id="null" />     
         <TEXTURE id="null" />  
-        <TRANSLATION x="-200" y="4" z="15" />
+        <TRANSLATION x="-230" y="4" z="15" />
         <ROTATION axis="y" angle="90" />  			
-		<SCALE sx="2.8" sy="0.3" sz="50" />
+		<SCALE sx="2.8" sy="0.3" sz="56" />
         <DESCENDANTS>
        		<NODEREF id="faceCubo1" />
             <NODEREF id="faceCubo2" />
@@ -393,10 +393,19 @@
         <TEXTURE id="null" />  	
         <TRANSLATION x="100" y="0" z="0" />
         <DESCENDANTS>
-        
-        	<NODEREF id="bridge1" />
+			<NODEREF id="bridge1" />
         	<NODEREF id="curve"/>
         	<NODEREF id="curve1"/>
+			<NODEREF id="curve2" />
+			<NODEREF id="curve3" />
+			<NODEREF id="UpSideWalk" />
+			<NODEREF id="DownSideWalk" />
+			<NODEREF id="UpSideWalkR" />
+			<NODEREF id="DownSideWalkR" />
+			<NODEREF id="DownSideWalkRi" />
+			<NODEREF id="DownSideWalkRii" />
+			<NODEREF id="DownSideWalki" />
+			<NODEREF id="DownSideWalkii" />
         </DESCENDANTS>
 
     </NODE>
@@ -409,8 +418,6 @@
         	<NODEREF id="bridge1Rect" /> 
         	<NODEREF id="bridgeCylinderPart" />
         	<NODEREF id="bridgeWalls" />
-        	
-
         </DESCENDANTS>
 
     </NODE>
@@ -434,7 +441,8 @@
             <NODEREF id="faceCubo3" />
             <NODEREF id="faceCubo4" />
             <NODEREF id="faceCubo5" />
-            <NODEREF id="faceCubo6" />       
+            <NODEREF id="faceCubo6" />
+			
         </DESCENDANTS>
 
     </NODE>
@@ -479,6 +487,221 @@
         </DESCENDANTS>
 
     </NODE>
+	
+	
+	<!--UpSideWalk -->
+     <NODE id="UpSideWalk">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="15" y="20" z="1.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<!--DownSideWalk -->
+     <NODE id="DownSideWalk">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="15" y="-30" z="1.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--DownSideWalk -->
+     <NODE id="DownSideWalki">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="115" y="-30" z="1.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--DownSideWalk -->
+     <NODE id="DownSideWalkii">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-85" y="-30" z="1.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--UpSideWalk Right-->
+     <NODE id="UpSideWalkR">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="15" y="20" z="-9.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--DownSideWalk Right -->
+     <NODE id="DownSideWalkR">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="15" y="-30" z="-9.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+			 
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--DownSideWalk Right -->
+     <NODE id="DownSideWalkRi">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="115" y="-30" z="-9.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+		</DESCENDANTS>
+	</NODE>
+	
+	<!--DownSideWalk Right -->
+     <NODE id="DownSideWalkRii">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-85" y="-30" z="-9.5" />	
+		<ROTATION axis="x" angle="90" />
+        <DESCENDANTS>
+			 <NODEREF id="SideWalk" />
+		</DESCENDANTS>
+	</NODE>
+	
+	<!--SideWalk -->
+	 <NODE id="SideWalk">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" /> 
+		<TRANSLATION x="-33" y="5" z="-44" />
+        <DESCENDANTS>
+			 <NODEREF id="Cilindro0" />
+			 <NODEREF id="Cilindro1" />
+			 <NODEREF id="Cilindro2" />
+			 <NODEREF id="Cilindro3" />
+			 <NODEREF id="Cilindro4" />
+			 <NODEREF id="Cilindro5" />
+			 <NODEREF id="Cilindro6" />
+			 <NODEREF id="Cilindro8" />
+			 <NODEREF id="Cilindro9" />
+			 <NODEREF id="Corrimao" />
+        </DESCENDANTS>
+	</NODE>
+	
+	
+	<!--Cilindro0 -->
+     <NODE id="Corrimao">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+		<TRANSLATION x="-72" y="0" z="0" />
+		<ROTATION axis="y" angle="90" />
+        <DESCENDANTS>
+			<LEAF id="cylinder11" type="cylinder" args="80 1 1 20 20" />     
+        </DESCENDANTS>
+	</NODE>
+	<!--Cilindro0 -->
+     <NODE id="Cilindro0">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />     
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro1 -->
+     <NODE id="Cilindro1">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-8" y="0" z="0" />	
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />     
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro2 -->
+     <NODE id="Cilindro2">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-16" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />      
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro3 -->
+     <NODE id="Cilindro3">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-24" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />     
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro4 -->
+     <NODE id="Cilindro4">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-32" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />      
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro5 -->
+     <NODE id="Cilindro5">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-40" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />      
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro6 -->
+     <NODE id="Cilindro6">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-48" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />     
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro8 -->
+     <NODE id="Cilindro8">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-56" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />      
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Cilindro9 -->
+     <NODE id="Cilindro9">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />     
+		<TRANSLATION x="-64" y="0" z="0" />		
+        <DESCENDANTS>
+			<LEAF id="cylinder10" type="cylinder" args="8 1 1 20 20" />      
+        </DESCENDANTS>
+	</NODE>
 	
 	<!--Bridge Walls -->
     <NODE id="bridgeWalls">       
@@ -735,6 +958,54 @@
 		<TRANSLATION x="-175" y="5" z="8.9" />
 		<ROTATION axis="y" angle="180" />
 		<ROTATION axis="z" angle="90" />
+        <SCALE sx="5" sy="10" sz="10" />  
+		
+        <DESCENDANTS>
+			<LEAF type="patch" args="20 20" >
+				<CPLINE>
+					<CPOINT xx="0" yy="0" zz="0" ww="0.002" />
+					<CPOINT xx="4" yy="4" zz="0" ww="0.002" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="6" yy="6" zz="0" ww="0.002" />
+					<CPOINT xx="6.5" yy="7" zz="0" ww="0.002" />
+				</CPLINE>
+			</LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<NODE id="curve2">
+        <MATERIAL id="null" />         
+        <TEXTURE id="bridgemetal" />  
+		<TRANSLATION x="75" y="5" z="-7" />
+		<ROTATION axis="y" angle="180" />
+		<ROTATION axis="z" angle="90" />
+		<ROTATION axis="x" angle="180" />
+        <SCALE sx="5" sy="10" sz="10" />  
+		
+        <DESCENDANTS>
+			<LEAF type="patch" args="20 20" >
+				<CPLINE>
+					<CPOINT xx="0" yy="0" zz="0" ww="0.002" />
+					<CPOINT xx="4" yy="4" zz="0" ww="0.002" />
+				</CPLINE>
+				<CPLINE>
+					<CPOINT xx="6" yy="6" zz="0" ww="0.002" />
+					<CPOINT xx="6.5" yy="7" zz="0" ww="0.002" />
+				</CPLINE>
+			</LEAF>
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<NODE id="curve3">
+        <MATERIAL id="null" />         
+        <TEXTURE id="bridgemetal" />  
+		<TRANSLATION x="75" y="5" z="8.9" />
+		<ROTATION axis="y" angle="180" />
+		<ROTATION axis="z" angle="90" />
+		<ROTATION axis="x" angle="180" />
         <SCALE sx="5" sy="10" sz="10" />  
 		
         <DESCENDANTS>
