@@ -436,6 +436,7 @@
 			<NODEREF id="cone3" />
 			<NODEREF id="cone4" />
 			<NODEREF id="piramide" />
+			<NODEREF id="flag" />
        		<NODEREF id="faceCubo1" />
             <NODEREF id="faceCubo2" />
             <NODEREF id="faceCubo3" />
@@ -443,6 +444,44 @@
             <NODEREF id="faceCubo5" />
             <NODEREF id="faceCubo6" />
 			
+        </DESCENDANTS>
+
+    </NODE>
+	
+	<!--Flag -->
+     <NODE id="flag">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+		<TRANSLATION x="5.1" y="6.1" z="0.1" />
+        <DESCENDANTS>
+			<NODEREF id="mastro" />
+			<NODEREF id="pano" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Mastro -->
+     <NODE id="mastro">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />
+        <DESCENDANTS>
+			<LEAF id="cylinder1" type="cylinder" args="1 0.2 0.2 20 20" />
+        </DESCENDANTS>
+	</NODE>
+	
+	<!--Pano -->
+	<NODE id="pano">       
+        <MATERIAL id="null" />     
+        <TEXTURE id="null" />  
+        <TRANSLATION x="-1.1" y="-0.4" z="1.5" />
+        <ROTATION axis="y" angle="90" />  			
+		<SCALE sx="0.2" sy="0.05" sz="0.5" />
+        <DESCENDANTS>
+       		<NODEREF id="faceCubo1" />
+            <NODEREF id="faceCubo2" />
+            <NODEREF id="faceCubo3" />
+            <NODEREF id="faceCubo4" />
+            <NODEREF id="faceCubo5" />
+            <NODEREF id="faceCubo6" />       
         </DESCENDANTS>
 
     </NODE>
