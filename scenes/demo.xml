@@ -87,7 +87,18 @@
         <file path="images/submarine.jpg" />               
         <amplif_factor s="5" t="4" />                           
     </TEXTURE>
+	
+	<!-- Flag-->
+	<TEXTURE id="flagTex">
+        <file path="images/cats-crop.jpg" />               
+        <amplif_factor s="5" t="4" />                           
+    </TEXTURE>
 
+	<!-- Flag-->
+	<TEXTURE id="corrimaoTex">
+        <file path="metalTex" />               
+        <amplif_factor s="2" t="2" />                           
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -479,7 +490,7 @@
 	<!--Pano -->
 	<NODE id="pano">       
         <MATERIAL id="null" />     
-        <TEXTURE id="null" />  
+        <TEXTURE id="flagTex" />  
         <TRANSLATION x="-1.1" y="-0.4" z="1.5" />
         <ROTATION axis="y" angle="90" />  			
 		<SCALE sx="0.2" sy="0.05" sz="0.5" />
@@ -651,10 +662,10 @@
 	</NODE>
 	
 	
-	<!--Cilindro0 -->
+	<!--Corrimao -->
      <NODE id="Corrimao">       
         <MATERIAL id="null" />     
-        <TEXTURE id="null" />
+        <TEXTURE id="corrimaoTex" />
 		<TRANSLATION x="-72" y="0" z="0" />
 		<ROTATION axis="y" angle="90" />
         <DESCENDANTS>
