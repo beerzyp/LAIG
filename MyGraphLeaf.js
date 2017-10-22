@@ -48,6 +48,8 @@ function MyGraphLeaf(graph, xmlelem) {
 
 
     } 
+    else if (type=='submarine')         
+        this.obj= new MySubmarineShape(this.graph.scene);
     else{               
     this.args=this.xmlelem.getAttributeNode("args").value.split(" ");}
      //this.obj=this.obj.split(" ");

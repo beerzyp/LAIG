@@ -81,6 +81,13 @@
         <file path="images/vidral.jpg" />               
         <amplif_factor s="5" t="4" />                           
     </TEXTURE>
+
+    <!-- Submarine-->
+	<TEXTURE id="submarineTex">
+        <file path="images/submarine.jpg" />               
+        <amplif_factor s="5" t="4" />                           
+    </TEXTURE>
+
 </TEXTURES>
 
 
@@ -117,6 +124,7 @@
             <NODEREF id="luzes" />    
             <NODEREF id="chao" />
             <NODEREF id="bridge" />
+           	<NODEREF id="submarine" />
         </DESCENDANTS>
 
     </NODE>
@@ -1063,6 +1071,106 @@
     </NODE>
 
 
+
+       <NODE id="submarine">
+      <MATERIAL id="null" />
+      <!-- <TEXTURE id="rust_submarine" /> -->
+      <TEXTURE id="submarineTex"/>
+
+      <TRANSLATION x="2.7" y="-0.5" z="8.3" />
+      <ROTATION axis="z" angle="30" />
+      <ROTATION axis="y" angle="90" />
+      <SCALE sx="5" sy="5" sz="5" />  
+
+
+      <DESCENDANTS>
+        <NODEREF id="front_of_submarine"/>
+        <NODEREF id="back_of_submarine"/>
+        <NODEREF id="body_of_submarine"/>
+        <NODEREF id="periscope_submarine"/>
+      </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="periscope_submarine">
+      <MATERIAL id="null" />
+      <TEXTURE id="null" />
+      <TRANSLATION x="1" y="0" z="0" />
+      <DESCENDANTS>
+        <NODEREF id="periscope_vertical_of_submarine"/>
+        
+   
+      </DESCENDANTS>
+    </NODE>
+
+
+
+
+    <NODE id="periscope_vertical_of_submarine">
+      <MATERIAL id="null" />
+      <TEXTURE id="null" />
+
+      <ROTATION axis="x" angle="120" />
+      <TRANSLATION x="0" y="0" z="-4" />
+
+      <DESCENDANTS>
+        <LEAF id="periscope_vertical_of_submarine_cylinder" type="cylinder" args="2 0.3 0.3 20 40 0 0" />
+      </DESCENDANTS>
+    </NODE>
+
+    <NODE id="body_of_submarine">
+      <MATERIAL id="null" />
+      <TEXTURE id="null" />
+
+
+      <ROTATION axis="y" angle="90" />
+      <SCALE sx="1" sy="1" sz="1" />
+      <TRANSLATION x="0" y="0" z="-5.1" />
+      <DESCENDANTS>
+        <LEAF id="body_of_submarine_cylinder" type="cylinder" args="10.30 1.50 1.50 20 40 0 0" />
+      </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="front_of_submarine">
+      <MATERIAL id="null" />
+      <TEXTURE id="null" />
+
+      <TRANSLATION x="5" y="0" z="0" />
+      <SCALE sx="1.5" sy="1" sz="1" />
+
+      <DESCENDANTS>
+        <LEAF id="front_of_submarine_sphere" type="sphere" args="1.5 40 20" />
+      </DESCENDANTS>
+
+    </NODE>
+
+    <NODE id="back_of_submarine">
+      <MATERIAL id="null" />
+      <TEXTURE id="null" />
+
+      <TRANSLATION x="-5" y="0" z="0" />
+      <SCALE sx="1.5" sy="1" sz="1" />
+
+      <DESCENDANTS>
+        <LEAF id="back_of_submarine_sphere" type="sphere" args="1.5 40 20" />
+      </DESCENDANTS>
+
+    </NODE>
+
+
+
+
+		
+    <NODE id="square">      
+        <MATERIAL id="null" />    
+        <TEXTURE id="ocean" />       			
+
+        <DESCENDANTS>
+			<LEAF id="sub" type="submarine"/>    
+		</DESCENDANTS>
+
+    </NODE>
 	
 
 	
