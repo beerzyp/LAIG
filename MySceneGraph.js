@@ -6,8 +6,9 @@ var ILLUMINATION_INDEX = 1;
 var LIGHTS_INDEX = 2;
 var TEXTURES_INDEX = 3;
 var MATERIALS_INDEX = 4;
-var LEAVES_INDEX = 5;
-var NODES_INDEX = 6;
+var ANIMATIONS_INDEX=5
+var LEAVES_INDEX = 6;
+var NODES_INDEX = 7;
 
 /**
  * MySceneGraph class, representing the scene graph.
@@ -138,6 +139,19 @@ MySceneGraph.prototype.parseLSXFile = function(rootElement) {
         if ((error = this.parseMaterials(nodes[index])) != null )
             return error;
     }
+   
+    // <Animations>
+    if ((index = nodeNames.indexOf("ANIMATIONS")) == -1)
+        return "tag <ANIMATIONS> missing";
+    else {
+        if (index != ANIMATIONS_INDEX)
+            this.onXMLMinorError("tag <ANIMATIONS> out of order");
+        
+        if ((error = this.parseAnimations(nodes[index])) != null )
+            return error;
+    }
+
+
     
     // <NODES>
     if ((index = nodeNames.indexOf("NODES")) == -1)
@@ -928,6 +942,81 @@ MySceneGraph.prototype.parseTextures = function(texturesNode) {
 /**
  * Parses the <MATERIALS> node.
  */
+
+MySceneGraph.prototype.parseAnimations = function(animationNode){
+      var children = animationNode.children;
+    // Each material.
+    
+    this.animations = [];
+    
+    for (var i = 0; i < children.length; i++) {
+        if (children[i].nodeName != "ANIMATION") {
+            this.onXMLMinorError("unknown tag name <" + children[i].nodeName + ">");
+            continue;
+        }
+        
+        var AnimationID = this.reader.getString(children[i], 'id');
+        if (AnimationID == null )
+            return "no ID defined for material";
+        
+        if (this.animations[AnimationID] != null )
+            return "ID must be unique for each material (conflict: ID = " + materialID + ")";
+       
+        var typeAnimation = this.reader.getString(children[i],'type');
+        switch(typeAnimation){
+            case 'linear':
+                var speed = parseFloat(this.reader.getString(children[i],'speed'));
+
+                var animationSpecs = children[i].children;
+                var controlPoints =[];
+                for (var j = 0; j < animationSpecs.length; j++){
+                    var controlP =[];
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'xx')));
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'yy')));
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'zz')));
+                    controlPoints.push(controlP);
+                }
+                var linearAnimation = new LinearAnimation(speed,controlPoints);
+                break;
+            case 'circular':
+                var speed = parseFloat(this.reader.getString(children[i],'speed'));
+                var centerx =  parseFloat(this.reader.getString(children[i],'centerx'));
+                var centery =  parseFloat(this.reader.getString(children[i],'centery'));
+                var centerz =  parseFloat(this.reader.getString(children[i],'centerz'));
+                var radius =  parseFloat(this.reader.getString(children[i],'radius'));
+                var startang =  parseFloat(this.reader.getString(children[i],'startang'));
+                var rotang =  parseFloat(this.reader.getString(children[i],'rotang'));
+                var circularAnimation = new CircularAnimation(speed,centerx,centery,centerz,radius,startang,rotang);
+            break;
+            /**
+            	<ANIMATION id="bezierAn" speed="6" type="bezier">
+		<controlpoint xx="1" yy="2" zz="3" /> 
+		<controlpoint xx="2" yy="3" zz="4" /> 
+		<controlpoint xx="2" yy="5" zz="4" /> 
+		<controlpoint xx="2" yy="6" zz="7" /> 
+	</ANIMATION>
+            **/
+            case 'bezier':
+                var speed = parseFloat(this.reader.getString(children[i],'speed'));
+                var animationSpecs = children[i].children;
+                var controlPoints =[];
+                for (var j = 0; j < animationSpecs.length; j++){
+                    var controlP =[];
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'xx')));
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'yy')));
+                    controlP.push(parseFloat(this.reader.getString(children[i].children[j],'zz')));
+                    controlPoints.push(controlP);
+                }
+                var bezierAnimation = new BezierAnimation(speed,controlPoints);
+                break;
+            case 'combo':
+            break;
+        }
+    }
+    
+
+}
+
 MySceneGraph.prototype.parseMaterials = function(materialsNode) {
     
     var children = materialsNode.children;

@@ -96,7 +96,7 @@
 
 	<!-- Flag-->
 	<TEXTURE id="corrimaoTex">
-        <file path="metalTex" />               
+        <file path="images/metalTex.jpg" />               
         <amplif_factor s="2" t="2" />                           
     </TEXTURE>
 </TEXTURES>
@@ -118,6 +118,29 @@
 <!-- The leaves -->
 <LEAVES>
 </LEAVES>
+<!-- The Animations -->
+<ANIMATIONS>
+	<ANIMATION id="linearAn" speed="15" type="linear">
+		<controlpoint xx="1" yy="2" zz="0" /> 
+		<controlpoint xx="0" yy="1" zz="5" /> 
+	</ANIMATION>
+	
+	<ANIMATION id="cirularAn" speed="5" type="circular"
+	centerx="2" centery="1" centerz="0"
+	radius="1" startang="30" rotang="15"/>
+
+	<ANIMATION id="bezierAn" speed="6" type="bezier">
+		<controlpoint xx="1" yy="2" zz="3" /> 
+		<controlpoint xx="2" yy="3" zz="4" /> 
+		<controlpoint xx="2" yy="5" zz="4" /> 
+		<controlpoint xx="2" yy="6" zz="7" /> 
+	</ANIMATION>
+	
+	<ANIMATION id="comboAn" type="combo"> <!-- pode ser repetida para -->
+		<SPANREF id="ssAn" />
+	</ANIMATION>
+</ANIMATIONS>
+
 
 
 <!-- The nodes -->
