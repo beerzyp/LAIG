@@ -1,22 +1,14 @@
-var LinearAnimation = function (speed,controlPoints) {
-  this.speed=speed;
-  this.controlPoints=controlPoints;
-  this.type='linear';
-  var arguments = [];
-  arguments.push(this.speed);
-  arguments.push(this.controlPoints);
-  arguments.push(this.type);
-  Animation.apply(this, arguments);
-};
+class LinearAnimation extends Animation {
+  constructor(scene,id,speed,controlPoints){
+    super(scene,id);
+    this.speed=speed;
+    this.controlPoints=controlPoints;
+   // var angle=calcAngle(this.controlPoints[0][0])
 
-// let's inherit from abstract class
-LinearAnimation.prototype = Object.create(Animation.prototype, {
-  'constructor': LinearAnimation
-});
+  
+  }
 
 
 
-// let's define our concrete method
-LinearAnimation.prototype.someMethod = function () {
-  console.log('Concrete Method');
+
 };

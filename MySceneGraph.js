@@ -976,7 +976,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                     controlP.push(parseFloat(this.reader.getString(children[i].children[j],'zz')));
                     controlPoints.push(controlP);
                 }
-                var linearAnimation = new LinearAnimation(speed,controlPoints);
+                var linearAnimation = new LinearAnimation(this.scene,AnimationID,speed,controlPoints);
                 break;
             case 'circular':
                 var speed = parseFloat(this.reader.getString(children[i],'speed'));
@@ -986,7 +986,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                 var radius =  parseFloat(this.reader.getString(children[i],'radius'));
                 var startang =  parseFloat(this.reader.getString(children[i],'startang'));
                 var rotang =  parseFloat(this.reader.getString(children[i],'rotang'));
-                var circularAnimation = new CircularAnimation(speed,centerx,centery,centerz,radius,startang,rotang);
+                var circularAnimation = new CircularAnimation(this.scene,AnimationID,speed,centerx,centery,centerz,radius,startang,rotang);
             break;
             /**
             	<ANIMATION id="bezierAn" speed="6" type="bezier">
@@ -1007,7 +1007,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                     controlP.push(parseFloat(this.reader.getString(children[i].children[j],'zz')));
                     controlPoints.push(controlP);
                 }
-                var bezierAnimation = new BezierAnimation(speed,controlPoints);
+                var bezierAnimation = new BezierAnimation(this.scene,AnimationID,speed,controlPoints);
                 break;
             case 'combo':
             break;

@@ -1,32 +1,21 @@
-var CircularAnimation = function (speed,centerx,centery,centerz,radius,startang,rotang) {
-  var arguments = [];
-  this.speed=speed;
-  arguments.push(this.speed);
-  this.centerx=centerx;
-  arguments.push(this.centerx);
-  this.centery=centery;
-  arguments.push(this.centery);
-  this.centerz=centerz;
-  arguments.push(this.centerz);
-  this.radius=radius;
-  arguments.push(this.radius);
-  this.startang=startang;
-  arguments.push(this.startang);
-  this.rotang=rotang;
-  arguments.push(this.rotang);
-  this.type='circular';
-  arguments.push(this.type);
-  Animation.apply(this, arguments);
-};
+/**
+d="cirularAn" speed="5" type="circular"
+	centerx="2" centery="1" centerz="0"
+	radius="1" startang="30" rotang="15"
+	CircularAnimation(this.scene,AnimationID,speed,centerx,centery,centerz,radius,startang,rotang);
+*/
 
-// let's inherit from abstract class
-CircularAnimation.prototype = Object.create(Animation.prototype, {
-  'constructor': CircularAnimation
-});
-
-
-
-// let's define our concrete method
-CircularAnimation.prototype.someMethod = function () {
-  console.log('Concrete Method');
+class CircularAnimation extends Animation{
+  constructor(scene,id,speed,circular,centerx,centery,centerz,radius,startang,rotang){
+    super(scene,id);
+    this.speed=speed;
+    this.circular=circular;
+    this.centerx=centerx;
+    this.centery=centery;
+    this.centerz=centerz;
+    this.radius=radius;
+    this.startang=startang;
+    this.rotang=rotang;
+  
+  }
 };

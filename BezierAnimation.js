@@ -1,22 +1,16 @@
-var BezierAnimation = function (speed,controlPoints) {
-  this.speed=speed;
-  this.controlPoints=controlPoints;
-  var arguments = [];
-  arguments.push(this.speed);
-  arguments.push(this.controlPoints);
-   this.type='bezier';
-  arguments.push(this.type);
-  Animation.apply(this, arguments);
-};
+class BezierAnimation extends Animation {
+  constructor(scene,id,speed,controlPoints){
+    super(scene,id);
+    this.speed=speed;
+    this.controlPoints=controlPoints;
+    
+    
+   // var angle=calcAngle(this.controlPoints[0][0])
 
-// let's inherit from abstract class
-BezierAnimation.prototype = Object.create(Animation.prototype, {
-  'constructor': BezierAnimation
-});
+  
+  }
 
 
 
-// let's define our concrete method
-BezierAnimation.prototype.someMethod = function () {
-  console.log('Concrete Method');
+
 };

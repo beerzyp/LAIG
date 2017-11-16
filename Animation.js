@@ -1,13 +1,23 @@
-var Animation = function () {
-  var type,speed;
-  var speed = this.speed;
-  var type = this.type;
-  if (this.constructor === Animation) {
-    throw new Error('Cannot instanciate abstract class');
+
+class Animation {
+
+  constructor(scene,id){
+    this.scene=scene;
+    this.id=id;
+    this.createAnimationsVec();
+    this.pushAnimation(id);
   }
+  
+createAnimationsVec(){
+  this.animations = [];
+}
+
+pushAnimation(iD){
+  this.animations.push(iD);
+  }
+
 };
 
-// this is our abstract method
-Animation.prototype.someMethod = function () {
-  throw new Error('Cannot call abstract method')
-};
+
+
+
