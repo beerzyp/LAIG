@@ -1255,7 +1255,8 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
     
     // Traverses nodes.
     var children = nodesNode.children;
-    
+    this.objects = [];
+	this.count = 0;
     for (var i = 0; i < children.length; i++) {
         var nodeName;
         if ((nodeName = children[i].nodeName) == "ROOT") {
@@ -1279,14 +1280,23 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                 return "node ID must be unique (conflict: ID = " + nodeID + ")";
             
             this.log("Processing node "+nodeID);
-
+			
+			//Checks Selectable.
+			var selectedID = this.reader.getFloat(children[i], 'selectable');
+			if(selectedID != null)
+			{
+				enableLight = selectedID == 0 ? false : true;
+				this.objects[nodeID] = [enableLight];
+			}
+			
+			
             // Creates node.
             this.nodes[nodeID] = new MyGraphNode(this,nodeID);
 
             // Gathers child nodes.
             var nodeSpecs = children[i].children;
             var specsNames = [];
-            var possibleValues = ["MATERIAL", "TEXTURE", "TRANSLATION", "ROTATION", "SCALE", "DESCENDANTS"];
+            var possibleValues = ["MATERIAL", "TEXTURE", "TRANSLATION", "ROTATION", "SCALE", "DESCENDANTS", "ANIMATIONREFS"];
             for (var j = 0; j < nodeSpecs.length; j++) {
                 var name = nodeSpecs[j].nodeName;
                 specsNames.push(nodeSpecs[j].nodeName);
@@ -1396,11 +1406,30 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                         
                     mat4.scale(this.nodes[nodeID].transformMatrix, this.nodes[nodeID].transformMatrix, [sx, sy, sz]);
                     break;
+				
                 default:
                     break;
                 }
             }
             
+			var animationIndex = specsNames.indexOf("ANIMATIONREFS");
+            if (animationIndex == -1){
+                console.log("No Animation, just console test");
+			} else {
+				var animations = nodeSpecs[animationIndex].children;
+				
+				var sizeChildren = 0;
+				for (var j = 0; j < animations.length; j++) {
+					if (animations[j].nodeName == "ANIMATIONREF")
+					{
+						//chamar a função para ele andar!!
+					}
+					
+					if (sizeChildren == 0)
+						return "at least one animation must be defined for each intermediate node";
+				} 
+			}
+			
             // Retrieves information about children.
             var descendantsIndex = specsNames.indexOf("DESCENDANTS");
             if (descendantsIndex == -1)
@@ -1447,13 +1476,11 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
 						this.onXMLMinorError("unknown tag <" + descendants[j].nodeName + ">");
 
             }
-            if (sizeChildren == 0)
-                return "at least one descendant must be defined for each intermediate node";
-        } 
-        else
-            this.onXMLMinorError("unknown tag name <" + nodeName);
-    }
-
+			
+			
+			
+		}
+	}
     console.log("Parsed nodes");
     return null ;
 }

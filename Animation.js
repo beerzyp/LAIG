@@ -10,4 +10,5 @@ var Animation = function () {
 // this is our abstract method
 Animation.prototype.someMethod = function () {
   throw new Error('Cannot call abstract method')
+  
 };
