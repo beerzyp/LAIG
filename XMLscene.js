@@ -1,5 +1,6 @@
 var DEGREE_TO_RAD = Math.PI / 180;
 
+
 /**
  * XMLscene class, representing the scene that is to be rendered.
  * @constructor
@@ -10,6 +11,8 @@ function XMLscene(interface) {
     this.interface = interface;
 
     this.lightValues = {};
+	this.objectValues = {};
+	this.selectedExampleShader = 0;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -91,6 +94,8 @@ XMLscene.prototype.onGraphLoaded = function()
     this.initLights();
 
     // Adds lights group.
+	
+	this.interface.addObjectGroup(this.graph.objects);
     this.interface.addLightsGroup(this.graph.lights);
 }
 

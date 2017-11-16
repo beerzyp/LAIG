@@ -23,11 +23,38 @@ MyInterface.prototype.init = function(application) {
     //  http://workshop.chromeexperiments.com/examples/gui
     
     this.gui = new dat.GUI();
+	
+	
 
     // add a group of controls (and open/expand by defult)
+	this.gui.add(this.scene, 'selectedExampleShader', {
+			'Flat Shading': 0, 
+			'Passing a scale as uniform': 1, 
+			'Passing a varying parameter from VS -> FS': 2, 
+			'Simple texturing': 3, 
+			'Multiple textures in the FS': 4, 
+			'Multiple textures in VS and FS': 5,
+			'Sepia': 6,
+			'Convolution': 7
+			
+	}).name('Shader examples');
     
     return true;
 };
+
+MyInterface.prototype.addObjectGroup = function(objs)
+{
+	//realizar also a list of objects!
+	for(var key in objs)
+	{
+		if(objs.hasOwnProperty(key)) {
+			this.scene.objectValues[key] = objs[key][0];
+			this.gui.add(this.scene.objectValues, key);
+		}
+	}
+	
+}
+
 
 /**
  * Adds a folder containing the IDs of the lights passed as parameter.

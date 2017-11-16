@@ -115,9 +115,8 @@
 </MATERIALS>
 
 
-<!-- The leaves -->
-<LEAVES>
-</LEAVES>
+
+
 <!-- The Animations -->
 <ANIMATIONS>
 	<ANIMATION id="linearAn" speed="15" type="linear">
@@ -141,7 +140,9 @@
 	</ANIMATION>
 </ANIMATIONS>
 
-
+<!-- The leaves -->
+<LEAVES>
+</LEAVES>
 
 <!-- The nodes -->
 <NODES>
@@ -179,7 +180,7 @@
 		</DESCENDANTS>
 	</NODE>
 	
-    <NODE id="chao">      
+    <NODE id="chao" selectable="1">      
         <MATERIAL id="null" />    
         <TEXTURE id="ocean" />       			
 
@@ -190,11 +191,11 @@
         <DESCENDANTS>
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
-
+	
     </NODE>
     
     <!-- The lights -->
-     <NODE id="luzes">       
+     <NODE id="luzes" selectable="0">       
         <MATERIAL id="defaultMaterial" />    
         <TEXTURE id="ocean" />       			
 
