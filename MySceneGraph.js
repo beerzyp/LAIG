@@ -1282,7 +1282,7 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
             this.log("Processing node "+nodeID);
 			
 			//Checks Selectable.
-			var selectedID = this.reader.getFloat(children[i], 'selectable');
+			var selectedID = this.reader.getFloat(children[i], 'selectable', false);
 			if(selectedID != null)
 			{
 				enableLight = selectedID == 0 ? false : true;
