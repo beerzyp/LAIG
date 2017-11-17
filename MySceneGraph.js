@@ -1598,8 +1598,31 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
             node.leaves[k].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
             tex.bind();
 		}
-        node.leaves[k].display();
+		var i = 0;
+		for (var key in this.scene.objectValues) {
+			if (this.scene.objectValues.hasOwnProperty(key)) {
+				
+				if (this.scene.objectValues[key]) {
+					if(node.nodeID == key)
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						console.log("entrou");
+					}						
+				}
+				else {
+					
+				}
+				i++;
+			}
+			
+		}
+		node.leaves[k].display();
+		this.scene.setActiveShader(this.scene.defaultShader);
+        
     }
+	
+	
+	
     this.scene.popMatrix();
 }
 

@@ -34,6 +34,32 @@ XMLscene.prototype.init = function(application) {
     this.gl.depthFunc(this.gl.LEQUAL);
     
     this.axis = new CGFaxis(this);
+	
+	//shaders
+	this.setUpdatePeriod(500);
+	this.scaleFactor=50.0; //para modificar consoante o tempo
+	
+	this.testShaders=[
+		new CGFshader(this.gl, "shaders/flat.vert", "shaders/flat.frag"),
+		new CGFshader(this.gl, "shaders/uScale.vert", "shaders/uScale.frag"),
+		new CGFshader(this.gl, "shaders/varying.vert", "shaders/varying.frag"),
+		new CGFshader(this.gl, "shaders/texture1.vert", "shaders/texture1.frag"),
+		new CGFshader(this.gl, "shaders/texture2.vert", "shaders/texture2.frag"),
+		new CGFshader(this.gl, "shaders/texture3.vert", "shaders/texture3.frag"),
+		new CGFshader(this.gl, "shaders/texture3.vert", "shaders/sepia.frag"),
+		new CGFshader(this.gl, "shaders/texture3.vert", "shaders/convolution.frag")
+	];
+	
+	// texture will have to be bound to unit 1 later, when using the shader, with "this.texture2.bind(1);"
+	this.testShaders[4].setUniformsValues({uSampler2: 1});
+	this.testShaders[5].setUniformsValues({uSampler2: 1});
+}
+
+XMLscene.prototype.updateScaleFactor=function(v)
+{
+	this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
+	this.testShaders[2].setUniformsValues({normScale: this.scaleFactor});
+	this.testShaders[5].setUniformsValues({normScale: this.scaleFactor});
 }
 
 /**
@@ -42,7 +68,6 @@ XMLscene.prototype.init = function(application) {
 XMLscene.prototype.initLights = function() {
     var i = 0;
     // Lights index.
-    
     // Reads the lights from the scene graph.
     for (var key in this.graph.lights) {
         if (i >= 8)
@@ -115,7 +140,7 @@ XMLscene.prototype.display = function() {
 
     // Apply transformations corresponding to the camera position relative to the origin
     this.applyViewMatrix();
-
+	
     this.pushMatrix();
     
     if (this.graph.loadedOk) 
@@ -126,7 +151,7 @@ XMLscene.prototype.display = function() {
 		// Draw axis
 		this.axis.display();
 
-        var i = 0;
+        var i = 0;				
         for (var key in this.lightValues) {
             if (this.lightValues.hasOwnProperty(key)) {
                 if (this.lightValues[key]) {
@@ -141,10 +166,11 @@ XMLscene.prototype.display = function() {
                 i++;
             }
         }
-
+		
         // Displays the scene.
+		this.setActiveShader(this.defaultShader);
         this.graph.displayScene();
-
+		this.setActiveShader(this.defaultShader);
     }
 	else
 	{

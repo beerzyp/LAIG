@@ -44,12 +44,13 @@ MyInterface.prototype.init = function(application) {
 
 MyInterface.prototype.addObjectGroup = function(objs)
 {
-	//realizar also a list of objects!
+	var group = this.gui.addFolder("Objects");
+    group.open();
 	for(var key in objs)
 	{
 		if(objs.hasOwnProperty(key)) {
 			this.scene.objectValues[key] = objs[key][0];
-			this.gui.add(this.scene.objectValues, key);
+			group.add(this.scene.objectValues, key);
 		}
 	}
 	

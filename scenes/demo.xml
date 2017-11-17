@@ -153,7 +153,6 @@
     <NODE id="root">       
         <MATERIAL id="defaultMaterial" />         
         <TEXTURE id="null" />  
-
         <DESCENDANTS>
 			<NODEREF id="margem" />
             <NODEREF id="luzes" />    
