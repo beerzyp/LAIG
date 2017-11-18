@@ -1582,11 +1582,37 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
     this.scene.multMatrix(node.transformMatrix);
 	
    // console.log(node.children.length);
-   
-    for(var i=0;i<node.children.length;i++){//percorre filhos
-       this.displayNode(this.nodes[node.children[i]],tex,mat);
+	var i = 0;	
+	for (var key in this.scene.objectValues) {
+		if (this.scene.objectValues.hasOwnProperty(key)) {
+			
+			if (this.scene.objectValues[key]) {
+				if(node.nodeID == key)
+				{
+					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);	
+					this.check = node.children.length;						
+				}						
+			}
+			else {
+				
+			}
+			i++;
+		}			
+	}
+	if(this.check > 0 && node.children.length != 0)
+	{
+		this.check = node.children.length;
+	}
+    for(var j=0;j<node.children.length;j++){//percorre filhos
+	
+		console.log(node.nodeID);
+		console.log(node.children.length);
+		
+       this.displayNode(this.nodes[node.children[j]],tex,mat);
+	   this.check--;
 
     }
+	
     var lengthLeaves=node.leaves.length;
     for(var k=0;k<lengthLeaves;k++)
 	{
@@ -1597,31 +1623,16 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
         if(tex != null){
             node.leaves[k].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
             tex.bind();
-		}
-		var i = 0;
-		for (var key in this.scene.objectValues) {
-			if (this.scene.objectValues.hasOwnProperty(key)) {
-				
-				if (this.scene.objectValues[key]) {
-					if(node.nodeID == key)
-					{
-						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-						console.log("entrou");
-					}						
-				}
-				else {
-					
-				}
-				i++;
-			}
-			
+		}		
+		if(this.check > 0)
+		{
+			this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
 		}
 		node.leaves[k].display();
-		this.scene.setActiveShader(this.scene.defaultShader);
+		
         
     }
-	
-	
+	this.scene.setActiveShader(this.scene.defaultShader);
 	
     this.scene.popMatrix();
 }

@@ -170,7 +170,7 @@ XMLscene.prototype.display = function() {
         // Displays the scene.
 		this.setActiveShader(this.defaultShader);
         this.graph.displayScene();
-		this.setActiveShader(this.defaultShader);
+		this.setActiveShader(this.defaultShader);	
     }
 	else
 	{
