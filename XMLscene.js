@@ -34,10 +34,13 @@ XMLscene.prototype.init = function(application) {
     this.gl.depthFunc(this.gl.LEQUAL);
     
     this.axis = new CGFaxis(this);
-	
+	this.count = 0;
 	//shaders
 	this.setUpdatePeriod(500);
 	this.scaleFactor=50.0; //para modificar consoante o tempo
+	this.factor = 50.0;
+	this.count = 0;
+	this.colorScale = 1;
 	
 	this.testShaders=[
 		new CGFshader(this.gl, "shaders/flat.vert", "shaders/flat.frag"),
@@ -57,9 +60,38 @@ XMLscene.prototype.init = function(application) {
 
 XMLscene.prototype.updateScaleFactor=function(v)
 {
-	this.testShaders[1].setUniformsValues({normScale: this.scaleFactor});
-	this.testShaders[2].setUniformsValues({normScale: this.scaleFactor});
-	this.testShaders[5].setUniformsValues({normScale: this.scaleFactor});
+	this.factor = this.scaleFactor;
+	this.factor = this.factor + Math.cos(this.count)*10;
+	this.count = this.count + Math.PI/20;
+	this.colorScale = Math.cos(this.count);
+	this.testShaders[1].setUniformsValues({normScale: this.factor});
+	this.testShaders[1].setUniformsValues({colorScale: this.colorScale});
+	this.testShaders[2].setUniformsValues({normScale: this.factor});
+	this.testShaders[5].setUniformsValues({normScale: this.factor});
+	/*var i = 0;
+	for (var key in this.graph.lights) {
+        if (i >= 8)
+            break;              // Only eight lights allowed by WebGL.
+
+        if (this.graph.lights.hasOwnProperty(key)) {
+            var light = this.graph.lights[key];
+            
+            this.lights[i].setPosition(light[1][0], light[1][1], light[1][2], light[1][3]);
+            this.lights[i].setAmbient(light[2][0], light[2][1], light[2][2], light[2][3]);
+            this.lights[0].setDiffuse(light[3][0] * Math.cos(this.count), light[3][1], light[3][2], light[3][3]);
+            this.lights[i].setSpecular(light[4][0], light[4][1], light[4][2], light[4][3]);
+            
+            this.lights[i].setVisible(true);
+            if (light[0])
+                this.lights[i].enable();
+            else
+                this.lights[i].disable();
+            
+            this.lights[i].update();
+            
+            i++;
+        }
+    }*/
 }
 
 /**
@@ -169,6 +201,7 @@ XMLscene.prototype.display = function() {
 		
         // Displays the scene.
 		this.setActiveShader(this.defaultShader);
+		this.updateScaleFactor(this.scaleFactor);
         this.graph.displayScene();
 		this.setActiveShader(this.defaultShader);	
     }

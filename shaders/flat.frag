@@ -14,7 +14,7 @@ struct lightProperties {
     float constant_attenuation;     
     float linear_attenuation;       
     float quadratic_attenuation;    
-    bool enabled;                   
+    bool enabled;       
 };
 
 #define NUMBER_OF_LIGHTS 8

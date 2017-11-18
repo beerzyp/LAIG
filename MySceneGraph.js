@@ -1556,7 +1556,7 @@ percorre os filhos de root, e da display para a leaf conrrespondente
 
 **/
 MySceneGraph.prototype.displayNode = function(node,texture,material){
-    
+    this.aux = 0;
 	var mat = material;
 	var tex = texture;
 	
@@ -1589,8 +1589,9 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 			if (this.scene.objectValues[key]) {
 				if(node.nodeID == key)
 				{
-					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);	
-					this.check = node.children.length;						
+					this.check = node.children.length;
+					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+									
 				}						
 			}
 			else {
@@ -1599,14 +1600,15 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 			i++;
 		}			
 	}
+	
 	if(this.check > 0 && node.children.length != 0)
 	{
 		this.check = node.children.length;
 	}
     for(var j=0;j<node.children.length;j++){//percorre filhos
 	
-		console.log(node.nodeID);
-		console.log(node.children.length);
+		//console.log(node.nodeID);
+		//console.log(node.children.length);
 		
        this.displayNode(this.nodes[node.children[j]],tex,mat);
 	   this.check--;
@@ -1632,7 +1634,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		
         
     }
-	this.scene.setActiveShader(this.scene.defaultShader);
+	if(this.check == 0)
+	{
+		this.scene.setActiveShader(this.scene.defaultShader);
+	}	
 	
     this.scene.popMatrix();
 }

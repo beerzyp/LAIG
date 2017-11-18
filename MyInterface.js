@@ -25,7 +25,7 @@ MyInterface.prototype.init = function(application) {
     this.gui = new dat.GUI();
 	
 	
-
+	
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {
 			'Flat Shading': 0, 
@@ -38,6 +38,11 @@ MyInterface.prototype.init = function(application) {
 			'Convolution': 7
 			
 	}).name('Shader examples');
+	obj = this;
+	this.gui.add(this.scene, 'scaleFactor',-50,50).onChange(function(v)
+	{
+		obj.scene.updateScaleFactor(v);
+	});
     
     return true;
 };
