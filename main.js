@@ -12,8 +12,13 @@ function getUrlVars() {
 }	 
 
 serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 
-			 'MyGraphNode.js', 'MyGraphLeaf.js', 'MyInterface.js', 'MyTriangle.js','Square.js','Cylinder.js','MySphere.js','MyQuad.js', 'MyPatch.js','MyCylinder.js','MySubmarineShape.js','MyLamp.js','MyCircle.js','MyUnitCubeQuad.js','MyTrapezoid.js','MyPrism.js','Animation.js','LinearAnimation.js','CircularAnimation.js'
-			 ,'BezierAnimation.js',
+			 'MyGraphNode.js', 'MyGraphLeaf.js', 'MyInterface.js', '../primitives/MyTriangle.js'
+			 ,'../primitives/Square.js','../primitives/Cylinder.js','../primitives/MySphere.js'
+			 ,'../primitives/MyQuad.js', '../primitives/MyPatch.js','../primitives/MyCylinder.js'
+			 ,'../primitives/MySubmarineShape.js','../primitives/MyLamp.js','../primitives/MyCircle.js'
+			 ,'../primitives/MyUnitCubeQuad.js','../primitives/MyTrapezoid.js','../primitives/MyPrism.js'
+			 ,'../animations/Animation.js','../animations/LinearAnimation.js','../animations/CircularAnimation.js'
+			 ,'../animations/BezierAnimation.js',
 main=function()
 {
 	// Standard application, scene and interface setup
