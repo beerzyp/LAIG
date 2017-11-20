@@ -22,6 +22,7 @@ function MySceneGraph(filename, scene) {
     scene.graph = this;
     
     this.nodes = [];
+    this.animationsArray = [];
     
     this.idRoot = null;                    // The id of the root element.
 
@@ -947,7 +948,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
       var children = animationNode.children;
     // Each material.
     
-    this.animations = [];
+   
     
     for (var i = 0; i < children.length; i++) {
         if (children[i].nodeName != "ANIMATION") {
@@ -959,7 +960,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
         if (AnimationID == null )
             return "no ID defined for material";
         
-        if (this.animations[AnimationID] != null )
+        if (this.animationsArray[AnimationID] != null )
             return "ID must be unique for each material (conflict: ID = " + materialID + ")";
        
         var typeAnimation = this.reader.getString(children[i],'type');
@@ -977,6 +978,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                     controlPoints.push(controlP);
                 }
                 var linearAnimation = new LinearAnimation(this.scene,AnimationID,speed,controlPoints);
+                this.animationsArray.push(linearAnimation);
                 break;
             case 'circular':
                 var speed = parseFloat(this.reader.getString(children[i],'speed'));
@@ -987,6 +989,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                 var startang =  parseFloat(this.reader.getString(children[i],'startang'));
                 var rotang =  parseFloat(this.reader.getString(children[i],'rotang'));
                 var circularAnimation = new CircularAnimation(this.scene,AnimationID,speed,centerx,centery,centerz,radius,startang,rotang);
+                 this.animationsArray.push(circularAnimation);
             break;
             /**
             	<ANIMATION id="bezierAn" speed="6" type="bezier">
@@ -1008,6 +1011,7 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                     controlPoints.push(controlP);
                 }
                 var bezierAnimation = new BezierAnimation(this.scene,AnimationID,speed,controlPoints);
+                 this.animationsArray.push(bezierAnimation);
                 break;
             case 'combo':
             break;
