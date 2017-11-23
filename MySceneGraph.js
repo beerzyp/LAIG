@@ -1625,15 +1625,15 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		if(mat != null){
             mat.apply();
         }
-        
+        if(this.check > 0)
+		{
+			this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+		}
         if(tex != null){
             node.leaves[k].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
             tex.bind();
 		}		
-		if(this.check > 0)
-		{
-			this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-		}
+		
 		node.leaves[k].display();
 		
         

@@ -28,8 +28,8 @@ MyInterface.prototype.init = function(application) {
 	
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {
-			'Flat Shading': 0, 
-			'Passing a scale as uniform': 1, 
+			'Mix c/Amarelo': 0,
+			'Flat Shading': 1, 			 
 			'Passing a varying parameter from VS -> FS': 2, 
 			'Simple texturing': 3, 
 			'Multiple textures in the FS': 4, 
