@@ -1574,6 +1574,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
   
 	
    // console.log(node.children.length);
+	if(this.check > 0 && node.children.length != 0)
+	{
+		this.check = this.check + node.children.length;
+	}
 	var i = 0;	
 	for (var key in this.scene.objectValues) {
 		if (this.scene.objectValues.hasOwnProperty(key)) {
@@ -1593,10 +1597,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		}			
 	}
 	
-	if(this.check > 0 && node.children.length != 0)
-	{
-		this.check = node.children.length;
-	}
+	
     for(var j=0;j<node.children.length;j++){//percorre filhos
 	
 		//console.log(node.nodeID);
