@@ -42,6 +42,11 @@ XMLscene.prototype.init = function(application) {
 	this.count = 0;
 	this.colorScale = 1;
 	
+
+	//animations
+	let initDate= new Date();
+	this.initialTime=initDate.getTime();
+
 	this.testShaders=[
 		new CGFshader(this.gl, "shaders/uScale.vert", "shaders/uScale.frag"),
 		new CGFshader(this.gl, "shaders/flat.vert", "shaders/flat.frag"),

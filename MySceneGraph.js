@@ -1416,23 +1416,6 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                 }
             }
             
-			var animationIndex = specsNames.indexOf("ANIMATIONREFS");
-            if (animationIndex == -1){
-                console.log("No Animation, just console test");
-			} else {
-				var animations = nodeSpecs[animationIndex].children;
-				
-				var sizeChildren = 0;
-				for (var j = 0; j < animations.length; j++) {
-					if (animations[j].nodeName == "ANIMATIONREF")
-					{
-						//chamar a função para ele andar!!
-					}
-					
-					if (sizeChildren == 0)
-						return "at least one animation must be defined for each intermediate node";
-				} 
-			}
 			
             // Retrieves information about children.
             var descendantsIndex = specsNames.indexOf("DESCENDANTS");
@@ -1475,6 +1458,10 @@ MySceneGraph.prototype.parseNodes = function(nodesNode) {
                         
                         sizeChildren++;
 
+					}
+					else if(descendants[j].nodeName=="ANIMATIONREFS"){
+					    var curId = this.reader.getString(descendants[j], 'idref');
+					    this.nodes[nodeID].pushAnimation(this.animationsArray[curId]);
 					}
 					else
 						this.onXMLMinorError("unknown tag <" + descendants[j].nodeName + ">");

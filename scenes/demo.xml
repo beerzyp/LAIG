@@ -147,7 +147,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="root" />     
+    <ROOT id="chao" />     
 
     <!-- The root node -->
     <NODE id="root">       
@@ -188,6 +188,7 @@
         <ROTATION axis="x" angle="-90" />
 
         <DESCENDANTS>
+        	<ANIMATIONREFS idref="0"/>
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
 	
