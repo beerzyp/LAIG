@@ -9,7 +9,6 @@ class LinearAnimation extends Animation {
    var time=this.distance/this.speed;
    this.currentPos=0;
    this.objectPos=vec3.create();
-   this.applyAnimation();
   }
 
 calcTotalDist(){
@@ -28,7 +27,6 @@ applyAnimation(){
     
     this.currentPos++;
   }
-  this.currentPos=0;
 
 }
 

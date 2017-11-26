@@ -121,7 +121,10 @@
 <ANIMATIONS>
 	<ANIMATION id="linearAn" speed="15" type="linear">
 		<controlpoint xx="1" yy="2" zz="0" /> 
-		<controlpoint xx="0" yy="1" zz="5" /> 
+		<controlpoint xx="2" yy="2" zz="0" />
+		<controlpoint xx="3" yy="2" zz="0" />
+		<controlpoint xx="4" yy="2" zz="0" />
+		<controlpoint xx="5" yy="2" zz="0" />
 	</ANIMATION>
 	
 	<ANIMATION id="cirularAn" speed="5" type="circular"
@@ -188,7 +191,7 @@
         <ROTATION axis="x" angle="-90" />
 
         <DESCENDANTS>
-        	<ANIMATIONREFS idref="0"/>
+        	<ANIMATIONREFS idref="1"/>
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
 	

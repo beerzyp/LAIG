@@ -21,6 +21,7 @@ class CircularAnimation extends Animation{
 	this.atualdist = 0;
 	this.atualAngle = 0;
 	
+
 	this.over = false;
 
     }

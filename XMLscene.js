@@ -36,13 +36,13 @@ XMLscene.prototype.init = function(application) {
     this.axis = new CGFaxis(this);
 	this.count = 0;
 	//shaders
-	this.setUpdatePeriod(500);
+	this.setUpdatePeriod(100);
 	this.scaleFactor=50.0; //para modificar consoante o tempo
 	this.factor = 50.0;
 	this.count = 0;
 	this.colorScale = 1;
 	
-
+	this.lastTime=0;
 	//animations
 	let initDate= new Date();
 	this.initialTime=initDate.getTime();
@@ -199,4 +199,12 @@ XMLscene.prototype.display = function() {
     
     // ---- END Background, camera and axis setup
     
+}
+
+
+XMLscene.prototype.update= function (currTime){
+	for(var node in this.graph.nodes){
+		this.graph.nodes[node].updateAnimation(currTime-this.lastTime);
+	}
+	this.lastTime=currTime;
 }

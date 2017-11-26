@@ -1571,6 +1571,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	
 	this.scene.pushMatrix();
     this.scene.multMatrix(node.transformMatrix);
+  
 	
    // console.log(node.children.length);
 	var i = 0;	
@@ -1624,6 +1625,9 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		node.leaves[k].display();
 		
         
+    }
+    if(node.animations[0].length!=0){
+        node.updateAnimation();
     }
 	if(this.check == 0)
 	{
