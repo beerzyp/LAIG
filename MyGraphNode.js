@@ -51,7 +51,8 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
 
 MyGraphNode.prototype.updateAnimation = function (currTime){
     if(this.animations.length!=0){
-    this.animations[0].update(currTime)
+		this.animations[0].update(currTime);
+		this.animations[0].display();
     }
 }
 

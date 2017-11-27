@@ -6,20 +6,20 @@ d="cirularAn" speed="5" type="circular"
 */
 
 class CircularAnimation extends Animation{
-  constructor(scene,id,speed,circular,centerx,centery,centerz,radius,startang,rotang){
+  constructor(scene,id,speed,centerx,centery,centerz,radius,startang,rotang){
     super(scene,id,speed);
     this.speed=speed;
-    this.circular=circular;
     this.centerx=centerx;
     this.centery=centery;
     this.centerz=centerz;
     this.radius=radius;
     this.startang=startang;
     this.rotang=rotang;
-    var animationTime = (2*Math.PI*this.radius)/this.speed;
-  	this.dist = this.rotAng * this.radius;
+	this.animationTime = (2*Math.PI*this.radius)/this.speed;
+  	this.dist = this.rotang * this.radius;
 	this.atualdist = 0;
 	this.atualAngle = 0;
+	this.meu = 0;
 	
 
 	this.over = false;
@@ -27,9 +27,19 @@ class CircularAnimation extends Animation{
     }
 
     display() {
-        this.scene.translate(this.centerx, this.centery, this.centerz);
-        this.scene.translate(this.radius * Math.cos(this.startang + this.atualAngle), 0, -this.radius * Math.sin(this.startang + this.atualAngle));
-        this.scene.rotate(Math.PI + this.startAng + this.atualAngle, 0, 1, 0);
+		//console.log(this.rotang);
+        //this.scene.translate(this.centerx, this.centery, this.centerz);
+        //this.scene.translate(this.radius * Math.cos(this.startang + this.atualAngle), 0, -this.radius * Math.sin(this.startang + this.atualAngle));
+		console.log(this.scene.period);
+		this.scene.period++;
+		if(this.scene.period == 6)
+		{
+			this.meu = this.meu + Math.PI/20;
+			this.scene.period = 0;
+		}
+		
+		
+        this.scene.rotate(Math.cos(this.meu), 0, 0, 1);
     }
 
     update(deltaTime) {
@@ -44,8 +54,8 @@ class CircularAnimation extends Animation{
     }
 
     clone() {
-        //var copy = new CircularAnimation(this.scene, this.id, this.animationTime, this.center, this.radius, this.startAng, this.rotAng);
-        //return copy;
+		var copy = new CircularAnimation(this.scene, this.id, this.animationTime, this.center, this.radius, this.startang, this.rotang);
+        return copy;
     }
 
 }

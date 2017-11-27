@@ -44,6 +44,7 @@ XMLscene.prototype.init = function(application) {
 	
 	this.lastTime=0;
 	//animations
+	this.period = 0;
 	let initDate= new Date();
 	this.initialTime=initDate.getTime();
 
@@ -199,12 +200,4 @@ XMLscene.prototype.display = function() {
     
     // ---- END Background, camera and axis setup
     
-}
-
-
-XMLscene.prototype.update= function (currTime){
-	for(var node in this.graph.nodes){
-		this.graph.nodes[node].updateAnimation(currTime-this.lastTime);
-	}
-	this.lastTime=currTime;
 }

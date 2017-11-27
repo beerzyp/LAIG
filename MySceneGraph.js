@@ -1623,13 +1623,26 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
             tex.bind();
 		}		
 		
-		node.leaves[k].display();
 		
-        
+		
+		//this.scene.translate(50,0,0);
+		if(node.animations.length!=0){
+							node.updateAnimation();
+		
+				
+
+			
+		} else {
+			
+		}
+		node.leaves[k].display();
+         
+		
+		
     }
-    if(node.animations[0].length!=0){
-        node.updateAnimation();
-    }
+	
+   
+
 	if(this.check == 0)
 	{
 		this.scene.setActiveShader(this.scene.defaultShader);

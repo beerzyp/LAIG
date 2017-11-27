@@ -150,7 +150,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="chao" />     
+    <ROOT id="root" />     
 
     <!-- The root node -->
     <NODE id="root">       
@@ -182,7 +182,7 @@
 		</DESCENDANTS>
 	</NODE>
 	
-    <NODE id="chao" selectable="1">      
+    <NODE id="chao" selectable="0">      
         <MATERIAL id="null" />    
         <TEXTURE id="ocean" />       			
 
