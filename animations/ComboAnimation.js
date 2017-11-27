@@ -1,45 +1,36 @@
 class ComboAnimation extends Animation {
   constructor(scene, id, animationRefs){
+    super(scene,id,animationRefs);
     this.scene = scene;
     this.id = id;
     this.animationRefs = animationRefs;
-    this.animationMatrix = mat4.create();
-    mat4.identity(this.animationMatrix);
     //this.currentSection = 0;//Used in Linear and Combo Animations
-    this.secTimes = new Array();
     this.totalTime = 0;
     let time = 0;
+    this.dec=-1;
+    this.inc=1;
+    this.var=this.inc;
 
-    for(let i = 0; i <this.animationRefs.length; i++){
-      time = this.scene.animations[this.animationRefs[i]].getTotalTime();
+   for(let i = 0; i <this.animationRefs.length; i++){
+      time = this.scene.graph.animationsArray[i].getTotalTime();
       this.totalTime += time;
-      this.secTimes.push(time);
     }
-
+    this.currAnimation=0;
   }
   getTotalTime(){
     return this.totalTime;
   }
 
-  getTransformMatrix(node, time, section) {
-    // if(this.animationRefs[node.combIte] == 'gentlemanClaptrap1')
-    //   console.log(" ");
-    let combSecTime = time;
-
-    for(let i = 0; i < node.currentSection; i++)
-      combSecTime -= this.secTimes[i];
-
-    if (node.combIte < this.animationRefs.length){
-      mat4.identity(this.animationMatrix);
-      this.animationMatrix =  this.scene.animations[this.animationRefs[node.combIte]].getTransformMatrix(node, time, node.currentSection);
-      if(combSecTime >= this.scene.animations[this.animationRefs[node.combIte]].getTotalTime()){
-          node.currentSection = 0;
-          node.combIte++;
-      }
-       else if (combSecTime >= this.scene.animations[this.animationRefs[node.combIte]].secTimes[node.currentSection])
-           node.currentSection++;
+  update(){
+   if(this.currAnimation==this.animationRefs.length-1){
+        this.var=this.dec;
    }
-    return this.animationMatrix;
+   else if(this.currAnimation==0)
+    this.var=this.inc;
+
+  }
+  display(){
+    this.scene.graph.animationsArray[this.currAnimation].display();
   }
 
 }

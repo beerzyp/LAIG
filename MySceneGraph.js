@@ -1014,6 +1014,13 @@ MySceneGraph.prototype.parseAnimations = function(animationNode){
                  this.animationsArray.push(bezierAnimation);
                 break;
             case 'combo':
+            var refs=children[i].children;
+            this.animationsRefs=[];
+            for(let k=0;k<refs.length;k++){
+                this.animationsRefs.push(parseFloat(this.reader.getString(children[i].children[k],'idr')));
+            }
+            var comboAnim= new ComboAnimation(this.scene,AnimationID,this.animationsRefs);
+            this.animationsArray.push(comboAnim);
             break;
         }
     }

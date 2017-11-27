@@ -3,6 +3,7 @@ class LinearAnimation extends Animation {
     super(scene,id);
     this.speed=speed;
     this.controlPoints=controlPoints;
+    this.finalPoints=[];
     var distance=0;
    // var angle=calcAngle(this.controlPoints[0][0])
    this.calcTotalDist();
@@ -39,7 +40,9 @@ display(){
    this.currentPos+=this.var;
 }
 
-
+getTotalTime(){
+  return this.time;
+}
 
 
 };

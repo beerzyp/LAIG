@@ -41,7 +41,7 @@ XMLscene.prototype.init = function(application) {
 	this.factor = 50.0;
 	this.count = 0;
 	this.colorScale = 1;
-	
+	this.animations=[];
 	
 	//animations
 	this.period = 0;

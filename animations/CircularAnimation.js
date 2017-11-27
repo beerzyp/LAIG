@@ -60,5 +60,8 @@ class CircularAnimation extends Animation{
 		var copy = new CircularAnimation(this.scene, this.id, this.animationTime, this.center, this.radius, this.startang, this.rotang);
         return copy;
     }
+    getTotalTime(){
+    	return this.animationTime;
+    }
 
 }

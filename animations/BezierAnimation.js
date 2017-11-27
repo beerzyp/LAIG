@@ -100,4 +100,8 @@ casteljau(){
    this.currentPos+=this.var;
   }
 
+  getTotalTime(){
+    return this.totalTime;
+  }
+
 }

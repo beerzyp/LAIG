@@ -150,7 +150,9 @@
 	</ANIMATION>
 	
 	<ANIMATION id="comboAn" type="combo"> <!-- pode ser repetida para -->
-		<SPANREF id="ssAn" />
+		<SPANREF idr="0" />
+		<SPANREF idr="1" />
+		<SPANREF idr="2" />
 	</ANIMATION>
 </ANIMATIONS>
 
@@ -202,7 +204,7 @@
         <ROTATION axis="x" angle="-90" />
 
         <DESCENDANTS>
-        	<ANIMATIONREFS idref="2"/> 
+        	<ANIMATIONREFS idref="3"/> 
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
 	
@@ -218,7 +220,7 @@
             <NODEREF id="luz2" />     	    
             <NODEREF id="luz3" />     	   
             <NODEREF id="luz4" />
-			    	    
+
         </DESCENDANTS>
 
     </NODE>

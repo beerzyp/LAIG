@@ -51,7 +51,7 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
 
 MyGraphNode.prototype.updateAnimation = function (){
     if(this.animations.length!=0){
-		this.animations[0].update(this.delta);
+		this.animations[0].update();
 		this.animations[0].display();
     }
 }
