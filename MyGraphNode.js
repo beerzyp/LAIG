@@ -21,7 +21,7 @@ function MyGraphNode(graph, nodeID) {
     this.textureID = null ;
     //
     this.animations=[];
-
+	this.delta=0;
     this.transformMatrix = mat4.create();
     mat4.identity(this.transformMatrix);
    
@@ -49,11 +49,14 @@ MyGraphNode.prototype.addLeaf = function(leaf) {
     this.leaves.push(leaf);
 }
 
-MyGraphNode.prototype.updateAnimation = function (currTime){
+MyGraphNode.prototype.updateAnimation = function (){
     if(this.animations.length!=0){
-		this.animations[0].update(currTime);
+		this.animations[0].update(this.delta);
 		this.animations[0].display();
     }
 }
 
+MyGraphNode.prototype.counter= function(delta){
+	this.delta=delta;
+}
 

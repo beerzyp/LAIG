@@ -6,9 +6,14 @@ class LinearAnimation extends Animation {
     var distance=0;
    // var angle=calcAngle(this.controlPoints[0][0])
    this.calcTotalDist();
-   var time=this.distance/this.speed;
+   this.time=this.distance/this.speed;
    this.currentPos=0;
    this.objectPos=vec3.create();
+   this.currentDistance=0;
+   this.vec=this.controlPoints.reverse();
+   this.dec=-1;
+   this.inc=1;
+   this.var=this.inc;
   }
 
 calcTotalDist(){
@@ -21,13 +26,17 @@ calcTotalDist(){
   }
 }
 
-applyAnimation(){
-  while(this.currentPos!=this.controlPoints.length){
-    this.objectPos=this.controlPoints[this.currentPos];
-    
-    this.currentPos++;
+update(){
+   if(this.currentPos==this.controlPoints.length-1){
+        this.var=this.dec;
+   }
+   else if(this.currentPos==0)
+    this.var=this.inc;
   }
 
+display(){
+  this.scene.translate(this.controlPoints[this.currentPos+this.var][0]-this.controlPoints[this.currentPos][0],this.controlPoints[this.currentPos][1],this.controlPoints[this.currentPos][2]);
+   this.currentPos+=this.var;
 }
 
 

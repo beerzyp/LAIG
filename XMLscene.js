@@ -9,7 +9,7 @@ function XMLscene(interface) {
     CGFscene.call(this);
 
     this.interface = interface;
-
+	this.initTime=0;
     this.lightValues = {};
 	this.objectValues = {};
 	this.selectedExampleShader = 0;
@@ -36,13 +36,13 @@ XMLscene.prototype.init = function(application) {
     this.axis = new CGFaxis(this);
 	this.count = 0;
 	//shaders
-	this.setUpdatePeriod(100);
+	this.setUpdatePeriod(2000);
 	this.scaleFactor=50.0; //para modificar consoante o tempo
 	this.factor = 50.0;
 	this.count = 0;
 	this.colorScale = 1;
 	
-	this.lastTime=0;
+	
 	//animations
 	this.period = 0;
 	let initDate= new Date();
@@ -198,6 +198,15 @@ XMLscene.prototype.display = function() {
 
     this.popMatrix();
     
-    // ---- END Background, camera and axis setup
+    // ---- Efile:///C:/Users/R/Desktop/projeto/animations/LinearAnimation.jsND Background, camera and axis setup
     
+}
+
+
+XMLscene.prototype.update = function(currTime){
+	for(var node in this.graph.nodes){
+		if(this.graph.nodes[node].animations.length!=0)
+			this.graph.nodes[node].counter(currTime-this.initTime);
+	}
+	this.initTime=currTime;
 }

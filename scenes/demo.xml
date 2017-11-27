@@ -125,17 +125,28 @@
 		<controlpoint xx="3" yy="2" zz="0" />
 		<controlpoint xx="4" yy="2" zz="0" />
 		<controlpoint xx="5" yy="2" zz="0" />
+		<controlpoint xx="6" yy="2" zz="0" />
+		<controlpoint xx="7" yy="2" zz="0" />
+		<controlpoint xx="8" yy="2" zz="0" />
+		<controlpoint xx="9" yy="2" zz="0" />
+		<controlpoint xx="10" yy="2" zz="0" />
+		<controlpoint xx="11" yy="2" zz="0" />
+		<controlpoint xx="12" yy="2" zz="0" />
+		<controlpoint xx="13" yy="2" zz="0" />
+		<controlpoint xx="15" yy="2" zz="0" />
+		<controlpoint xx="17" yy="2" zz="0" />
+		<controlpoint xx="20" yy="2" zz="0" />
 	</ANIMATION>
 	
-	<ANIMATION id="cirularAn" speed="5" type="circular"
+	<ANIMATION id="cirularAn" speed="50" type="circular"
 	centerx="2" centery="1" centerz="0"
-	radius="1" startang="30" rotang="15"/>
+	radius="10" startang="3.14" rotang="0.85"/>
 
 	<ANIMATION id="bezierAn" speed="6" type="bezier">
-		<controlpoint xx="1" yy="2" zz="3" /> 
-		<controlpoint xx="2" yy="3" zz="4" /> 
-		<controlpoint xx="2" yy="5" zz="4" /> 
-		<controlpoint xx="2" yy="6" zz="7" /> 
+		<controlpoint xx="10" yy="10" zz="0" /> 
+		<controlpoint xx="50" yy="100" zz="0" /> 
+		<controlpoint xx="150" yy="200" zz="0" /> 
+		<controlpoint xx="200" yy="75" zz="0" /> 
 	</ANIMATION>
 	
 	<ANIMATION id="comboAn" type="combo"> <!-- pode ser repetida para -->
@@ -178,6 +189,7 @@
 		
 
         <DESCENDANTS>
+       		 
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
 	</NODE>
@@ -185,13 +197,12 @@
     <NODE id="chao" selectable="0">      
         <MATERIAL id="null" />    
         <TEXTURE id="ocean" />       			
-
         <SCALE sx="64" sy="1" sz="64" />
         <TRANSLATION x="-2" y="0" z="1" />
         <ROTATION axis="x" angle="-90" />
 
         <DESCENDANTS>
-        	<ANIMATIONREFS idref="1"/>
+        	<ANIMATIONREFS idref="2"/> 
 			<LEAF  type="rectangle" args="0 4 5 0" />        
 		</DESCENDANTS>
 	
@@ -206,7 +217,8 @@
             <NODEREF id="luz1" />     	    
             <NODEREF id="luz2" />     	    
             <NODEREF id="luz3" />     	   
-            <NODEREF id="luz4" />     	    
+            <NODEREF id="luz4" />
+			    	    
         </DESCENDANTS>
 
     </NODE>
@@ -394,6 +406,7 @@
  		<TRANSLATION x="-39" y="0" z="-70" />
  		
         <DESCENDANTS>
+		 	
             <NODEREF id="bridge1" /> 
             <NODEREF id="bridge2" /> 
             <NODEREF id="connector1"/> 
@@ -1126,6 +1139,7 @@
         <NODEREF id="back_of_submarine"/>
         <NODEREF id="body_of_submarine"/>
         <NODEREF id="periscope_submarine"/>
+       
       </DESCENDANTS>
 
     </NODE>

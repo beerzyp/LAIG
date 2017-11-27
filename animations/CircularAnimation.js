@@ -15,12 +15,13 @@ class CircularAnimation extends Animation{
     this.radius=radius;
     this.startang=startang;
     this.rotang=rotang;
-	this.animationTime = (2*Math.PI*this.radius)/this.speed;
+    this.angSpeed=this.speed/this.radius;
+	this.animationTime = this.angSpeed/this.radius;
   	this.dist = this.rotang * this.radius;
 	this.atualdist = 0;
 	this.atualAngle = 0;
 	this.meu = 0;
-	
+	this.initTime=0;
 
 	this.over = false;
 
@@ -30,7 +31,7 @@ class CircularAnimation extends Animation{
 		//console.log(this.rotang);
         //this.scene.translate(this.centerx, this.centery, this.centerz);
         //this.scene.translate(this.radius * Math.cos(this.startang + this.atualAngle), 0, -this.radius * Math.sin(this.startang + this.atualAngle));
-		console.log(this.scene.period);
+		//console.log(this.scene.period);
 		this.scene.period++;
 		if(this.scene.period == 6)
 		{
@@ -38,19 +39,21 @@ class CircularAnimation extends Animation{
 			this.scene.period = 0;
 		}
 		
-		
         this.scene.rotate(Math.cos(this.meu), 0, 0, 1);
+	 	
     }
 
     update(deltaTime) {
+		this.delta=Math.abs(deltaTime-this.initTime);
         if (this.atualAngle < this.rotang) {
-            this.atualdist += ((deltaTime / 1000) * this.dist) / (this.animationTime / 1000);
+            this.atualdist += ((this.delta / 1000) * this.dist) / (this.animationTime);
             this.atualAngle = this.atualdist / this.radius;
         } else {
             this.over = true;
             this.atualAngle = 0;
             this.atualdist = 0;
         }
+        this.initTime=Math.abs(deltaTime-this.initTime);
     }
 
     clone() {
