@@ -12,9 +12,10 @@ class LinearAnimation extends Animation {
    this.objectPos=vec3.create();
    this.currentDistance=0;
    this.vec=this.controlPoints.reverse();
-   this.dec=-1;
-   this.inc=1;
-   this.var=this.inc;
+   this.newVec=[];
+    this.dec=-1;
+    this.inc=1;
+    this.var=this.inc;
   }
 
 calcTotalDist(){
@@ -27,7 +28,7 @@ calcTotalDist(){
   }
 }
 
-update(){
+update(deltaTime){
    if(this.currentPos==this.controlPoints.length-1){
         this.var=this.dec;
    }

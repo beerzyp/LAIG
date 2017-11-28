@@ -1578,7 +1578,8 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	
 	this.scene.pushMatrix();
     this.scene.multMatrix(node.transformMatrix);
-  
+   if(node.animations.length!=0)
+                node.updateAnimation();	
 	
    // console.log(node.children.length);
 	if(this.check > 0 && node.children.length != 0)
@@ -1631,25 +1632,19 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		}		
 		
 		
-		
 		//this.scene.translate(50,0,0);
-		if(node.animations.length!=0){
-							node.updateAnimation();
-		
-				
-
-			
-		} else {
-			
-		}
+	
+       
+	
 		node.leaves[k].display();
          
-		
+			
+
 		
     }
 	
-   
-
+   	
+	
 	if(this.check == 0)
 	{
 		this.scene.setActiveShader(this.scene.defaultShader);

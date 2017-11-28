@@ -21,7 +21,7 @@ class ComboAnimation extends Animation {
     return this.totalTime;
   }
 
-  update(){
+  update(deltaTime){
    if(this.currAnimation==this.animationRefs.length-1){
         this.var=this.dec;
    }
