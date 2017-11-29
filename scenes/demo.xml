@@ -163,7 +163,7 @@
 <!-- The nodes -->
 <NODES>
 
-    <ROOT id="root" />     
+    <ROOT id="chao" />     
 
     <!-- The root node -->
     <NODE id="root">       
