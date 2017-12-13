@@ -170,11 +170,8 @@
         <MATERIAL id="defaultMaterial" />         
         <TEXTURE id="null" />  
         <DESCENDANTS>
-			<NODEREF id="margem" />
-            <NODEREF id="luzes" />    
-            <NODEREF id="chao" />
             <NODEREF id="bridge" />
-           	<NODEREF id="submarine" />
+     
         </DESCENDANTS>
 
     </NODE>
