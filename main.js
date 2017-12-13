@@ -18,7 +18,8 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
 			 ,'../primitives/MySubmarineShape.js','../primitives/MyLamp.js','../primitives/MyCircle.js'
 			 ,'../primitives/MyUnitCubeQuad.js','../primitives/MyTrapezoid.js','../primitives/MyPrism.js'
 			 ,'../animations/Animation.js','../animations/LinearAnimation.js','../animations/CircularAnimation.js'
-			 ,'../animations/BezierAnimation.js','../animations/ComboAnimation.js',
+			 ,'../animations/BezierAnimation.js','../animations/ComboAnimation.js','Rook.js','King.js','Queen.js','Pawn.js','Piece.js','Knight.js',
+			 'BoardLogic.js','Bishop.js',
 main=function()
 {
 	// Standard application, scene and interface setup
