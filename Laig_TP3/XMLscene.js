@@ -54,6 +54,8 @@ XMLscene.prototype.init = function(application) {
     this.primitives = [];
     this.animations = [];
     this.setUpdatePeriod(16);
+	
+	this.setPickEnabled(true);
 }
 
 /**
@@ -102,6 +104,8 @@ XMLscene.prototype.initCameras = function() {
  */
 XMLscene.prototype.onGraphLoaded = function()
 {
+	
+	
     this.camera.near = this.graph.near;
     this.camera.far = this.graph.far;
     this.axis = new CGFaxis(this,this.graph.referenceLength);
@@ -126,7 +130,8 @@ XMLscene.prototype.onGraphLoaded = function()
  */
 XMLscene.prototype.display = function() {
     // ---- BEGIN Background, camera and axis setup
-
+	this.logPicking();
+	this.clearPickRegistration();
     // Clear image and depth buffer everytime we update the scene
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
@@ -200,3 +205,20 @@ XMLscene.prototype.updateScalingFactor = function(date)
 {
     this.shaders[this.currentShader].setUniformsValues({timeFactor: date});
 };
+
+  XMLscene.prototype.logPicking = function ()
+{
+	if (this.pickMode == false) {
+		if (this.pickResults != null && this.pickResults.length > 0) {
+			for (var i=0; i< this.pickResults.length; i++) {
+				var obj = this.pickResults[i][0];
+				if (obj)
+				{
+					var customId = this.pickResults[i][1];				
+					console.log("Picked object: " + obj + ", with pick id " + customId);
+				}
+			}
+			this.pickResults.splice(0,this.pickResults.length);
+		}		
+	}
+}

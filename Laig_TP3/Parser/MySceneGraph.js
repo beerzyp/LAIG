@@ -30,7 +30,16 @@ function MySceneGraph(filename, scene) {
     this.axisCoords['x'] = [1, 0, 0];
     this.axisCoords['y'] = [0, 1, 0];
     this.axisCoords['z'] = [0, 0, 1];
-
+	
+	this.pecasB = new Array(8, 8);
+	this.pecasP = new Array(8, 8);
+	this.tabuleiro = new Array(8, 8);
+	this.pecasB[8,8] = "nada";
+	this.pecasP[8,8] = "nada";
+	this.tabuleiro[8,8] = "cenas";
+	this.count = 1;
+	this.control = 1;
+	
     // File reading
     this.reader = new CGFXMLreader();
 
@@ -1625,7 +1634,7 @@ MySceneGraph.generateRandomString = function(length) {
  */
 MySceneGraph.prototype.displayScene = function() {
   var rootNode = this.nodes[this.idRoot];
-
+  this.count = 0;
   if(this.textures[rootNode.textureID] != null)
    this.processNode(rootNode, this.textures[rootNode.textureID][0], this.materials[rootNode.materialID]);
   else
@@ -1668,14 +1677,76 @@ MySceneGraph.prototype.displayScene = function() {
 
     if (textura != null) {
         textura.bind();
-    }
-
-
-    for (var j = 0; j < node.leaves.length; j++) {
+    } 
+	this.impar = 2;	
+	for (var j = 0; j < node.leaves.length; j++) {
       node.leaves[j].updateTexCoords(this.scene.currTexture[1],this.scene.currTexture[2]);
-      node.leaves[j].display();
+	  if(node.nodeID == "pecaB"){
+		  for(var k=0; k < 2; k++){
+			 for( var i=0; i<8;i++){
+				this.count++;
+				this.scene.pushMatrix();
+				this.pecasB[i+1,k+1] = node.leaves[j];				
+				this.scene.translate(i*5,-k*5,0);
+				this.scene.registerForPick(this.count, this.pecasB[i+1,k+1]);
+				this.pecasB[i+1,k+1].display();												
+				this.scene.popMatrix();
+			 }
+		  } 
+	  } else if (node.nodeID == "quadradoB"){
+			for(var k=0; k < 8; k++){				
+				for( var i=0; i<8;i++){
+					this.impar++;
+					if((this.impar % 2) == 1){
+						this.count++;
+						this.scene.pushMatrix();
+						this.tabuleiro[i+1,k+1] = node.leaves[j];				
+						this.scene.translate(i*5,-k*5,0);
+						this.scene.registerForPick(this.count, this.tabuleiro[i+1,k+1]);
+						this.tabuleiro[i+1,k+1].display();												
+						this.scene.popMatrix();
+					}				
+				}
+				this.impar++;
+			} 			
+	  } else if (node.nodeID == "quadradoP"){
+		for(var k=0; k < 8; k++){
+			
+			 for( var i=0; i<8;i++){
+				 this.impar++;
+				if((this.impar % 2) == 0){
+					this.count++;
+					this.scene.pushMatrix();
+					this.tabuleiro[i+1,k+1] = node.leaves[j];				
+					this.scene.translate(i*5,-k*5,0);
+					this.scene.registerForPick(this.count, this.tabuleiro[i+1,k+1]);
+					this.tabuleiro[i+1,k+1].display();					
+					this.scene.popMatrix();
+				}
+			 }
+			this.impar++;
+		  }  
+	  } else if (node.nodeID == "pecaP"){
+		for(var k=0; k < 2; k++){
+			 for( var i=0; i<8;i++){
+				this.count++;
+				this.scene.pushMatrix();
+				this.pecasP[i+1,k+1] = node.leaves[j];				
+				this.scene.translate(-i*5,k*5,0);
+				this.scene.registerForPick(this.count, this.pecasP[i+1,k+1]);
+				this.pecasP[i+1,k+1].display();				
+				this.scene.popMatrix();
+			 }
+		  }
+	  } else{
+		node.leaves[j].display();
+	  }
+     
     }
     this.scene.popMatrix();
+	
     if (this.scene.currentSelectable == node.nodeID)
         this.scene.setActiveShader(this.scene.defaultShader);
   }
+  
+

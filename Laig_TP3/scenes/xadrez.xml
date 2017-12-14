@@ -67,6 +67,10 @@
         <file path="images/quadradopreto.png" />
         <amplif_factor s="5" t="5" />
     </TEXTURE>
+	<TEXTURE id="quadradoVermelho">
+        <file path="images/quadradovermelho.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -99,8 +103,32 @@
             <NODEREF id="tabuleiro" />
 			<NODEREF id="quadradoB" />
 			<NODEREF id="quadradoP" />
+			<NODEREF id="pecaB" />
+			<NODEREF id="pecaP" />
         </DESCENDANTS>
 
+    </NODE>
+	
+	<NODE id ="pecaB">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="quadradoVermelho" />
+
+        <TRANSLATION x="2.5" y="0.1" z="2.5" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+            <LEAF  type="cylinder" args="1 2.5 2.5 20 50 1 1" />
+        </DESCENDANTS>
+    </NODE>
+	
+	<NODE id ="pecaP">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="quadradoPreto" />
+
+        <TRANSLATION x="37.5" y="0.1" z="37.5" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+            <LEAF  type="cylinder" args="1 2.5 2.5 20 50 1 1" />
+        </DESCENDANTS>
     </NODE>
 	
 	<NODE id ="tabuleiro">
@@ -129,13 +157,14 @@
  		<MATERIAL id ="null" />
         <TEXTURE id="quadradoPreto" />
 
-        <TRANSLATION x="0" y="0" z="10" />
+        <TRANSLATION x="0" y="0" z="5" />
 		<ROTATION axis="x" angle="-90" />
          <DESCENDANTS>
             <LEAF  type="rectangle" args="0 5 5 0" />
         </DESCENDANTS>
     </NODE>
-
+	
+	
 </NODES>
 
 
