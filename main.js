@@ -18,7 +18,7 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
 			 ,'../primitives/MySubmarineShape.js','../primitives/MyLamp.js','../primitives/MyCircle.js'
 			 ,'../primitives/MyUnitCubeQuad.js','../primitives/MyTrapezoid.js','../primitives/MyPrism.js'
 			 ,'../animations/Animation.js','../animations/LinearAnimation.js','../animations/CircularAnimation.js'
-			 ,'../animations/BezierAnimation.js','../animations/ComboAnimation.js',
+			 ,'../animations/BezierAnimation.js','../animations/ComboAnimation.js', '../templateCHESSLOGIC/BoardLogic.js',
 main=function()
 {
 	// Standard application, scene and interface setup
@@ -36,7 +36,7 @@ main=function()
 	// get file name provided in URL, e.g. http://localhost/myproj/?file=myfile.xml 
 	// or use "demo.xml" as default (assumes files in subfolder "scenes", check MySceneGraph constructor) 
 	
-	var filename=getUrlVars()['file'] || "demo.xml";
+	var filename=getUrlVars()['file'] || "chess.xml";
 
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
