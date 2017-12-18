@@ -3,7 +3,7 @@ class BoardLogic{
          //public variables
         this.kingNotSafe=false; 
         this.gameOver=false;
-
+		this.chessBoard = BoardLogic.chessBoard;
         this.castleWhiteLong=true,this.castleWhiteShort=true,this.castleBlackLong=true,this.castleBlackShort=true;
         this.kingPositionC=this.kingPositionL=0;
         for(var i=0;i<BoardLogic.chessBoard.length;i++){
@@ -278,9 +278,9 @@ BoardLogic.chessBoard=[
     ['r','k','b','q','a','b','k','r'],
     ['p','p','p','p','p','p','p','p'],
     [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
+    [' ','p',' ',' ',' ','p',' ',' '],
+    [' ',' ',' ','Q',' ',' ',' ',' '],
+    [' ',' ',' ',' ','P',' ',' ',' '],
     ['P','P','P','P','P','P','P','P'],
     ['R','K','B','Q','A','B','K','R']
 ];
