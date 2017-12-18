@@ -20,7 +20,14 @@ function MySceneGraph(filename, scene) {
     // Establish bidirectional references between scene and graph.
     this.scene = scene;
     scene.graph = this;
-    
+	this.pecasB = new Array(8, 8);
+	this.pecasP = new Array(8, 8);
+	this.tabuleiro = new Array(8, 8);
+	this.pecasB[8,8] = "nada";
+	this.pecasP[8,8] = "nada";
+	this.tabuleiro[8,8] = "cenas";
+	this.count = 1;
+	this.control = 1;
     this.nodes = [];
     this.animationsArray = [];
     
@@ -1545,6 +1552,7 @@ MySceneGraph.prototype.displayScene = function() {
 	// entry point for graph rendering
 	// remove log below to avoid performance issues
 	//displayNode();
+	this.count = -1;
     this.displayNode(this.nodes[this.idRoot],null,null);
 }
 
@@ -1617,7 +1625,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
     }
 	
     var lengthLeaves=node.leaves.length;
-    for(var k=0;k<lengthLeaves;k++)
+    for(var j=0;j<lengthLeaves;j++)
 	{
 		if(mat != null){
             mat.apply();
@@ -1627,17 +1635,89 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 			this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
 		}
         if(tex != null){
-            node.leaves[k].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
+            node.leaves[j].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
             tex.bind();
-		}		
-		
-		
+		}				
 		//this.scene.translate(50,0,0);
-	
-       
-	
-		node.leaves[k].display();
-         
+		this.scene.temp = this.scene.board.getChessBoard();
+		//console.log(this.temp[1][1]);
+		
+		this.impar = 0;
+       if(node.nodeID == "pecaB"){
+		  for(var k=0; k < 8; k++){
+			 for( var i=0; i<8;i++){
+				this.count++;
+					if(this.scene.temp[k][i]<="z" && this.scene.temp[k][i]>="a"){
+					this.scene.pushMatrix();
+					this.pecasB[i+1,k+1] = node.leaves[j];				
+					this.scene.translate(-i*5,k*5,0);
+					this.scene.registerForPick(this.count, this.pecasB[i+1,k+1]);
+					this.pecasB[i+1,k+1].display();												
+					this.scene.popMatrix();
+				}
+				
+			 }
+		  } 
+	  } else if (node.nodeID == "quadradoB"){
+			for(var k=0; k < 8; k++){				
+				for( var i=0; i<8;i++){
+					this.impar++;
+					if((this.impar % 2) == 1){
+						this.count+=2;
+						this.scene.pushMatrix();
+						this.tabuleiro[i+1,k+1] = node.leaves[j];				
+						this.scene.translate(i*5,-k*5 + 5,0);
+						this.scene.registerForPick(this.count, this.tabuleiro[i+1,k+1]);
+						this.tabuleiro[i+1,k+1].display();												
+						this.scene.popMatrix();
+					}				
+				}
+				
+				if((this.count %2) == 0){
+				 this.count-=1;
+			 }else{this.count++;}
+				this.impar++;
+			} 			
+	  } else if (node.nodeID == "quadradoP"){
+		  this.count = 0;
+		for(var k=0; k < 8; k++){			
+			 for( var i=0; i<8;i++){
+				 this.impar++;
+				if((this.impar % 2) == 0){
+					this.count += 2;
+					this.scene.pushMatrix();
+					this.tabuleiro[i+1,k+1] = node.leaves[j];				
+					this.scene.translate(i*5,-k*5,0);
+					this.scene.registerForPick(this.count, this.tabuleiro[i+1,k+1]);
+					this.tabuleiro[i+1,k+1].display();					
+					this.scene.popMatrix();
+				}
+			 }
+			 if((this.count %2) == 0){
+				 this.count-=1;
+			 }	else{
+				 this.count++;
+			 }		
+			this.impar++;
+		  }
+	  } else if (node.nodeID == "pecaP"){
+		  this.count = 64;
+		for(var k=0; k <8; k++){
+			 for( var i=0; i<8;i++){
+				this.count++;
+				if(this.scene.temp[k][i]<="Z" && this.scene.temp[k][i]>="A"){				
+				this.scene.pushMatrix();
+				this.pecasP[i+1,k+1] = node.leaves[j];				
+				this.scene.translate(-i*5,k*5-5,0);
+				this.scene.registerForPick(this.count, this.pecasP[i+1,k+1]);
+				this.pecasP[i+1,k+1].display();				
+				this.scene.popMatrix();
+				}
+			 }
+		  }
+	  } else{		  
+		node.leaves[j].display();
+	  }
 			
 
 		

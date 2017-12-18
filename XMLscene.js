@@ -9,10 +9,15 @@ function XMLscene(interface) {
     CGFscene.call(this);
 
     this.interface = interface;
+	this.count = 0;
 	this.initTime=0;
     this.lightValues = {};
 	this.objectValues = {};
 	this.selectedExampleShader = 0;
+	this.board = new BoardLogic();
+	this.temp=[8][8];
+	this.temp = this.board.getChessBoard();
+	console.log(this.temp[1][1]);
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -63,6 +68,7 @@ XMLscene.prototype.init = function(application) {
 	// texture will have to be bound to unit 1 later, when using the shader, with "this.texture2.bind(1);"
 	this.testShaders[4].setUniformsValues({uSampler2: 1});
 	this.testShaders[5].setUniformsValues({uSampler2: 1});
+	this.setPickEnabled(true);
 }
 
 XMLscene.prototype.updateScaleFactor=function(v)
@@ -145,7 +151,8 @@ XMLscene.prototype.onGraphLoaded = function()
  */
 XMLscene.prototype.display = function() {
     // ---- BEGIN Background, camera and axis setup
-    
+    this.logPicking();
+	this.clearPickRegistration();
     // Clear image and depth buffer everytime we update the scene
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
@@ -209,4 +216,33 @@ XMLscene.prototype.update = function(currTime){
 			this.graph.nodes[node].counter(currTime-this.initTime);
 	}
 	this.initTime=currTime;
+}
+
+XMLscene.prototype.logPicking = function ()
+{
+	if (this.pickMode == false) {
+		if (this.pickResults != null && this.pickResults.length > 0) {
+			for (var i=0; i< this.pickResults.length; i++) {
+				var obj = this.pickResults[i][0];
+				if (obj)
+				{
+					var customId = this.pickResults[i][1];	
+					var logicId = this.translateToLogic(customId);
+					console.log("Picked object: " + obj + ", with pick id " + customId);
+				}
+			}
+			this.pickResults.splice(0,this.pickResults.length);
+		}		
+	}
+}
+XMLscene.prototype.translateToLogic = function (ID)
+{
+	//tabuleiro
+	if(ID <=64){
+		return ID -1;
+	}
+	//pecas
+	if(ID <=128){
+		return ID -65;
+	}
 }
