@@ -1649,11 +1649,18 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 				this.count++;
 					if(this.scene.temp[k][i]<="z" && this.scene.temp[k][i]>="a"){
 					this.scene.pushMatrix();
+					if(this.count == this.scene.pickedPiece){
+						this.scene.translate(0,0,2.5);
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+					}
 					this.pecasB[i+1,k+1] = node.leaves[j];				
 					this.scene.translate(-i*5,k*5,0);
 					this.scene.registerForPick(this.count, this.pecasB[i+1,k+1]);
 					this.pecasB[i+1,k+1].display();												
 					this.scene.popMatrix();
+					if(this.count == this.scene.pickedPiece){
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
 				}
 				
 			 }
@@ -1707,11 +1714,18 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 				this.count++;
 				if(this.scene.temp[k][i]<="Z" && this.scene.temp[k][i]>="A"){				
 				this.scene.pushMatrix();
+				if(this.count == this.scene.pickedPiece){
+					this.scene.translate(0,0,2.5);
+					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+				}
 				this.pecasP[i+1,k+1] = node.leaves[j];				
 				this.scene.translate(-i*5,k*5-5,0);
 				this.scene.registerForPick(this.count, this.pecasP[i+1,k+1]);
 				this.pecasP[i+1,k+1].display();				
 				this.scene.popMatrix();
+				if(this.count == this.scene.pickedPiece){
+					this.scene.setActiveShader(this.scene.defaultShader);
+				}
 				}
 			 }
 		  }
@@ -1722,7 +1736,6 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 
 		
     }
-	
    	
 	
 	if(this.check == 0)

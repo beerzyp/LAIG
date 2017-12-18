@@ -43,11 +43,11 @@ XMLscene.prototype.init = function(application) {
 	//shaders
 	this.setUpdatePeriod(2000);
 	this.scaleFactor=50.0; //para modificar consoante o tempo
-	this.factor = 50.0;
+	this.factor = 0;
 	this.count = 0;
 	this.colorScale = 1;
 	this.animations=[];
-	
+	this.pickedPiece = 0;
 	//animations
 	this.period = 0;
 	let initDate= new Date();
@@ -73,10 +73,7 @@ XMLscene.prototype.init = function(application) {
 
 XMLscene.prototype.updateScaleFactor=function(v)
 {
-	this.factor = this.scaleFactor;
-	this.factor = this.factor + Math.cos(this.count)*10;
-	this.count = this.count + Math.PI/20;
-	this.colorScale = Math.cos(this.count) *0.5 +0.5;
+
 	this.testShaders[0].setUniformsValues({normScale: this.factor});
 	this.testShaders[0].setUniformsValues({colorScale: this.colorScale});
 	this.testShaders[2].setUniformsValues({normScale: this.factor});
@@ -226,7 +223,12 @@ XMLscene.prototype.logPicking = function ()
 				var obj = this.pickResults[i][0];
 				if (obj)
 				{
-					var customId = this.pickResults[i][1];	
+					var customId = this.pickResults[i][1];
+					if(this.pickedPiece == customId){
+						this.pickedPiece = 0;
+					}else{
+						this.pickedPiece = customId;
+					}
 					var logicId = this.translateToLogic(customId);
 					console.log("Picked object: " + obj + ", with pick id " + customId);
 				}
