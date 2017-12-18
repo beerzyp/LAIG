@@ -125,7 +125,7 @@
  		<MATERIAL id ="null" />
         <TEXTURE id="quadradoVermelho" />
 	
-        <TRANSLATION x="37.5" y="0.1" z="37.5" />
+        <TRANSLATION x="2.5" y="0.1" z="7.5" />
 		<ROTATION axis="x" angle="-90" />
 		<ROTATION axis="z" angle="-180" />
          <DESCENDANTS>
