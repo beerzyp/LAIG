@@ -6,20 +6,24 @@ class BoardLogic{
 		this.chessBoard = BoardLogic.chessBoard;
         this.castleWhiteLong=true,this.castleWhiteShort=true,this.castleBlackLong=true,this.castleBlackShort=true;
         this.kingPositionC=this.kingPositionL=0;
-        for(var i=0;i<BoardLogic.chessBoard.length;i++){
-            for(var k=0;k<BoardLogic.chessBoard[i].length;k++){
+
+        if(board!=null){
+            this.chessBoard=board;
+        }
+        for(var i=0;i<this.chessBoard.length;i++){
+            for(var k=0;k<this.chessBoard[i].length;k++){
                 
-                if(BoardLogic.chessBoard[i][k]=='A'){
+                if(this.chessBoard[i][k]=='A'){
                     break;
                 }
                 this.kingPositionC++;
             }
         }
 
-         for(var i=0;i<BoardLogic.chessBoard.length;i++){
-            for(var k=0;k<BoardLogic.chessBoard[i].length;k++){
+         for(var i=0;i<this.chessBoard.length;i++){
+            for(var k=0;k<this.chessBoard.length;k++){
                
-                if(BoardLogic.chessBoard[i][k]=='a'){
+                if(this.chessBoard[i][k]=='a'){
                     break;
                 }
                  this.kingPositionL++;
@@ -97,7 +101,11 @@ class BoardLogic{
     }
 
     calculatePos(x,y){
-        temp[8][8];
+        var temp=new Array(8);
+        for (var i = 0; i < temp.length; ++i) {
+            temp[i] = new Array(8);
+          }
+      
 
         if(x == 7 && y == 7)
             temp[x][y] = 0;
@@ -272,15 +280,196 @@ class BoardLogic{
         return null;
     }
 
+
+        /**
+     *
+     * @param pos of Piece on the Board
+     * @return if a king is in pos returns the type King class
+     */
+    findKing(pos){
+        for(var i = 0; i < this.kingPieces.length; i++){
+            if(this.kingPieces[i].getPosOnBoard() == pos)
+                return this.kingPieces[i];
+        }
+
+        return null;
+    }
+
+    /**
+     *
+     * @param pos of Piece on the Board
+     * @return if a queen is in pos returns the type Queen class
+     */
+    findQueen(pos){
+        for(var i = 0; i < this.queenPieces.length; i++){
+            if(this.queenPieces[i].getPosOnBoard() == pos)
+                return this.queenPieces[i];
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     * @param pos of Piece on the Board
+     * @return if a knight is in pos returns the type Knight class
+     */
+    findKnight(pos){
+        for(var i = 0; i < this.knightPieces.length; i++){
+            if(this.knightPieces[i].getPosOnBoard() == pos)
+                return this.knightPieces[i];
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     * @param pos of Piece on the Board
+     * @return if a rook is in pos returns the type Rook class
+     */
+    findRook(pos){
+        for(var i = 0; i < this.rookPieces.length; i++){
+            if(this.rookPieces[i].getPosOnBoard() == pos)
+                return this.rookPieces[i];
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     * @param pos of Piece on the Board
+     * @return if a bishop is in pos returns the type Bishop class
+     */
+    findBishop(pos){
+        for(var i = 0; i < this.bishopPieces.length; i++){
+            if(this.bishopPieces[i].getPosOnBoard() == pos)
+                return this.bishopPieces[i];
+        }
+
+        return null;
+    }
+
+
+    /**
+     *
+     *
+     * @param pos Position of player on Board 0-63, function goes on to find the piece in that pos
+     * @return String with all possible moves of the piece in the form (Line Column PieceToMove Line Column) + 'C' + PieceToTake + 'p'
+     */
+    findJogada(pos){
+        if(this.findKing(pos) != null){
+            return this.findKing(pos).possibleMove(this);
+        }
+       /* else if(findQueen(pos) != null){
+            return this.findQueen(pos).possibleMove(this);
+        }*/
+        if(this.findPawn(pos) != null){
+            return this.findPawn(pos).possibleMove(this);
+        }
+      /*  else if(this.findKnight(pos) != null){
+            return this.findKnight(pos).possibleMove(this);
+        }
+        else if(this.findRook(pos) != null){
+            return this.findRook(pos).possibleMove(this);
+        }
+        else if(this.findBishop(pos) != null){
+            return this.findBishop(pos).possibleMove(this);
+        }*/
+
+        return null;
+    }
+
+    kingSafe() {
+        //bishop/queen
+        var temp=1;
+        for (var i=-1; i<=1; i+=2) {
+            for (var j=-1; j<=1; j+=2) {
+                try {
+                    while(' ' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8+temp*j]) {temp++;}
+                    if ('b' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8+temp*j] ||
+                            'q' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8+temp*j]) {
+                        return false;
+                    }
+                } catch (e) {}
+                temp=1;
+            }
+        }
+        //rook/queen
+        for (var i=-1; i<=1; i+=2) {
+            try {
+                while(' ' == BoardLogic.chessBoard[this.kingPositionC/8][this.kingPositionC%8+temp*i]) {temp++;}
+                if ('r' == BoardLogic.chessBoard[this.kingPositionC/8][this.kingPositionC%8+temp*i] ||
+                        'q' == BoardLogic.chessBoard[this.kingPositionC/8][this.kingPositionC%8+temp*i]) {
+                    return false;
+                }
+            } catch (e) {}
+            temp=1;
+            try {
+                while(' ' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8]) {temp++;}
+                if ('r' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8] ||
+                        'q' == BoardLogic.chessBoard[this.kingPositionC/8+temp*i][this.kingPositionC%8]) {
+                    return false;
+                }
+            } catch (e) {}
+            temp=1;
+        }
+        //knight
+        for (var i=-1; i<=1; i+=2) {
+            for (var j=-1; j<=1; j+=2) {
+                try {
+                    if ('k' == BoardLogic.chessBoard[this.kingPositionC/8+i][this.kingPositionC%8+j*2]) {
+                        return false;
+                    }
+                } catch (e) {}
+                try {
+                    if ('k' == BoardLogic.chessBoard[this.kingPositionC/8+i*2][this.kingPositionC%8+j]) {
+                        return false;
+                    }
+                } catch (e) {}
+            }
+        }
+        //pawn
+        if (this.kingPositionC>=16) {
+            try {
+                if ('p' == BoardLogic.chessBoard[this.kingPositionC/80-1][this.kingPositionC%8-1]) {
+                    return false;
+                }
+            } catch (e) {}
+            try {
+                if ('p' == BoardLogic.chessBoard[this.kingPositionC/80-1][this.kingPositionC%8+1]) {
+                    return false;
+                }
+            } catch (e) {}
+            //king
+            for (var i=-1; i<=1; i++) {
+                for (var j=-1; j<=1; j++) {
+                    if (i!=0 || j!=0) {
+                        try {
+                            if ('a' == BoardLogic.chessBoard[this.kingPositionC/8+i][this.kingPositionC%8+j]) {
+                                return false;
+                            }
+                        } catch (e) {}
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 }
 
 BoardLogic.chessBoard=[
     ['r','k','b','q','a','b','k','r'],
     ['p','p','p','p','p','p','p','p'],
     [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ',' ',' ',' '],
+    [' ','p',' ',' ',' ','p',' ',' '],
+    [' ',' ',' ','Q',' ',' ',' ',' '],
+    [' ',' ',' ',' ','P',' ',' ',' '],
     ['P','P','P','P','P','P','P','P'],
     ['R','K','B','Q','A','B','K','R']
 ];

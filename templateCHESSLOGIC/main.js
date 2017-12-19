@@ -17,28 +17,32 @@ main=function()
 {
 	chessBoard=[
                 [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                [' ', 'p', ' ', ' ', ' ', ' ', ' ', ' '],
+                ['p', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                [' ', 'A', ' ', ' ', ' ', ' ', ' ', ' '],
                 [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
                 [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                [' ', ' ', ' ', ' ', ' ', ' ', ' ', 'p'],
-                [' ', ' ',' ', ' ', ' ', ' ', ' ', 'r']
+                [' ', ' ', ' ', ' ', ' ', ' ', ' ', ''],
+                [' ', ' ',' ', ' ', ' ', ' ', ' ', ' ']
         ];
 
         board=new BoardLogic(chessBoard);
 
        
-        p1 = new Pawn('p', 55, false);
-        p2 = new Pawn('p',54, false);
-        board.printBoardChess();
-		board.addPawnPieces(p1);
-        var i = p1.getPosOnBoard();
-        var k=board.getPawnPieces()[0].getPosOnBoard();
+        p1 = new Pawn('P',16, false);
+   
+        king = new King('a',25,true);
+		
+        board.addPawnPieces(p1);
+        board.addKingPieces(king);
+        //var i = p1.getPosOnBoard();
+        //var k=board.getPawnPieces()[0].getPosOnBoard();
+        var pawn=board.getPawnPieces()[0];
+        var king=board.getKingPieces()[0];	
         //joga
-		if(k==i){
-			board.findPawn(k).setNewMove("67P57",board);
-		}
+		
+		//pawn.setNewMove("00P44",board);
+        var jogadas=board.findJogada(16);
 
 }
 

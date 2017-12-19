@@ -230,7 +230,10 @@ XMLscene.prototype.logPicking = function ()
 						this.pickedPiece = customId;
 					}
 					var logicId = this.translateToLogic(customId);
+					//obj:sym id:posicao
 					console.log("Picked object: " + obj + ", with pick id " + customId);
+					
+					//logic 
 				}
 			}
 			this.pickResults.splice(0,this.pickResults.length);
