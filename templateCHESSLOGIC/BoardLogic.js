@@ -36,11 +36,22 @@ class BoardLogic{
        this.knightPieces=[];
        this.pawnPieces=[];
        this.rookPieces=[];
-        
+        this.generatePieces();
     }
 
     //getters,setters and adds
-
+	generatePieces(){
+		var count = 0;
+		for(var i=0; i<8;i++){
+			for(var j=0; j<8; j++){
+				if(this.chessBoard[i][j] != ' '){
+					var p1 = new Pawn(this.chessBoard[i][j],count, false);
+					count++;
+					this.addPawnPieces(p1);
+				}				
+			}
+		}
+	}
    getKingPieces() {
         return this.kingPieces;
     }
@@ -467,9 +478,9 @@ BoardLogic.chessBoard=[
     ['r','k','b','q','a','b','k','r'],
     ['p','p','p','p','p','p','p','p'],
     [' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ','p',' ',' ',' ','p',' ',' '],
-    [' ',' ',' ','Q',' ',' ',' ',' '],
-    [' ',' ',' ',' ','P',' ',' ',' '],
+    [' ',' ',' ',' ',' ',' ',' ',' '],
+    [' ',' ',' ',' ',' ',' ',' ',' '],
+    [' ',' ',' ',' ',' ',' ',' ',' '],
     ['P','P','P','P','P','P','P','P'],
     ['R','K','B','Q','A','B','K','R']
 ];

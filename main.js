@@ -19,6 +19,7 @@ serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js',
 			 ,'../primitives/MyUnitCubeQuad.js','../primitives/MyTrapezoid.js','../primitives/MyPrism.js'
 			 ,'../animations/Animation.js','../animations/LinearAnimation.js','../animations/CircularAnimation.js'
 			 ,'../animations/BezierAnimation.js','../animations/ComboAnimation.js', '../templateCHESSLOGIC/BoardLogic.js',
+			 '../templateCHESSLOGIC/Pieces.js',
 main=function()
 {
 	// Standard application, scene and interface setup

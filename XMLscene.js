@@ -17,6 +17,7 @@ function XMLscene(interface) {
 	this.board = new BoardLogic();
 	this.temp=[8][8];
 	this.temp = this.board.getChessBoard();
+	this.previousPicked = -1;
 	console.log(this.temp[1][1]);
 }
 
@@ -226,10 +227,25 @@ XMLscene.prototype.logPicking = function ()
 					var customId = this.pickResults[i][1];
 					if(this.pickedPiece == customId){
 						this.pickedPiece = 0;
-					}else{
+					}else{	
 						this.pickedPiece = customId;
 					}
+					//logic Id
 					var logicId = this.translateToLogic(customId);
+					if(customId >64){
+						this.previousPicked = -1;
+					}
+					if(this.previousPicked != -1){
+						var pawn=this.board.getPawnPieces()[logicId];
+						//joga				
+						var move = this.previousPicked + "P" + logicId;
+						console.log(move);
+						pawn.setNewMove(move,this.board);
+					}
+					if(this.previousPicked == -1 && customId > 64){
+						this.previousPicked = logicId;
+					}
+					//var jogadas=this.board.findJogada(16);					
 					//obj:sym id:posicao
 					console.log("Picked object: " + obj + ", with pick id " + customId);
 					
