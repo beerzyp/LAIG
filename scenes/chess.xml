@@ -100,11 +100,9 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-            <NODEREF id="tabuleiro" />
-			<NODEREF id="quadradoB" />
-			<NODEREF id="quadradoP" />
-			<NODEREF id="pecaB" />
-			<NODEREF id="pecaP" />
+          
+            <NODEREF id="king" /> 
+
         </DESCENDANTS>
 
     </NODE>
@@ -165,7 +163,329 @@
             <LEAF  type="rectangle" args="0 5 5 0" />
         </DESCENDANTS>
     </NODE>
+
+
+    <NODE id ="pawn">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="4 1 0.00001 20 20" /> 
+            <NODEREF id="pawnTop" />
+            
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id ="pawnTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="4" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+            <LEAF id="sphere1" type="sphere" args="0.8 40 20" />
+            <NODEREF id="pawnBottom" />
+        </DESCENDANTS>
+    </NODE>
 	
+
+    <NODE id ="pawnBottom">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="-4" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="0.3 1 1 20 20" />  
+            <NODEREF id="pawnNewTopPart"/>
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id ="pawnNewTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+		<ROTATION axis="x" angle="90" />
+         <SCALE sx="2" sy="2" sz="2" />
+         <TRANSLATION x="0" y="-1.8" z="0" />
+         <DESCENDANTS>
+             <NODEREF id="pawnNewTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+      <NODE id ="pawnNewTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="3" z="0" />
+		<ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="0.5" />
+         <DESCENDANTS>
+             <LEAF id="sphere1" type="sphere" args="0.4 8 2" /> 
+        </DESCENDANTS>
+    </NODE>
+
+    
+    <NODE id ="bishop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+            <NODEREF id="pawn" />
+            <NODEREF id="bishopTop" />
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id ="bishopTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="5" z="0" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+             <LEAF id="sphere1" type="sphere" args="0.4 40 20" /> 
+             <NODEREF id="bishopNewTopPart" />
+        </DESCENDANTS>
+    </NODE>
+
+
+
+
+    
+    <NODE id ="bishopNewTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="-8" z="0" />
+		<ROTATION axis="x" angle="0" />
+         <SCALE sx="2" sy="2" sz="2" />
+         <DESCENDANTS>
+             <NODEREF id="bishopNewTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+     <NODE id ="bishopNewTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="3" z="0" />
+		<ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="0.5" />
+         <DESCENDANTS>
+             <LEAF id="sphere1" type="sphere" args="0.4 8 2" /> 
+        </DESCENDANTS>
+    </NODE>
+
+
+
+    <NODE id ="queen">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+             <LEAF id="cylindertop1" type="cylinder" args="4 1 0.00001 20 20" /> 
+             <NODEREF id="queenTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+
+      <NODE id ="queenTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="3.5" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+             <LEAF id="cylindertop2" type="cylinder" args="1.5 0.00001 1 20 20" /> 
+              <NODEREF id="queenTopPart" />
+        </DESCENDANTS>
+    </NODE>
+
+    
+    <NODE id ="queenTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="1.43" />
+		<ROTATION axis="x" angle="0" />
+        <TRANSLATION x="0" y="0" z="0" />
+        
+         <DESCENDANTS>
+             <LEAF id="sphere2" type="sphere" args="0.95 8 2" />
+              <NODEREF id="queenTopPart2" />
+
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id ="queenTopPart2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="1.3" />
+		<ROTATION axis="z" angle="90" />
+        <TRANSLATION x="0" y="0" z="0" />
+        
+         <DESCENDANTS>
+            <LEAF id="sphere3" type="sphere" args="0.4 20 20" /> 
+        </DESCENDANTS>
+    </NODE>
+
+
+
+
+    <NODE id ="king">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+             <LEAF id="cylindertop4" type="cylinder" args="4 1 0.00001 20 20" /> 
+             <NODEREF id="kingTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+
+      <NODE id ="kingTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="3.5" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+             <LEAF id="cylindertop4" type="cylinder" args="1.5 0.00001 1 20 20" /> 
+              <NODEREF id="kingTopPart" />
+              <NODEREF id="kingCrossesPart2" />
+        </DESCENDANTS>
+    </NODE>
+
+    
+    <NODE id ="kingTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="1.43" />
+		<ROTATION axis="x" angle="0" />
+        <TRANSLATION x="0" y="0" z="0" />
+        
+         <DESCENDANTS>
+             <LEAF id="sphere4" type="sphere" args="0.95 8 2" />
+             <NODEREF id="kingCrosses" />
+             
+        </DESCENDANTS>
+    </NODE>
+        
+    <NODE id ="kingCrosses">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+            <ROTATION axis="x" angle="90" />
+            <SCALE sx="0.3" sy="0.2" sz="0.3" />
+             <TRANSLATION x="-1" y="2.5" z="0" />
+        
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 10 2 0" />   
+            <NODEREF id="kingCrosses2" />
+        </DESCENDANTS>
+    </NODE>
+
+      <NODE id ="kingCrosses2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="180" />
+        <TRANSLATION x="0" y="-10" z="0" />
+        
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 10 2 0" />  
+        </DESCENDANTS>
+    </NODE>
+
+
+      <NODE id ="kingCrossesPart2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+         <ROTATION axis="x" angle="0" />
+          <ROTATION axis="y" angle="90" />
+        <TRANSLATION x="-3" y="0" z="-1.5" />
+        <DESCENDANTS>
+             <NODEREF id="kingCrosses" />
+        </DESCENDANTS>
+    </NODE>
+
+
+
+     <NODE id ="rook">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="0" />
+		<ROTATION axis="x" angle="-90" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="4 1 0.00001 20 20" /> 
+            <NODEREF id="rookTop" />
+            
+        </DESCENDANTS>
+    </NODE>
+
+    <NODE id ="rookTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="4" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+            <LEAF id="sphere1" type="sphere" args="0.8 40 20" />
+            <NODEREF id="rookBottom" />
+        </DESCENDANTS>
+    </NODE>
+	
+
+    <NODE id ="rookBottom">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="0" z="-4" />
+		<ROTATION axis="x" angle="0" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="0.3 1 1 20 20" />  
+            <NODEREF id="rookNewTopPart"/>
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id ="rookNewTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+		<ROTATION axis="x" angle="90" />
+         <SCALE sx="2" sy="2" sz="2" />
+         <TRANSLATION x="0" y="-1.8" z="0" />
+         <DESCENDANTS>
+             <NODEREF id="rookNewTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+      <NODE id ="rookNewTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+
+        <TRANSLATION x="0" y="3" z="0" />
+		<ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="0.5" />
+         <DESCENDANTS>
+             <LEAF id="sphere1" type="sphere" args="0.4 8 2" /> 
+        </DESCENDANTS>
+    </NODE>
+
+	
+
 	
 </NODES>
 
