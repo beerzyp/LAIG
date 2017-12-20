@@ -45,7 +45,12 @@ class BoardLogic{
 		for(var i=0; i<8;i++){
 			for(var j=0; j<8; j++){
 				if(this.chessBoard[i][j] != ' '){
-					var p1 = new Pawn(this.chessBoard[i][j],count, false);
+					if(this.chessBoard[i][j] == 'p')
+						var p1 = new Pawn(this.chessBoard[i][j],count, false);
+					if(this.chessBoard[i][j] == 'P')
+						var p1 = new Pawn(this.chessBoard[i][j],count, true);
+					else
+						var p1 = new Pawn(this.chessBoard[i][j],count, false);
 					count++;
 					this.addPawnPieces(p1);
 				}				

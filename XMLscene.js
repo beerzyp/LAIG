@@ -18,7 +18,9 @@ function XMLscene(interface) {
 	this.temp=[8][8];
 	this.temp = this.board.getChessBoard();
 	this.previousPicked = -1;
-	console.log(this.temp[1][1]);
+	//withNewLogic
+	this.chess = new Chess();
+	this.tabuleiro = this.chess.ascii();
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -218,6 +220,7 @@ XMLscene.prototype.update = function(currTime){
 
 XMLscene.prototype.logPicking = function ()
 {
+	this.temp = this.board.getChessBoard();
 	if (this.pickMode == false) {
 		if (this.pickResults != null && this.pickResults.length > 0) {
 			for (var i=0; i< this.pickResults.length; i++) {
@@ -232,20 +235,24 @@ XMLscene.prototype.logPicking = function ()
 					}
 					//logic Id
 					var logicId = this.translateToLogic(customId);
-					if(customId >64){
-						this.previousPicked = -1;
-					}
 					if(this.previousPicked != -1){
-						var pawn=this.board.getPawnPieces()[logicId];
-						//joga				
-						var move = this.previousPicked + "P" + logicId;
+						var row = (logicId % 8);
+						var newrow = this.translateToLetter(row);
+						var collum = 8-(Math.floor((logicId )/ 8));
+						
+						var prow = (this.previousPicked % 8);
+						var pnewrow = this.translateToLetter(prow);
+						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
+						
+						var move = pnewrow + pcollum + '-' + newrow + collum;
+						this.chess.move(move, {sloppy: true});
+						
+						this.tabuleiro = this.chess.ascii();
 						console.log(move);
-						pawn.setNewMove(move,this.board);
 					}
-					if(this.previousPicked == -1 && customId > 64){
-						this.previousPicked = logicId;
-					}
-					//var jogadas=this.board.findJogada(16);					
+					
+					this.previousPicked = logicId;
+										
 					//obj:sym id:posicao
 					console.log("Picked object: " + obj + ", with pick id " + customId);
 					
@@ -266,4 +273,31 @@ XMLscene.prototype.translateToLogic = function (ID)
 	if(ID <=128){
 		return ID -65;
 	}
+}
+
+XMLscene.prototype.translateToLetter = function (ID){
+	if(ID==0){
+		return "a";
+	}
+	if(ID==1){
+		return "b";
+	}
+	if(ID==2){
+		return "c";
+	}
+	if(ID==3){
+		return "d";
+	}
+	if(ID==4){
+		return "e";
+	}
+	if(ID==5){
+		return "f";
+	}
+	if(ID==6){
+		return "g";
+	}
+	if(ID==7){
+		return "h";
+	}					
 }

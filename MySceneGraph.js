@@ -1644,30 +1644,27 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		
 		this.impar = 0;
        if(node.nodeID == "pecaB"){
-		  for(var k=0; k < 8; k++){
-			 for( var i=0; i<8;i++){
-				this.count++;
-					if(this.scene.temp[k][i]<="z" && this.scene.temp[k][i]>="a"){
-					
-					this.scene.pushMatrix();
-					if(this.scene.pickedPiece == this.count)
-					{
-						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-						this.scene.translate(0,0,2.5);
-					}
-					this.pecasB[i+1,k+1] = node.leaves[j];				
-					this.scene.translate(-i*5,k*5,0);
-					this.scene.registerForPick(this.count, this.pecasB[i+1,k+1]);
-					this.pecasB[i+1,k+1].display();												
-					this.scene.popMatrix();
-					if(this.scene.pickedPiece == this.count)
-					{
-						this.scene.setActiveShader(this.scene.defaultShader);
-					}
+		  for(var m=0; m<64;m++){
+			if(this.scene.tabuleiro[m]<="Z" && this.scene.tabuleiro[m]>="A"){
+				this.scene.pushMatrix();
+				if(this.scene.pickedPiece == (m+65))
+				{
+					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+					this.scene.translate(0,0,2.5);
 				}
-				
-			 }
-		  } 
+				var i = (m % 8);				
+				var k = (Math.floor(m / 8));
+				this.pecasP[i+1,k+1] = node.leaves[j];				
+				this.scene.translate(-i*5,k*5,0);
+				this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+				this.pecasP[i+1,k+1].display();						
+				this.scene.popMatrix();
+				if(this.scene.pickedPiece == (m+65))
+				{
+					this.scene.setActiveShader(this.scene.defaultShader);
+				}
+			}
+		}
 	  } else if (node.nodeID == "quadradoB"){
 			for(var k=0; k < 8; k++){				
 				for( var i=0; i<8;i++){
@@ -1710,31 +1707,29 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 			 }		
 			this.impar++;
 		  }
-	  } else if (node.nodeID == "pecaP"){
-		  this.count = 64;
-		for(var k=0; k <8; k++){
-			 for( var i=0; i<8;i++){
-				this.count++;
-				if(this.scene.temp[k][i]<="Z" && this.scene.temp[k][i]>="A"){				
+	  } else if (node.nodeID == "pecaP"){		 
+		for(var m=0; m<64;m++){
+			if(this.scene.tabuleiro[m]<="z" && this.scene.tabuleiro[m]>="a"){
 				this.scene.pushMatrix();
-				if(this.scene.pickedPiece == this.count)
+				if(this.scene.pickedPiece == (m+65))
 				{
 					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
 					this.scene.translate(0,0,2.5);
 				}
+				var i = (m % 8);				
+				var k = (Math.floor(m / 8));
 				this.pecasP[i+1,k+1] = node.leaves[j];				
 				this.scene.translate(-i*5,k*5-5,0);
-				this.scene.registerForPick(this.count, this.pecasP[i+1,k+1]);
-				this.pecasP[i+1,k+1].display();				
+				this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+				this.pecasP[i+1,k+1].display();						
 				this.scene.popMatrix();
-				if(this.scene.pickedPiece == this.count)
+				if(this.scene.pickedPiece == (m+65))
 				{
 					this.scene.setActiveShader(this.scene.defaultShader);
 				}
-				}
-			 }
-		  }
-	  } else{		  
+			}
+		}
+	  } else{	  
 		node.leaves[j].display();
 	  }
 			

@@ -138,7 +138,7 @@
         <TEXTURE id="board" />
 
         <TRANSLATION x="-1.85" y="-0.1" z="42" />
-		<ROTATION axis="x" angle="-90" />		
+		<ROTATION axis="x" angle="-90" />
          <DESCENDANTS>
             <LEAF  type="rectangle" args="0 44 43.4 0" />
         </DESCENDANTS>
