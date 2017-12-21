@@ -19,6 +19,7 @@ function MySceneGraph(filename, scene) {
     
     // Establish bidirectional references between scene and graph.
     this.scene = scene;
+	this.color = 0;
     scene.graph = this;
 	this.pecasB = new Array(8, 8);
 	this.pecasP = new Array(8, 8);
@@ -1618,7 +1619,8 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	
 		//console.log(node.nodeID);
 		//console.log(node.children.length);
-		
+		if(node.nodeID == "pecaB"){this.color = 0};
+		if(node.nodeID == "pecaP"){this.color = 1};
        this.displayNode(this.nodes[node.children[j]],tex,mat);
 	   this.check--;
 
@@ -1638,24 +1640,31 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
             node.leaves[j].scaleTexCoords(this.scene.currentTexture[1], this.scene.currentTexture[2]);
             tex.bind();
 		}				
-		//this.scene.translate(50,0,0);
 		this.scene.temp = this.scene.board.getChessBoard();
-		//console.log(this.temp[1][1]);
 		
 		this.impar = 0;
-       if(node.nodeID == "pecaB"){
+       if ((node.nodeID == "pawnNewTop" || node.nodeID == "pawnBottom" || node.nodeID == "pawnTop" || 
+					node.nodeID == "pawn" || node.nodeID == "pawnPiece" || node.nodeID == "pawnNewTopPart") && this.color == 0){
 		  for(var m=0; m<64;m++){
-			if(this.scene.tabuleiro[m]<="Z" && this.scene.tabuleiro[m]>="A"){
+			if(this.scene.tabuleiro[m] == 'P'){
 				this.scene.pushMatrix();
 				if(this.scene.pickedPiece == (m+65))
 				{
 					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-					this.scene.translate(0,0,2.5);
+					if(node.nodeID == "pawnNewTopPart" || node.nodeID == "pawnNewTop"){
+						this.scene.translate(0,0,-2.5);
+					} else{
+						this.scene.translate(0,0,2.5);
+					}
 				}
 				var i = (m % 8);				
 				var k = (Math.floor(m / 8));
 				this.pecasP[i+1,k+1] = node.leaves[j];				
-				this.scene.translate(-i*5,k*5,0);
+				if(node.nodeID == "pawnNewTopPart" || node.nodeID == "pawnNewTop"){
+					this.scene.translate((-i*5)/2,-(k*5)/2,0);
+				} else{
+					this.scene.translate(-i*5,k*5,0);
+				}
 				this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 				this.pecasP[i+1,k+1].display();						
 				this.scene.popMatrix();
@@ -1707,19 +1716,28 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 			 }		
 			this.impar++;
 		  }
-	  } else if (node.nodeID == "pecaP"){		 
+	  } else if ((node.nodeID == "pawnNewTop" || node.nodeID == "pawnBottom" || node.nodeID == "pawnTop" || 
+					node.nodeID == "pawn" || node.nodeID == "pawnPiece" || node.nodeID == "pawnNewTopPart") && this.color == 1){		 
 		for(var m=0; m<64;m++){
-			if(this.scene.tabuleiro[m]<="z" && this.scene.tabuleiro[m]>="a"){
+			if(this.scene.tabuleiro[m]=="p"){
 				this.scene.pushMatrix();
 				if(this.scene.pickedPiece == (m+65))
 				{
 					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-					this.scene.translate(0,0,2.5);
+					if(node.nodeID == "pawnNewTopPart" || node.nodeID == "pawnNewTop"){
+						this.scene.translate(0,0,-2.5);
+					} else{
+						this.scene.translate(0,0,2.5);
+					}
 				}
 				var i = (m % 8);				
 				var k = (Math.floor(m / 8));
 				this.pecasP[i+1,k+1] = node.leaves[j];				
-				this.scene.translate(-i*5,k*5-5,0);
+				if(node.nodeID == "pawnNewTopPart" || node.nodeID == "pawnNewTop"){
+					this.scene.translate((-i*5)/2,-(k*5-5)/2,0);
+				} else{
+					this.scene.translate(-i*5,k*5-5,0);
+				}
 				this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 				this.pecasP[i+1,k+1].display();						
 				this.scene.popMatrix();
@@ -1729,8 +1747,142 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 				}
 			}
 		}
+	  } else if ((node.nodeID == "bishopPiece" || node.nodeID == "bishop" || node.nodeID == "bishopTop" || 
+					node.nodeID == "bishopNewTopPart" || node.nodeID == "bishopNewTop" || node.nodeID == "BishopNewTop" || node.nodeID == "BishopBottom" 
+					|| node.nodeID == "BishopTop" || node.nodeID == "Bishop" || node.nodeID == "BishopNewTopPart") && this.color == 1){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="b"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "BishopNewTopPart" || node.nodeID == "BishopNewTop"){
+							this.scene.translate(0,0,-2.5);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					if(node.nodeID == "BishopNewTop" || node.nodeID == "BishopNewTopPart"){
+						this.scene.translate((-i*5)/2,-(k*5-5)/2,0);
+					} else if(node.nodeID == "bishopNewTopPart" || node.nodeID == "bishopNewTop"){
+						this.scene.translate((-i*5)/2,(k*5-5)/2,0);
+					} else{
+						this.scene.translate(-i*5,k*5-5,0);
+					}
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+		} else if ((node.nodeID == "bishopPiece" || node.nodeID == "bishop" || node.nodeID == "bishopTop" || 
+					node.nodeID == "bishopNewTopPart" || node.nodeID == "bishopNewTop" || node.nodeID == "BishopNewTop" || node.nodeID == "BishopBottom" 
+					|| node.nodeID == "BishopTop" || node.nodeID == "Bishop" || node.nodeID == "BishopNewTopPart") && this.color == 0){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="B"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "BishopNewTopPart" || node.nodeID == "BishopNewTop"){
+							this.scene.translate(0,0,-2.5);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					if( node.nodeID == "BishopNewTop" || node.nodeID == "BishopNewTopPart"){
+						this.scene.translate((-i*5)/2,-(k*5)/2,0);
+					} else if(node.nodeID == "bishopNewTopPart" || node.nodeID == "bishopNewTop"){
+						this.scene.translate((-i*5)/2,(k*5)/2,0);
+					} else{
+						this.scene.translate(-i*5,k*5,0);
+					}
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+		} else if ((node.nodeID == "rookPiece" || node.nodeID == "rook" || node.nodeID == "rookTop" || 
+					node.nodeID == "rookBottom") && this.color == 1){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="r"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "rookBottom" || node.nodeID == "rookTop"){
+							this.scene.translate(0,2.5,0);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID == "rookBottom" || node.nodeID == "rookTop"){
+						this.scene.translate((-i*5),0,-(k*5-5));
+					} else{
+						this.scene.translate(-i*5,k*5-5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  } else if ((node.nodeID == "rookPiece" || node.nodeID == "rook" || node.nodeID == "rookTop" || 
+					node.nodeID == "rookBottom") && this.color == 0){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="R"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "rookBottom" || node.nodeID == "rookTop"){
+							this.scene.translate(0,2.5,0);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID == "rookBottom" || node.nodeID == "rookTop"){
+						this.scene.translate((-i*5),0,-(k*5));
+					} else{
+						this.scene.translate(-i*5,k*5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
 	  } else{	  
-		node.leaves[j].display();
+		//node.leaves[j].display();
 	  }
 			
 

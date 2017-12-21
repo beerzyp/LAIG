@@ -110,26 +110,24 @@
             <NODEREF id="quadradoP" />
             <NODEREF id="pecaB" />		
             <NODEREF id="pecaP" />
-			<NODEREF id="queenPiece" />
-            <NODEREF id="bishopPiece" />
-            <NODEREF id="knightPiece" />
-            <NODEREF id="rookPiece" />		
-            <NODEREF id="kingPiece" />
-			 <NODEREF id="pawnPiece" />
-
         </DESCENDANTS>
 
     </NODE>
 	
 	<NODE id ="pecaB">
  		<MATERIAL id ="null" />
-        <TEXTURE id="sub" />
+        <TEXTURE id="quadradoBranco" />
 
         <TRANSLATION x="2.5" y="0.1" z="2.5" />
 		<ROTATION axis="x" angle="-90" />
 		<ROTATION axis="z" angle="-180" />
          <DESCENDANTS>
-            <LEAF  type="cylinder" args="2 2.5 0 20 50 1 1" />
+			<NODEREF id="queenPiece" />
+			<NODEREF id="bishopPiece" />
+			<NODEREF id="knightPiece" />
+			<NODEREF id="rookPiece" />		
+			<NODEREF id="kingPiece" />
+			<NODEREF id="pawnPiece" />
         </DESCENDANTS>
     </NODE>
 	
@@ -141,7 +139,12 @@
 		<ROTATION axis="x" angle="-90" />
 		<ROTATION axis="z" angle="-180" />
          <DESCENDANTS>
-            <LEAF  type="cylinder" args="2 2.5 0 20 50 1 1" />
+			<NODEREF id="queenPiece" />
+			<NODEREF id="bishopPiece" />
+			<NODEREF id="knightPiece" />
+			<NODEREF id="rookPiece" />		
+			<NODEREF id="kingPiece" />
+			<NODEREF id="pawnPiece" />	
         </DESCENDANTS>
     </NODE>
 	
@@ -183,34 +186,24 @@
      <NODE id ="pawnPiece">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
-        <TRANSLATION x="0" y="0" z="15" />
-	
          <DESCENDANTS> 
-            <NODEREF id="pawn" />
-            
+            <NODEREF id="pawn" />            
         </DESCENDANTS>
     </NODE>
 
     <NODE id ="pawn">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
-        <TRANSLATION x="0" y="0" z="0" />
-		<ROTATION axis="x" angle="-90" />
          <DESCENDANTS>
             <LEAF id="cylindertop1" type="cylinder" args="4 1 0.00001 20 20" /> 
-            <NODEREF id="pawnTop" />
-            
+            <NODEREF id="pawnTop" />            
         </DESCENDANTS>
     </NODE>
 
     <NODE id ="pawnTop">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
         <TRANSLATION x="0" y="0" z="4" />
-		<ROTATION axis="x" angle="0" />
          <DESCENDANTS>
             <LEAF id="sphere1" type="sphere" args="0.8 40 20" />
             <NODEREF id="pawnBottom" />
@@ -221,9 +214,7 @@
     <NODE id ="pawnBottom">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
         <TRANSLATION x="0" y="0" z="-4" />
-		<ROTATION axis="x" angle="0" />
          <DESCENDANTS>
             <LEAF id="cylindertop1" type="cylinder" args="0.3 1 1 20 20" />  
             <NODEREF id="pawnNewTopPart"/>
@@ -233,7 +224,6 @@
      <NODE id ="pawnNewTopPart">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
 		<ROTATION axis="x" angle="90" />
          <SCALE sx="2" sy="2" sz="2" />
          <TRANSLATION x="0" y="-1.8" z="0" />
@@ -246,7 +236,6 @@
       <NODE id ="pawnNewTop">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
         <TRANSLATION x="0" y="3" z="0" />
 		<ROTATION axis="x" angle="90" />
         <SCALE sx="1" sy="1" sz="0.5" />
@@ -260,9 +249,6 @@
     <NODE id ="bishopPiece">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
-        <TRANSLATION x="0" y="0" z="8" />
-		<ROTATION axis="x" angle="0" />
          <DESCENDANTS>
             <NODEREF id="bishop" />
         </DESCENDANTS>
@@ -271,37 +257,81 @@
     <NODE id ="bishop">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
-        <TRANSLATION x="0" y="0" z="0" />
-		<ROTATION axis="x" angle="0" />
          <DESCENDANTS>
-            <NODEREF id="pawn" />
+            <NODEREF id="Bishop" />
             <NODEREF id="bishopTop" />
         </DESCENDANTS>
     </NODE>
+	
+	<NODE id ="Bishop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="4 1 0.00001 20 20" /> 
+            <NODEREF id="BishopTop" />            
+        </DESCENDANTS>
+    </NODE>
 
+    <NODE id ="BishopTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="4" />
+         <DESCENDANTS>
+            <LEAF id="sphere1" type="sphere" args="0.8 40 20" />
+            <NODEREF id="BishopBottom" />
+        </DESCENDANTS>
+    </NODE>
+	
+
+    <NODE id ="BishopBottom">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="0" z="-4" />
+         <DESCENDANTS>
+            <LEAF id="cylindertop1" type="cylinder" args="0.3 1 1 20 20" />  
+            <NODEREF id="BishopNewTopPart"/>
+        </DESCENDANTS>
+    </NODE>
+
+     <NODE id ="BishopNewTopPart">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+		<ROTATION axis="x" angle="90" />
+         <SCALE sx="2" sy="2" sz="2" />
+         <TRANSLATION x="0" y="-1.8" z="0" />
+         <DESCENDANTS>
+             <NODEREF id="BishopNewTop" />
+        </DESCENDANTS>
+    </NODE>
+
+
+      <NODE id ="BishopNewTop">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="null" />
+        <TRANSLATION x="0" y="3" z="0" />
+		<ROTATION axis="x" angle="90" />
+        <SCALE sx="1" sy="1" sz="0.5" />
+         <DESCENDANTS>
+             <LEAF id="sphere1" type="sphere" args="0.4 8 2" /> 
+        </DESCENDANTS>
+    </NODE>
+	
     <NODE id ="bishopTop">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="0" y="5" z="0" />
-		<ROTATION axis="x" angle="0" />
+        <TRANSLATION x="0" y="0" z="5" />
          <DESCENDANTS>
              <LEAF id="sphere1" type="sphere" args="0.4 40 20" /> 
              <NODEREF id="bishopNewTopPart" />
         </DESCENDANTS>
     </NODE>
-
-
-
-
     
     <NODE id ="bishopNewTopPart">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="0" y="-8" z="0" />
-		<ROTATION axis="x" angle="0" />
+        <TRANSLATION x="0" y="-16" z="-2" />
          <SCALE sx="2" sy="2" sz="2" />
          <DESCENDANTS>
              <NODEREF id="bishopNewTop" />
@@ -313,8 +343,7 @@
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
 
-        <TRANSLATION x="0" y="3" z="0" />
-		<ROTATION axis="x" angle="90" />
+        <TRANSLATION x="0" y="8" z="0" />
         <SCALE sx="1" sy="1" sz="0.5" />
          <DESCENDANTS>
              <LEAF id="sphere1" type="sphere" args="0.4 8 2" /> 
@@ -486,9 +515,8 @@
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
 
-		<ROTATION axis="x" angle="0" />
-        <SCALE sx="1" sy="1.6" sz="1" />
-        <TRANSLATION x="0" y="0" z="11" />
+        <SCALE sx="1" sy="1" sz="1.6" />
+       
          <DESCENDANTS>
              <NODEREF id="rook" />
         </DESCENDANTS>
@@ -498,9 +526,6 @@
      <NODE id ="rook">
  		<MATERIAL id ="null" />
         <TEXTURE id="null" />
-
-		<ROTATION axis="x" angle="-90" />
-        <TRANSLATION x="0" y="0" z="0" />
          <DESCENDANTS>
             <LEAF id="cylindertop1" type="cylinder" args="3.2 1 1 20 20" /> 
             <NODEREF id="rookTop" />
@@ -510,10 +535,8 @@
 
     <NODE id ="rookTop">
  		<MATERIAL id ="null" />
-        <TEXTURE id="null" />
-
-      
-        <ROTATION axis="x" angle="90" />
+        <TEXTURE id="null" />  
+		<ROTATION axis="x" angle="90" />		
         <TRANSLATION x="0" y="0" z="0" />
          <DESCENDANTS>
             <LEAF id="sphere1" type="sphere" args="1.3 2 30" />      
@@ -523,9 +546,7 @@
 
     <NODE id ="rookBottom">
  		<MATERIAL id ="null" />
-        <TEXTURE id="null" />
-
-        
+        <TEXTURE id="null" />        
 		<ROTATION axis="x" angle="90" />
         <SCALE sx="1" sy="1" sz="1" />
         <TRANSLATION x="0" y="2.7" z="0" />
