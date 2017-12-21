@@ -105,12 +105,18 @@
         <TEXTURE id="null" />
 
         <DESCENDANTS>
-            <NODEREF id="queenPiece" />
+            <NODEREF id="tabuleiro" />
+            <NODEREF id="quadradoB" />
+            <NODEREF id="quadradoP" />
+            <NODEREF id="pecaB" />		
+            <NODEREF id="pecaP" />
+			<NODEREF id="queenPiece" />
             <NODEREF id="bishopPiece" />
             <NODEREF id="knightPiece" />
             <NODEREF id="rookPiece" />		
             <NODEREF id="kingPiece" />
 			 <NODEREF id="pawnPiece" />
+
         </DESCENDANTS>
 
     </NODE>
