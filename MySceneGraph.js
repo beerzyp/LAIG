@@ -1881,8 +1881,232 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 					}
 				}
 			}
-	  } else{	  
-		//node.leaves[j].display();
+	  } else if ((node.nodeID == "knightPiece" || node.nodeID == "knight" || node.nodeID == "knightTop" || 
+					node.nodeID == "knightBottom") && this.color == 1){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="n"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "knightBottom"){
+							this.scene.translate(0,0,5);
+						} else if(node.nodeID == "knightTop"){
+							this.scene.translate(0,0,5);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID == "knightBottom"){
+						this.scene.translate(-(i*5*2/1.5),(k*5-5)/1.5,0);
+					} else if(node.nodeID == "knightTop"){
+						this.scene.translate(-(i*5*2/1.5),(k*5-5)/1.5,0);
+					} else{
+						this.scene.translate(-i*5*2,k*5-5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  }else if ((node.nodeID == "knightPiece" || node.nodeID == "knight" || node.nodeID == "knightTop" || 
+					node.nodeID == "knightBottom") && this.color == 0){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="N"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID == "knightBottom"){
+							this.scene.translate(0,0,5);
+						} else if(node.nodeID == "knightTop"){
+							this.scene.translate(0,0,5);
+						} else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID == "knightBottom"){
+						this.scene.translate(-(i*5*2/1.5),(k*5)/1.5,0);
+					} else if(node.nodeID == "knightTop"){
+						this.scene.translate(-(i*5*2/1.5),(k*5)/1.5,0);
+					} else{
+						this.scene.translate(-i*5*2,k*5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  } else if ((node.nodeID == "kingPiece" || node.nodeID == "king" || node.nodeID == "kingTop" || node.nodeID =='kingCrosses5' || 
+					node.nodeID == "kingTopPart" || node.nodeID =='kingCrosses' || node.nodeID =='kingCrosses2' || node.nodeID =='kingCrosses4'|| node.nodeID =='kingCrosses3') 
+					&& this.color == 1){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="k"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID =='kingCrosses2' ||  node.nodeID =='kingCrosses3' ){
+							this.scene.translate(0,2.5,0);
+						} else if(node.nodeID =='kingCrosses4'){
+							this.scene.translate(2.5,0,0);
+						} else if(node.nodeID == 'kingCrosses5'){
+							this.scene.translate(-2.5,0,0);
+						}else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID =='kingCrosses2'){
+						this.scene.translate(-i*5,0,-(k*5-5));
+					} else if(node.nodeID =='kingCrosses3'){
+						this.scene.translate(i*5,0,(k*5-5));
+						
+					} 
+					else if(node.nodeID =='kingCrosses4'){
+						this.scene.translate(0,i*5,-(k*5-5));
+					} 
+					else if(node.nodeID =='kingCrosses5'){
+						this.scene.translate(0,i*5,(k*5-5));
+					}else{
+						this.scene.translate(-i*5,k*5-5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  } else if ((node.nodeID == "kingPiece" || node.nodeID == "king" || node.nodeID == "kingTop" || node.nodeID =='kingCrosses5' || 
+					node.nodeID == "kingTopPart" || node.nodeID =='kingCrosses' || node.nodeID =='kingCrosses2' || node.nodeID =='kingCrosses4'|| node.nodeID =='kingCrosses3') 
+					&& this.color == 0){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="K"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						if(node.nodeID =='kingCrosses2' ||  node.nodeID =='kingCrosses3' ){
+							this.scene.translate(0,2.5,0);
+						} else if(node.nodeID =='kingCrosses4'){
+							this.scene.translate(2.5,0,0);
+						} else if(node.nodeID == 'kingCrosses5'){
+							this.scene.translate(-2.5,0,0);
+						}else{
+							this.scene.translate(0,0,2.5);
+						}
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					if(node.nodeID =='kingCrosses2'){
+						this.scene.translate(-i*5,0,-(k*5));
+					} else if(node.nodeID =='kingCrosses3'){
+						this.scene.translate(i*5,0,(k*5));
+						
+					} 
+					else if(node.nodeID =='kingCrosses4'){
+						this.scene.translate(0,i*5,-(k*5));
+					} 
+					else if(node.nodeID =='kingCrosses5'){
+						this.scene.translate(0,i*5,(k*5));
+					}else{
+						this.scene.translate(-i*5,k*5,0);
+					}
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  }  else if ((node.nodeID == "queen" || node.nodeID == "queenTop" || node.nodeID == "queenTopPart" || 
+					node.nodeID == "queenTopPart2") && this.color == 1){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="q"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						this.scene.translate(0,0,2.5);
+						
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					
+						this.scene.translate(-i*5,k*5-5,0);
+					
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  }  else if ((node.nodeID == "queen" || node.nodeID == "queenTop" || node.nodeID == "queenTopPart" || 
+					node.nodeID == "queenTopPart2") && this.color == 0){		 
+			for(var m=0; m<64;m++){
+				if(this.scene.tabuleiro[m]=="Q"){
+					this.scene.pushMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
+						this.scene.translate(0,0,2.5);
+						
+					}
+					var i = (m % 8);				
+					var k = (Math.floor(m / 8));
+					this.pecasP[i+1,k+1] = node.leaves[j];				
+					
+					
+						this.scene.translate(-i*5,k*5,0);
+					
+					
+					this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+					this.pecasP[i+1,k+1].display();						
+					this.scene.popMatrix();
+					if(this.scene.pickedPiece == (m+65))
+					{
+						this.scene.setActiveShader(this.scene.defaultShader);
+					}
+				}
+			}
+	  }  else{	  
+		node.leaves[j].display();
 	  }
 			
 
