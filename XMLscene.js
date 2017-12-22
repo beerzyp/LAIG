@@ -21,6 +21,8 @@ function XMLscene(interface) {
 	//withNewLogic
 	this.chess = new Chess();
 	this.tabuleiro = this.chess.ascii();
+	this.TempoBrancas=0;
+	this.TempoPretas=0;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -44,7 +46,7 @@ XMLscene.prototype.init = function(application) {
     this.axis = new CGFaxis(this);
 	this.count = 0;
 	//shaders
-	this.setUpdatePeriod(2000);
+	this.setUpdatePeriod(16);
 	this.scaleFactor=50.0; //para modificar consoante o tempo
 	this.factor = 0;
 	this.count = 0;
@@ -197,7 +199,8 @@ XMLscene.prototype.display = function() {
 		this.setActiveShader(this.defaultShader);
 		this.updateScaleFactor(this.scaleFactor);
         this.graph.displayScene();
-		this.setActiveShader(this.defaultShader);	
+		this.setActiveShader(this.defaultShader);
+
     }
 	else
 	{
@@ -207,7 +210,11 @@ XMLscene.prototype.display = function() {
     
 
     this.popMatrix();
-    
+    if(this.chess.turn()=='b'){
+		
+	} else{
+		
+	}
     // ---- Efile:///C:/Users/R/Desktop/projeto/animations/LinearAnimation.jsND Background, camera and axis setup
     
 }
@@ -219,6 +226,7 @@ XMLscene.prototype.update = function(currTime){
 			this.graph.nodes[node].counter(currTime-this.initTime);
 	}
 	this.initTime=currTime;
+	return currTime;
 }
 
 XMLscene.prototype.logPicking = function ()
@@ -230,6 +238,7 @@ XMLscene.prototype.logPicking = function ()
 				var obj = this.pickResults[i][0];
 				if (obj)
 				{
+					this.interface.tempo(50);
 					var customId = this.pickResults[i][1];
 					if(this.pickedPiece == customId){
 						this.pickedPiece = 0;
@@ -252,10 +261,9 @@ XMLscene.prototype.logPicking = function ()
 						
 						this.chess.move(move, {sloppy: true});
 						if(this.chess.turn()=='b'){
-						this.camera.setPosition(vec3.fromValues(0,0,0));
-						this.camera.rotate(camAxisX,Math.PI);
-						this.camera.setPosition(vec3.fromValues(-10,50,-50));
-	
+							this.camera.setPosition(vec3.fromValues(0,0,0));
+							this.camera.rotate(camAxisX,Math.PI);
+							this.camera.setPosition(vec3.fromValues(-10,50,-50));						
 						}
 						else this.camera.setPosition(vec3.fromValues(10,50,50));
 					if(this.chess.in_check()){	

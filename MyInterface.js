@@ -5,6 +5,7 @@
 function MyInterface() {
     //call CGFinterface constructor 
     CGFinterface.call(this);
+
 }
 ;
 
@@ -24,6 +25,8 @@ MyInterface.prototype.init = function(application) {
     
     this.gui = new dat.GUI();
 	
+	this.gui.add(this.scene, 'TempoBrancas');
+	this.gui.add(this.scene, 'TempoPretas');
 	
 	
     // add a group of controls (and open/expand by defult)
@@ -78,6 +81,12 @@ MyInterface.prototype.addLightsGroup = function(lights) {
             this.scene.lightValues[key] = lights[key][0];
             group.add(this.scene.lightValues, key);
         }
-    }
+    }	
 }
 
+MyInterface.prototype.tempoBrancas = function(time){
+	this.gui.__controllers[0].setValue(time);
+}
+MyInterface.prototype.tempoPretas = function(time){
+	this.gui.__controllers[1].setValue(time);
+}
