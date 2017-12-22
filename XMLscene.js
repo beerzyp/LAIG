@@ -123,6 +123,8 @@ XMLscene.prototype.initLights = function() {
  */
 XMLscene.prototype.initCameras = function() {
     this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 15),vec3.fromValues(0, 0, 0));
+	this.camera.setPosition(vec3.fromValues(10,50,50));
+	
 }
 
 /* Handler called when the graph is finally loaded. 
@@ -244,23 +246,29 @@ XMLscene.prototype.logPicking = function ()
 						var prow = (this.previousPicked % 8);
 						var pnewrow = this.translateToLetter(prow);
 						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
-						
+						var camAxisX=CGFcameraAxis.Z;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
 						
+						
 						this.chess.move(move, {sloppy: true});
-						
-					if(this.chess.in_check()){
-						
-						
-						console.log("check");
-								if(this.check==true){
-									if(window.confirm("check")==true){
-										this.check=false;
-								}}
-								else this.check=true;
-		
-						
-					}
+						if(this.chess.turn()=='b'){
+						this.camera.setPosition(vec3.fromValues(0,0,0));
+						this.camera.rotate(camAxisX,Math.PI);
+						this.camera.setPosition(vec3.fromValues(-10,50,-50));
+	
+						}
+						else this.camera.setPosition(vec3.fromValues(10,50,50));
+					if(this.chess.in_check()){	
+									if(this.check==true && !this.chess.game_over()){
+										if(window.confirm("check")==true){
+											console.log("check");
+											this.check=false;
+									}} else if(this.chess.game_over()){
+										console.log("checkMate");						
+										window.confirm("CheckMate!")==true;
+									}
+									else this.check=true;							
+						}
 						
 						this.tabuleiro = this.chess.ascii();
 						console.log(move);
