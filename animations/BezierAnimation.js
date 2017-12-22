@@ -7,7 +7,7 @@ class BezierAnimation extends Animation {
     this.bezierPoints = [];
     this.points = [];
     
-
+	this.startPoint=[];
     this.totalDistance = 0;
     for(var i = 0; i < 4; i++)
       this.bezierPoints.push(vec3.fromValues(controlPoints[i][0], controlPoints[i][1], controlPoints[i][2]));
@@ -20,7 +20,7 @@ class BezierAnimation extends Animation {
     this.currentPos=0;
     this.totalTime = this.totalDistance / this.speed;
     this.time = 0;
-    this.accuracy = 0.01 // 100 segments
+    this.accuracy = 0.02 // 100 segments
     this.calcPointsForBezier();
   }
 
@@ -88,11 +88,11 @@ casteljau(){
     return {x: x, y: y,z:z};
   }
   update(){
+	  
    if(this.currentPos==this.points.length-2){
-        this.var=this.dec;
+	  this.var=0;
+      return;
    }
-   else if(this.currentPos==0)
-    this.var=this.inc;
 
   }
   display(){

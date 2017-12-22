@@ -48,6 +48,7 @@ XMLscene.prototype.init = function(application) {
 	this.scaleFactor=50.0; //para modificar consoante o tempo
 	this.factor = 0;
 	this.count = 0;
+	this.check=true;
 	this.colorScale = 1;
 	this.animations=[];
 	this.pickedPiece = 0;
@@ -245,7 +246,21 @@ XMLscene.prototype.logPicking = function ()
 						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
 						
 						var move = pnewrow + pcollum + '-' + newrow + collum;
+						
 						this.chess.move(move, {sloppy: true});
+						
+					if(this.chess.in_check()){
+						
+						
+						console.log("check");
+								if(this.check==true){
+									if(window.confirm("check")==true){
+										this.check=false;
+								}}
+								else this.check=true;
+		
+						
+					}
 						
 						this.tabuleiro = this.chess.ascii();
 						console.log(move);

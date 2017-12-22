@@ -1587,6 +1587,45 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	
 	this.scene.pushMatrix();
     this.scene.multMatrix(node.transformMatrix);
+	if(node.nodeID=="queenPiece"){
+
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
+	if(node.nodeID=="bishopPiece"){
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
+	
+	if(node.nodeID=="kingPiece"){
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
+	if(node.nodeID=="rookPiece"){
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
+	
+	if(node.nodeID=="pawnPiece"){
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
+	if(node.nodeID=="knightPiece"){
+	var speed=2;
+	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
+	}
    if(node.animations.length!=0)
                 node.updateAnimation();	
 	
@@ -2116,7 +2155,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
    	
 	
 	if(this.check == 0)
-	{
+	{	
 		this.scene.setActiveShader(this.scene.defaultShader);
 	}	
 	
