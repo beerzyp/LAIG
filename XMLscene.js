@@ -363,3 +363,13 @@ XMLscene.prototype.translateToLetter = function (ID){
 		return "h";
 	}					
 }
+XMLscene.prototype.UndoLastMove = function(){
+	this.chess.undo();
+	this.tabuleiro = this.chess.ascii();
+	if(this.chess.turn()=='b'){
+		this.camera.setPosition(vec3.fromValues(0,0,0));
+		this.camera.rotate(camAxisX,Math.PI);
+		this.camera.setPosition(vec3.fromValues(-10,50,-50));						
+	}
+		else this.camera.setPosition(vec3.fromValues(10,50,50));
+}

@@ -29,6 +29,7 @@ MyInterface.prototype.init = function(application) {
 	this.gui.add(this.scene, 'TempoPretas');
 	
 	
+	
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {
 			'Mix c/Amarelo': 0,
@@ -58,7 +59,7 @@ MyInterface.prototype.addObjectGroup = function(objs)
 	{
 		if(objs.hasOwnProperty(key)) {
 			this.scene.objectValues[key] = objs[key][0];
-			group.add(this.scene.objectValues, key);
+			//group.add(this.scene.objectValues, key);
 		}
 	}
 	
@@ -79,9 +80,11 @@ MyInterface.prototype.addLightsGroup = function(lights) {
     for (var key in lights) {
         if (lights.hasOwnProperty(key)) {
             this.scene.lightValues[key] = lights[key][0];
-            group.add(this.scene.lightValues, key);
+           // group.add(this.scene.lightValues, key);
         }
     }	
+
+	this.gui.add(this.scene,'UndoLastMove');
 }
 
 MyInterface.prototype.tempoBrancas = function(time){
