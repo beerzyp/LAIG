@@ -21,8 +21,10 @@ function XMLscene(interface) {
 	//withNewLogic
 	this.chess = new Chess();
 	this.tabuleiro = this.chess.ascii();
-	this.TempoBrancas=0;
-	this.TempoPretas=0;
+	this.TempoBrancas="0";
+	this.TempoPretas="0";
+	this.flagB = 1;
+	this.flagP = 1;
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -54,6 +56,12 @@ XMLscene.prototype.init = function(application) {
 	this.colorScale = 1;
 	this.animations=[];
 	this.pickedPiece = 0;
+	this.pretasTime = 1;
+	this.brancasTime = 1;
+	this.segB = 0;
+	this.minB = 0;
+	this.segP = 0;
+	this.minP = 0;
 	//animations
 	this.period = 0;
 	let initDate= new Date();
@@ -211,8 +219,33 @@ XMLscene.prototype.display = function() {
 
     this.popMatrix();
     if(this.chess.turn()=='b'){
-		
-	} else{
+		if(this.flagP == 1){
+			this.pretasTime = this.initTime;
+			this.flagP = 0;
+			this.flagB = 1;
+			this.aSegP = this.segP;
+			this.aMinP = this.minP;
+		}	
+		this.segP = Math.floor((this.initTime - this.pretasTime) / (1000)) + this.aSegP;
+		if(this.segP>60){
+			this.segP = this.segP % 60;
+		}
+		this.minP = Math.floor((this.initTime - this.pretasTime) / (1000*60)) + this.aMinP;
+		this.interface.tempoPretas(this.minP + ':' + this.segP);
+	} else{	
+		if(this.flagB == 1){
+			this.brancasTime = this.initTime;
+			this.flagB = 0;
+			this.flagP = 1;
+			this.aSegB = this.segB;
+			this.aMinB = this.minB;
+		}	
+		this.segB = Math.floor((this.initTime - this.brancasTime) / (1000)) + this.aSegB;
+		if(this.segB>60){
+			this.segB = this.segB % 60;
+		}
+		this.minB = Math.floor((this.initTime - this.brancasTime) / (1000*60)) + this.aMinB;
+		this.interface.tempoBrancas(this.minB + ':' + this.segB);
 		
 	}
     // ---- Efile:///C:/Users/R/Desktop/projeto/animations/LinearAnimation.jsND Background, camera and axis setup
@@ -226,7 +259,6 @@ XMLscene.prototype.update = function(currTime){
 			this.graph.nodes[node].counter(currTime-this.initTime);
 	}
 	this.initTime=currTime;
-	return currTime;
 }
 
 XMLscene.prototype.logPicking = function ()
@@ -238,7 +270,6 @@ XMLscene.prototype.logPicking = function ()
 				var obj = this.pickResults[i][0];
 				if (obj)
 				{
-					this.interface.tempo(50);
 					var customId = this.pickResults[i][1];
 					if(this.pickedPiece == customId){
 						this.pickedPiece = 0;
