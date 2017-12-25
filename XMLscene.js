@@ -5,6 +5,18 @@ var DEGREE_TO_RAD = Math.PI / 180;
  * XMLscene class, representing the scene that is to be rendered.
  * @constructor
  */
+
+
+function myFunction() {
+	var person = prompt("Select Game: Humans or Bot");
+	if (person =="Bot" || person == "bot") {
+		return false;
+	}
+	else if(person == "Human" || person == "human" || person == "humans"){
+		return true;
+	}
+	else myFunction();
+}
 function XMLscene(interface) {
     CGFscene.call(this);
 
@@ -25,6 +37,8 @@ function XMLscene(interface) {
 	this.TempoPretas="0";
 	this.flagB = 1;
 	this.flagP = 1;
+	
+	this.humanGame=myFunction();
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -133,7 +147,7 @@ XMLscene.prototype.initLights = function() {
  */
 XMLscene.prototype.initCameras = function() {
     this.camera = new CGFcamera(0.4,0.1,500,vec3.fromValues(15, 15, 15),vec3.fromValues(0, 0, 0));
-	this.camera.setPosition(vec3.fromValues(10,50,50));
+	this.camera.setPosition(vec3.fromValues(10,40,40));
 	
 }
 
@@ -288,29 +302,60 @@ XMLscene.prototype.logPicking = function ()
 						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
 						var camAxisX=CGFcameraAxis.Z;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
-						
-						
-						this.chess.move(move, {sloppy: true});
-						if(this.chess.turn()=='b'){
-							this.camera.setPosition(vec3.fromValues(0,0,0));
-							this.camera.rotate(camAxisX,Math.PI);
-							this.camera.setPosition(vec3.fromValues(-10,50,-50));						
+					// Game Logic for 2 Humans
+						if(this.humanGame){
+							this.chess.move(move, {sloppy: true});
+							if(this.chess.turn()=='b'){
+								this.camera.setPosition(vec3.fromValues(0,0,0));
+								this.camera.rotate(camAxisX,Math.PI);
+								this.camera.setPosition(vec3.fromValues(-10,50,-50));	
+								this.camera.zoom(20);					
+							}
+							else this.camera.setPosition(vec3.fromValues(10,40,40));
+						if(this.chess.in_check()){	
+										if(this.check==true && !this.chess.game_over()){
+											if(window.confirm("check")==true){
+												console.log("check");
+												this.check=false;
+										}} else if(this.chess.game_over()){
+											console.log("checkMate");						
+											window.confirm("CheckMate!")==true;
+										}
+										else this.check=true;							
+							}
+
+							this.tabuleiro = this.chess.ascii();
+							console.log(move);
 						}
-						else this.camera.setPosition(vec3.fromValues(10,50,50));
-					if(this.chess.in_check()){	
-									if(this.check==true && !this.chess.game_over()){
-										if(window.confirm("check")==true){
-											console.log("check");
-											this.check=false;
-									}} else if(this.chess.game_over()){
-										console.log("checkMate");						
-										window.confirm("CheckMate!")==true;
+						else if(!this.humanGame){
+							if(this.chess.turn()=='b'){
+								this.camera.setPosition(vec3.fromValues(0,0,0));
+								this.camera.rotate(camAxisX,Math.PI);
+								this.camera.setPosition(vec3.fromValues(-10,50,-50));	
+								this.camera.zoom(20);
+								this.chess.move(move, {sloppy: true});					
+							}
+							else{
+								this.NextBotMove();
+							}
+							if(this.chess.in_check()){	
+							if(this.check==true && !this.chess.game_over()){
+								if(window.confirm("check")==true){
+									console.log("check");
+									this.check=false;
 									}
-									else this.check=true;							
+								} 
+								else if(this.chess.game_over()){
+								console.log("checkMate");						
+								window.confirm("CheckMate!")==true;
+								}
+								else this.check=true;							
+							}
+
+							this.tabuleiro = this.chess.ascii();
+							console.log(move);
+
 						}
-						
-						this.tabuleiro = this.chess.ascii();
-						console.log(move);
 					}
 					
 					this.previousPicked = logicId;
@@ -369,7 +414,19 @@ XMLscene.prototype.UndoLastMove = function(){
 	if(this.chess.turn()=='b'){
 		this.camera.setPosition(vec3.fromValues(0,0,0));
 		this.camera.rotate(camAxisX,Math.PI);
-		this.camera.setPosition(vec3.fromValues(-10,50,-50));						
+		this.camera.setPosition(vec3.fromValues(-10,40,-40));						
 	}
-		else this.camera.setPosition(vec3.fromValues(10,50,50));
+		else this.camera.setPosition(vec3.fromValues(10,40,40));
+}
+
+XMLscene.prototype.NextBotMove = function(){
+
+		  var moves = this.chess.moves();
+		  var newMove = moves[Math.floor(Math.random() * moves.length)];
+		  this.chess.move(newMove);
+
+}
+
+XMLscene.prototype.BotOrHuman=function(){
+
 }

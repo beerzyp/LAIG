@@ -85,6 +85,7 @@ MyInterface.prototype.addLightsGroup = function(lights) {
     }	
 
 	this.gui.add(this.scene,'UndoLastMove');
+
 }
 
 MyInterface.prototype.tempoBrancas = function(time){

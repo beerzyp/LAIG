@@ -45,6 +45,7 @@ MyGraphNode.prototype.getAnimation = function(){
 /**
  * Adds a leaf to this node's leaves array.
  */
+
 MyGraphNode.prototype.addLeaf = function(leaf) {
     this.leaves.push(leaf);
 }
