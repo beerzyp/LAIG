@@ -314,6 +314,9 @@ XMLscene.prototype.logPicking = function ()
 					//logic Id
 					var logicId = this.translateToLogic(customId);
 					if(this.previousPicked != -1){
+					
+					// Game Logic for 2 Humans
+						if(this.humanGame=="human" || this.humanGame=="humans" || this.humanGame=="Human"){
 						var row = (logicId % 8);
 						var newrow = this.translateToLetter(row);
 						var collum = 8-(Math.floor((logicId )/ 8));
@@ -323,8 +326,6 @@ XMLscene.prototype.logPicking = function ()
 						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
 						var camAxisX=CGFcameraAxis.Z;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
-					// Game Logic for 2 Humans
-						if(this.humanGame=="human" || this.humanGame=="humans" || this.humanGame=="Human"){
 							this.chess.move(move, {sloppy: true});
 							if(this.chess.turn()=='b'){
 								this.camera.setPosition(vec3.fromValues(0,0,0));
@@ -348,9 +349,21 @@ XMLscene.prototype.logPicking = function ()
 							this.tabuleiro = this.chess.ascii();
 							console.log(move);
 						}
+
+
+
 						//game Logic for human/bot, bot as white
 						else if(this.humanGame == "bot" || this.humanGame == "Bot"){
 							if(this.chess.turn()=='b'){
+								var row = (logicId % 8);
+								var newrow = this.translateToLetter(row);
+								var collum = 8-(Math.floor((logicId )/ 8));
+
+								var prow = (this.previousPicked % 8);
+								var pnewrow = this.translateToLetter(prow);
+								var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
+								var camAxisX=CGFcameraAxis.Z;
+								var move = pnewrow + pcollum + '-' + newrow + collum;
 								this.camera.setPosition(vec3.fromValues(0,0,0));
 								this.camera.rotate(camAxisX,Math.PI);
 								this.camera.setPosition(vec3.fromValues(-10,40,-40));	
@@ -358,7 +371,9 @@ XMLscene.prototype.logPicking = function ()
 								this.chess.move(move, {sloppy: true});					
 							}
 							else{
-								this.NextBotMove();
+								  var moves = this.chess.moves();
+								  var newMove = moves[Math.floor(Math.random() * moves.length)];
+								  this.chess.move(newMove,{sloppy: true});
 							}
 							if(this.chess.in_check()){	
 							if(this.check==true && !this.chess.game_over()){
@@ -378,8 +393,38 @@ XMLscene.prototype.logPicking = function ()
 							console.log(move);
 
 						}
+
+
+						//game logic for bots
 						else{
-							this.NextBotMove();
+							if(this.chess.turn()=='b'){
+								  var moves = this.chess.moves();
+								  var newMove = moves[Math.floor(Math.random() * moves.length)];
+								  this.chess.move(newMove,{sloppy: true});
+							}
+							else {
+								 var moves = this.chess.moves();
+								 var newMove = moves[Math.floor(Math.random() * moves.length)];
+								 this.chess.move(newMove,{sloppy: true});
+							}
+
+
+							if(this.chess.in_check()){	
+								if(this.check==true && !this.chess.game_over()){
+									if(window.confirm("check")==true){
+										console.log("check");
+										this.check=false;
+									}
+								} 
+								else if(this.chess.game_over()){
+									console.log("checkMate");						
+									window.confirm("CheckMate!")==true;
+								}
+								else this.check=true;							
+							}
+
+							this.tabuleiro = this.chess.ascii();
+							console.log(move);
 						}
 
 					}
@@ -445,13 +490,7 @@ XMLscene.prototype.UndoLastMove = function(){
 		else this.camera.setPosition(vec3.fromValues(10,40,40));
 }
 
-XMLscene.prototype.NextBotMove = function(){
 
-		  var moves = this.chess.moves();
-		  var newMove = moves[Math.floor(Math.random() * moves.length)];
-		  this.chess.move(newMove);
-
-}
 
 XMLscene.prototype.BotOrHuman=function(){
 
