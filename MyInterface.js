@@ -85,6 +85,7 @@ MyInterface.prototype.addLightsGroup = function(lights) {
     }	
 
 	this.gui.add(this.scene,'UndoLastMove');
+	this.gui.add(this.scene,'setCameraView');
 
 }
 
@@ -93,4 +94,7 @@ MyInterface.prototype.tempoBrancas = function(time){
 }
 MyInterface.prototype.tempoPretas = function(time){
 	this.gui.__controllers[1].setValue(time);
+	
 }
+
+

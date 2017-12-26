@@ -7,15 +7,26 @@ var DEGREE_TO_RAD = Math.PI / 180;
  */
 
 
-function myFunction() {
-	var person = prompt("Select Game: Humans or Bot");
+function HumanOrBot(){
+	var person = prompt("Select Game: Humans or Bot, Bots");
 	if (person =="Bot" || person == "bot") {
-		return false;
+		return person;
 	}
 	else if(person == "Human" || person == "human" || person == "humans"){
-		return true;
+		return person;
 	}
-	else myFunction();
+	else if(person =="BotBot" || person == "botvsBot" || person =="Bots" || person == "bots"){
+		return person;
+	}
+}
+
+function GameOverByTime(color) {
+    window.alert("Game Ended: Player " + color + " lost by time");
+}
+
+function askForGameTime(){
+	var player = prompt("Select Game Time, in minutes");
+	return parseInt(player);
 }
 function XMLscene(interface) {
     CGFscene.call(this);
@@ -37,8 +48,10 @@ function XMLscene(interface) {
 	this.TempoPretas="0";
 	this.flagB = 1;
 	this.flagP = 1;
+	this.activeCamFlag=true;
 	
-	this.humanGame=myFunction();
+	this.humanGame=HumanOrBot();
+	this.gameTime=askForGameTime();
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -246,6 +259,10 @@ XMLscene.prototype.display = function() {
 		}
 		this.minP = Math.floor((this.initTime - this.pretasTime) / (1000*60)) + this.aMinP;
 		this.interface.tempoPretas(this.minP + ':' + this.segP);
+		if(this.minP>=this.gameTime){
+			
+				GameOverByTime("black");
+		}
 	} else{	
 		if(this.flagB == 1){
 			this.brancasTime = this.initTime;
@@ -260,6 +277,10 @@ XMLscene.prototype.display = function() {
 		}
 		this.minB = Math.floor((this.initTime - this.brancasTime) / (1000*60)) + this.aMinB;
 		this.interface.tempoBrancas(this.minB + ':' + this.segB);
+				if(this.minB>=this.gameTime){
+				
+				GameOverByTime("white");
+		}
 		
 	}
     // ---- Efile:///C:/Users/R/Desktop/projeto/animations/LinearAnimation.jsND Background, camera and axis setup
@@ -303,13 +324,13 @@ XMLscene.prototype.logPicking = function ()
 						var camAxisX=CGFcameraAxis.Z;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
 					// Game Logic for 2 Humans
-						if(this.humanGame){
+						if(this.humanGame=="human" || this.humanGame=="humans" || this.humanGame=="Human"){
 							this.chess.move(move, {sloppy: true});
 							if(this.chess.turn()=='b'){
 								this.camera.setPosition(vec3.fromValues(0,0,0));
 								this.camera.rotate(camAxisX,Math.PI);
-								this.camera.setPosition(vec3.fromValues(-10,50,-50));	
-								this.camera.zoom(20);					
+								this.camera.setPosition(vec3.fromValues(-10,40,-40));	
+								this.camera.zoom(10);					
 							}
 							else this.camera.setPosition(vec3.fromValues(10,40,40));
 						if(this.chess.in_check()){	
@@ -327,12 +348,13 @@ XMLscene.prototype.logPicking = function ()
 							this.tabuleiro = this.chess.ascii();
 							console.log(move);
 						}
-						else if(!this.humanGame){
+						//game Logic for human/bot, bot as white
+						else if(this.humanGame == "bot" || this.humanGame == "Bot"){
 							if(this.chess.turn()=='b'){
 								this.camera.setPosition(vec3.fromValues(0,0,0));
 								this.camera.rotate(camAxisX,Math.PI);
-								this.camera.setPosition(vec3.fromValues(-10,50,-50));	
-								this.camera.zoom(20);
+								this.camera.setPosition(vec3.fromValues(-10,40,-40));	
+								this.camera.zoom(10);
 								this.chess.move(move, {sloppy: true});					
 							}
 							else{
@@ -356,6 +378,10 @@ XMLscene.prototype.logPicking = function ()
 							console.log(move);
 
 						}
+						else{
+							this.NextBotMove();
+						}
+
 					}
 					
 					this.previousPicked = logicId;
@@ -413,7 +439,7 @@ XMLscene.prototype.UndoLastMove = function(){
 	this.tabuleiro = this.chess.ascii();
 	if(this.chess.turn()=='b'){
 		this.camera.setPosition(vec3.fromValues(0,0,0));
-		this.camera.rotate(camAxisX,Math.PI);
+		//this.camera.rotate(camAxisX,Math.PI);
 		this.camera.setPosition(vec3.fromValues(-10,40,-40));						
 	}
 		else this.camera.setPosition(vec3.fromValues(10,40,40));
@@ -428,5 +454,16 @@ XMLscene.prototype.NextBotMove = function(){
 }
 
 XMLscene.prototype.BotOrHuman=function(){
+
+}
+XMLscene.prototype.setCameraView=function(){
+		if(this.activeCamFlag){
+		this.interface.setActiveCamera(this.camera);
+		this.activeCamFlag=!this.activeCamFlag;
+		}
+		else {
+			this.interface.setActiveCamera(null);
+			this.activeCamFlag=!this.activeCamFlag;
+		}
 
 }
