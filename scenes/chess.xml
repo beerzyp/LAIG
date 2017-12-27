@@ -76,6 +76,54 @@
         <file path="images/quadradovermelho.png" />
         <amplif_factor s="5" t="5" />
     </TEXTURE>
+	<TEXTURE id="peaoBranco">
+        <file path="images/peaoBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="bispoBranco">
+        <file path="images/bispoBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="cavaloBranco">
+        <file path="images/cavaloBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="reiBranco">
+        <file path="images/reiBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="damaBranco">
+        <file path="images/damaBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="torreBranco">
+        <file path="images/torreBranco.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="peaoPreto">
+        <file path="images/peaoPreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="bispoPreto">
+        <file path="images/bispoPreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="cavaloPreto">
+        <file path="images/cavaloPreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="reiPreto">
+        <file path="images/reiPreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="damaPreto">
+        <file path="images/damaPreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
+	<TEXTURE id="torrePreto">
+        <file path="images/torrePreto.png" />
+        <amplif_factor s="5" t="5" />
+    </TEXTURE>
 </TEXTURES>
 
 
@@ -110,10 +158,393 @@
             <NODEREF id="quadradoP" />
             <NODEREF id="pecaB" />		
             <NODEREF id="pecaP" />
+			<NODEREF id="peao1" />
+			<NODEREF id="peao2" />
+			<NODEREF id="peao3" />
+			<NODEREF id="peao4" />
+			<NODEREF id="peao5" />
+			<NODEREF id="peao6" />
+			<NODEREF id="peao7" />
+			<NODEREF id="peao8" />
+			<NODEREF id="torre1" />
+			<NODEREF id="torre2" />
+			<NODEREF id="cavalo1" />
+			<NODEREF id="cavalo2" />
+			<NODEREF id="bispo1" />
+			<NODEREF id="bispo2" />
+			<NODEREF id="rei1" />
+			<NODEREF id="dama1" />
+			<NODEREF id="peao1p" />
+			<NODEREF id="peao2p" />
+			<NODEREF id="peao3p" />
+			<NODEREF id="peao4p" />
+			<NODEREF id="peao5p" />
+			<NODEREF id="peao6p" />
+			<NODEREF id="peao7p" />
+			<NODEREF id="peao8p" />
+			<NODEREF id="torre1p" />
+			<NODEREF id="torre2p" />
+			<NODEREF id="cavalo1p" />
+			<NODEREF id="cavalo2p" />
+			<NODEREF id="bispo1p" />
+			<NODEREF id="bispo2p" />
+			<NODEREF id="rei1p" />
+			<NODEREF id="dama1p" />
         </DESCENDANTS>
 
     </NODE>
-	
+	<NODE id ="dama1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="damaBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="rei1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="reiBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="bispo1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="bispoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="bispo2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="bispoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="cavalo1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="cavaloBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="cavalo2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="cavaloBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="torre1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="torreBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="torre2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="torreBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao1">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao2">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao3">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao4">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao5">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao6">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao7">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao8">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoBranco" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="dama1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="damaPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="rei1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="reiPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="bispo1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="bispoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="bispo2p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="bispoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="cavalo1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="cavaloPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="cavalo2p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="cavaloPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="torre1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="torrePreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="torre2p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="torrePreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao1p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao2p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao3p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao4p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao5p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao6p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao7p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
+	<NODE id ="peao8p">
+ 		<MATERIAL id ="null" />
+        <TEXTURE id="peaoPreto" />
+		<TRANSLATION x="5" y="0.1" z="0" />
+		<ROTATION axis="x" angle="-90" />
+		<ROTATION axis="z" angle="-180" />
+		
+         <DESCENDANTS>
+            <LEAF  type="rectangle" args="0 5 5 0" />            
+        </DESCENDANTS>
+    </NODE>
 	<NODE id ="pecaB">
  		<MATERIAL id ="null" />
         <TEXTURE id="quadradoBranco" />
