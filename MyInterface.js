@@ -28,7 +28,11 @@ MyInterface.prototype.init = function(application) {
 	this.gui.add(this.scene, 'TempoBrancas');
 	this.gui.add(this.scene, 'TempoPretas');
 	
-	
+	this.gui.add(this.scene, 'gameMode', {
+			'3D': 0,
+			'2D': 1, 			 
+			
+	}).name('Interface Type Game');
 	
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {

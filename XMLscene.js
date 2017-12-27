@@ -49,6 +49,7 @@ function XMLscene(interface) {
 	this.flagB = 1;
 	this.flagP = 1;
 	this.activeCamFlag=true;
+	this.gameMode = 0;
 	
 	this.humanGame=HumanOrBot();
 	this.gameTime=askForGameTime();
@@ -205,7 +206,8 @@ XMLscene.prototype.display = function() {
     this.applyViewMatrix();
 	
     this.pushMatrix();
-    
+
+	
     if (this.graph.loadedOk) 
     {        
         // Applies initial transformations.
