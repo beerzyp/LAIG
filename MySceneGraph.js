@@ -2213,10 +2213,11 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pieces[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pieces[i+1,k+1]);
-							this.pieces[i+1,k+1].display();	
-							if(this.scene.chess.turn()=='b' && node.nodeID !="tabuleiro"){
+							if(this.scene.chess.turn()=='b'){
 								this.scene.rotate(Math.PI,0,0,1);
-							}							
+								this.scene.translate(-5,-5,0);
+							}
+							this.pieces[i+1,k+1].display();														
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
 							{
@@ -2237,6 +2238,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2258,6 +2263,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2279,6 +2288,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2300,6 +2313,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2321,6 +2338,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2342,6 +2363,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2363,6 +2388,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2384,6 +2413,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2405,6 +2438,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2426,6 +2463,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2447,6 +2488,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2468,6 +2513,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2489,6 +2538,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2510,6 +2563,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2531,6 +2588,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2552,6 +2613,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pieces[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pieces[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pieces[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2573,6 +2638,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2594,6 +2663,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2615,6 +2688,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2636,6 +2713,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2657,6 +2738,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2678,6 +2763,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2699,6 +2788,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2720,6 +2813,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2741,6 +2838,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2762,6 +2863,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2783,6 +2888,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2804,6 +2913,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2825,6 +2938,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2846,6 +2963,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
@@ -2867,6 +2988,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							if(this.scene.chess.turn()=='b'){
+								this.scene.rotate(Math.PI,0,0,1);
+								this.scene.translate(-5,-5,0);
+							}
 							this.pecasP[i+1,k+1].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
