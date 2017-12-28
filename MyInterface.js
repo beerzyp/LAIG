@@ -27,13 +27,13 @@ MyInterface.prototype.init = function(application) {
 	
 	this.gui.add(this.scene, 'TempoBrancas');
 	this.gui.add(this.scene, 'TempoPretas');
-	
+	this.gui.add(this.scene,'EngineNextMoveTime');
 	this.gui.add(this.scene, 'gameMode', {
 			'3D': 0,
 			'2D': 1, 			 
 			
 	}).name('Interface Type Game');
-	
+
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {
 			'Mix c/Amarelo': 0,
@@ -87,11 +87,17 @@ MyInterface.prototype.addLightsGroup = function(lights) {
            // group.add(this.scene.lightValues, key);
         }
     }	
-
+	
+	this.gui.add(this.scene,'askForEngineTip');
 	this.gui.add(this.scene,'UndoLastMove');
 	this.gui.add(this.scene,'RestartGame');
 	this.gui.add(this.scene,'setCameraView');
 
+}
+
+
+MyInterface.prototype.EngineNextMoveTime = function(time){
+	this.gui.__controllers[2].setValue(time);
 }
 
 MyInterface.prototype.tempoBrancas = function(time){
