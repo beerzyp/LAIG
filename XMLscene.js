@@ -607,6 +607,11 @@ XMLscene.prototype.UndoLastMove = function(){
 		else this.camera.setPosition(vec3.fromValues(10,40,40));
 }
 
+XMLscene.prototype.askForEngineTip = function(){
+	 var bestMove = this.ai.minimaxRoot(this.chosenDepth,this.chess, true);
+	 window.confirm("your best move is: " + bestMove);
+}
+
 
 
 XMLscene.prototype.BotOrHuman=function(){
