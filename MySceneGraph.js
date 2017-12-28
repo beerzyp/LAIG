@@ -2510,7 +2510,17 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							console.log(i);
+							console.log(k);
+							console.log(this.scene.row);
+							console.log(this.scene.collum);
+							if(this.scene.row == i && this.scene.collum == 8-k){
+								var speed=2;
+								var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+								var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+								node.pushAnimation(bezAnim);
+							}
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2535,6 +2545,13 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
+							
+							if(this.scene.row == i && this.scene.collum == k){
+								var speed=2;
+								var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+								var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+								node.pushAnimation(bezAnim);
+							}
 							this.pecasP[i+1,k+1] = node.leaves[j];				
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);

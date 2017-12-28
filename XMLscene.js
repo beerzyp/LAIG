@@ -50,7 +50,8 @@ function XMLscene(interface) {
 	this.flagP = 1;
 	this.activeCamFlag=true;
 	this.gameMode = 0;
-	
+	this.row = 0;
+	this.collum = 0;
 	this.humanGame=HumanOrBot();
 	this.gameTime=askForGameTime();
 }
@@ -327,6 +328,10 @@ XMLscene.prototype.logPicking = function ()
 						var pnewrow = this.translateToLetter(prow);
 						var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
 						var camAxisX=CGFcameraAxis.Z;
+						//for animations
+						this.row = row;
+						console.log(this.row);
+						this.collum = collum;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
 							this.chess.move(move, {sloppy: true});
 							if(this.chess.turn()=='b'){
