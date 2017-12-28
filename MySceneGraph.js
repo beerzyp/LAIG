@@ -2517,7 +2517,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							console.log(this.scene.collum);
 							if(this.scene.row == i && this.scene.collum == 8-k){
 								var speed=2;
-								var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
+								var controlPoints=[[0,0,0],[10,10,200],[20,20,200],[10,5,0]];
 								var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
 								node.pushAnimation(bezAnim);
 							}
