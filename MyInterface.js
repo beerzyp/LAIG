@@ -89,6 +89,7 @@ MyInterface.prototype.addLightsGroup = function(lights) {
     }	
 
 	this.gui.add(this.scene,'UndoLastMove');
+	this.gui.add(this.scene,'RestartGame');
 	this.gui.add(this.scene,'setCameraView');
 
 }

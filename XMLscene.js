@@ -508,3 +508,23 @@ XMLscene.prototype.setCameraView=function(){
 		}
 
 }
+XMLscene.prototype.RestartGame=function(){
+		this.chess.reset();
+		this.tabuleiro = this.chess.ascii();
+		if(this.chess.turn()=='b'){
+			this.camera.setPosition(vec3.fromValues(0,0,0));
+			//this.camera.rotate(camAxisX,Math.PI);
+			this.camera.setPosition(vec3.fromValues(-10,40,-40));						
+		}
+		else this.camera.setPosition(vec3.fromValues(10,40,40));
+		this.aSegP = 0; 
+		this.segP = 0;
+		this.aMinP = 0;
+		this.minP = 0;
+		this.aSegB = 0; 
+		this.segB = 0;
+		this.aMinB = 0;
+		this.minB = 0;
+		this.interface.tempoBrancas(this.minB + ':' + this.segB);
+		this.interface.tempoPretas(this.minB + ':' + this.segB);
+}
