@@ -2210,7 +2210,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pieces[i+1,k+1] = node.leaves[j];				
+							this.pieces[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pieces[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2235,7 +2238,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.pushMatrix();
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2260,7 +2266,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2285,7 +2294,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2310,7 +2322,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2335,7 +2350,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2360,7 +2378,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2385,7 +2406,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2410,7 +2434,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2435,7 +2462,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2460,7 +2490,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2485,7 +2518,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2511,23 +2547,21 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
 							this.pecasP[i+1,k+1] = node.leaves[j];
-							console.log(i);
+							/*console.log(i);
 							console.log(k);
 							console.log(this.scene.row);
-							console.log(this.scene.collum);
-							if(this.scene.row == i && this.scene.collum == 8-k){
-								var speed=2;
-								var controlPoints=[[0,0,0],[10,10,200],[20,20,200],[10,5,0]];
-								var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
-								node.pushAnimation(bezAnim);
-							}
+							console.log(8-this.scene.collum);
+							console.log(this.scene.mover);*/
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}				
 							this.scene.translate(-i*5,k*5,0);
-							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							this.scene.registerForPick(m+65, node);
 							if(this.scene.chess.turn()=='b'){
 								this.scene.rotate(Math.PI,0,0,1);
 								this.scene.translate(-5,-5,0);
 							}
-							this.pecasP[i+1,k+1].display();						
+							node.leaves[j].display();					
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
 							{
@@ -2544,22 +2578,17 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.pushMatrix();
 							this.scene.peoesB--;
 							var i = (m % 8);				
-							var k = (Math.floor(m / 8));
-							
-							if(this.scene.row == i && this.scene.collum == k){
-								var speed=2;
-								var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
-								var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
-								node.pushAnimation(bezAnim);
-							}
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							var k = (Math.floor(m / 8));							
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}				
 							this.scene.translate(-i*5,k*5,0);
-							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
+							this.scene.registerForPick(m+65, node.leaves[j]);
 							if(this.scene.chess.turn()=='b'){
 								this.scene.rotate(Math.PI,0,0,1);
 								this.scene.translate(-5,-5,0);
 							}
-							this.pecasP[i+1,k+1].display();						
+							node.leaves[j].display();						
 							this.scene.popMatrix();
 							if(this.scene.pickedPiece == (m+65))
 							{
@@ -2577,7 +2606,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2602,7 +2634,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];	
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2627,7 +2662,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pieces[i+1,k+1] = node.leaves[j];				
+							this.pieces[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pieces[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2652,7 +2690,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.pushMatrix();
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2677,7 +2718,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2702,7 +2746,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2727,7 +2774,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2752,7 +2802,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2777,7 +2830,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2802,7 +2858,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2827,7 +2886,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2852,7 +2914,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2877,7 +2942,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2902,7 +2970,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2927,7 +2998,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2952,7 +3026,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -2977,7 +3054,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -3002,7 +3082,10 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 							this.scene.peoesB--;
 							var i = (m % 8);				
 							var k = (Math.floor(m / 8));
-							this.pecasP[i+1,k+1] = node.leaves[j];				
+							this.pecasP[i+1,k+1] = node.leaves[j];
+							if((this.scene.row == i && this.scene.collum == 8-k) && this.scene.mover == 1){
+								this.addAnimation(node);
+							}							
 							this.scene.translate(-i*5,k*5,0);
 							this.scene.registerForPick(m+65, this.pecasP[i+1,k+1]);
 							if(this.scene.chess.turn()=='b'){
@@ -3032,5 +3115,23 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	}	
 	
     this.scene.popMatrix();
+}
+
+MySceneGraph.prototype.addAnimation = function(node){
+	var speed=2;
+	if(this.scene.chess.turn()=='b'){
+		var x = (this.scene.rowp-this.scene.row);
+		var y = -((8-this.scene.collump)-(8-this.scene.collum));
+	}else{
+		var x = (this.scene.rowp-this.scene.row);
+		var y = (8-this.scene.collum)-(8-this.scene.collump);
+	}
+	
+	var ponto1 = [x*100,y*100,0];
+	var ponto3 = [x*(2/4)*100,y*(2/4)*100,0];
+	var ponto4 = [x*(1/8)*100,y*(1/8)*100,0];
+	var controlPoints=[ponto1,ponto3,ponto4,[0,0,0]];
+	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
+	node.pushAnimation(bezAnim);
 }
 

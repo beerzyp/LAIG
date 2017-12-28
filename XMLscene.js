@@ -8,7 +8,7 @@ var DEGREE_TO_RAD = Math.PI / 180;
 
 
 function HumanOrBot(){
-	var person = prompt("Select Game: Humans or Bot, Bots, aibot,aihuman");
+	var person = prompt("Select Game: Humans or Bot, Bots");
 	if (person =="Bot" || person == "bot") {
 		return person;
 	}
@@ -18,21 +18,8 @@ function HumanOrBot(){
 	else if(person =="BotBot" || person == "botvsBot" || person =="Bots" || person == "bots"){
 		return person;
 	}
-	else if(person =="intbot" || person == "aibot" || person =="Aibot" || person == "AIBOT")
-	{
-		this.chosenDepth = prompt("Select Depth for bot, recommended 4");
-		return person;
-	}
-	else if(person == "intHuman" || person == "AIhuman"|| person=="aihuman")
-	{
-		return person;
-	}
-	
 }
-function ChosenDepth(){
-	var person = prompt("Choose ai depth: 1-6");
-		return parseInt(person);
-	}
+
 function GameOverByTime(color) {
     window.alert("Game Ended: Player " + color + " lost by time");
 }
@@ -43,7 +30,7 @@ function askForGameTime(){
 }
 function XMLscene(interface) {
     CGFscene.call(this);
-	this.chosenDepth=4;
+
     this.interface = interface;
 	this.count = 0;
 	this.initTime=0;
@@ -56,11 +43,6 @@ function XMLscene(interface) {
 	this.previousPicked = -1;
 	//withNewLogic
 	this.chess = new Chess();
-	
-	this.ai= new hintMove(this.chess);
-	
-	
-
 	this.tabuleiro = this.chess.ascii();
 	this.TempoBrancas="0";
 	this.TempoPretas="0";
@@ -72,7 +54,6 @@ function XMLscene(interface) {
 	this.collum = 0;
 	this.humanGame=HumanOrBot();
 	this.gameTime=askForGameTime();
-	this.chosenDepth=ChosenDepth();
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
@@ -102,6 +83,7 @@ XMLscene.prototype.init = function(application) {
 	this.count = 0;
 	this.check=true;
 	this.colorScale = 1;
+	this.mover = 0;
 	this.animations=[];
 	this.pickedPiece = 0;
 	this.pretasTime = 1;
@@ -349,10 +331,16 @@ XMLscene.prototype.logPicking = function ()
 						var camAxisX=CGFcameraAxis.Z;
 						//for animations
 						this.row = row;
-						console.log(this.row);
 						this.collum = collum;
+						this.rowp = prow;
+						this.collump = pcollum;
 						var move = pnewrow + pcollum + '-' + newrow + collum;
-							this.chess.move(move, {sloppy: true});
+						this.chess.move(move, {sloppy: true});
+						if(this.tabuleiro != this.chess.ascii()){
+							this.mover = 1;
+						} else{
+							this.mover = 0;
+						}
 							if(this.chess.turn()=='b'){
 								this.camera.setPosition(vec3.fromValues(0,0,0));
 								this.camera.rotate(camAxisX,Math.PI);
@@ -422,7 +410,7 @@ XMLscene.prototype.logPicking = function ()
 
 
 						//game logic for bots
-						else if(this.humanGame == "bots" || this.humanGame == "botvbot"|| this.humanGame=="Bots"){
+						else{
 							if(this.chess.turn()=='b'){
 								  var moves = this.chess.moves();
 								  var newMove = moves[Math.floor(Math.random() * moves.length)];
@@ -452,96 +440,13 @@ XMLscene.prototype.logPicking = function ()
 							this.tabuleiro = this.chess.ascii();
 							console.log(move);
 						}
-						
-						
-						else if(this.humanGame == "intBot" || this.humanGame == "AIbot"|| this.humanGame=="aibot"){
-							if(this.chess.turn()=='b'){
-								  var moves = this.chess.moves();
-								  var newMove = moves[Math.floor(Math.random() * moves.length)];
-								  this.chess.move(newMove,{sloppy: true});
-							}
-							else {
-								 var d = new Date().getTime();
-							     var bestMove = this.ai.minimaxRoot(this.chosenDepth,this.chess, true);
-								 var d2 = new Date().getTime();
-								 var moveTime = (d2 - d);
-								 var positionsPerS = ( this.ai.positionCount * 1000 / moveTime);
-								 this.chess.move(bestMove);
-							}
-
-
-							if(this.chess.in_check()){	
-								if(this.check==true && !this.chess.game_over()){
-									if(window.confirm("check")==true){
-										console.log("check");
-										this.check=false;
-									}
-								} 
-								else if(this.chess.game_over()){
-									console.log("checkMate");						
-									window.confirm("CheckMate!")==true;
-								}
-								else this.check=true;							
-							}
-
-							this.tabuleiro = this.chess.ascii();
-							console.log(move);
-						}
-						
-						
-						
-						else if(this.humanGame == "intHuman" || this.humanGame == "AIhuman"|| this.humanGame=="aihuman"){
-							if(this.chess.turn()=='b'){
-								 var d = new Date().getTime();
-							     var bestMove = this.ai.minimaxRoot(this.chosenDepth,this.chess, true);
-								 var d2 = new Date().getTime();
-								 var moveTime = (d2 - d);
-								 var positionsPerS = ( this.ai.positionCount * 1000 / moveTime);
-								 this.chess.move(bestMove);
-							}
-							else {
-								var row = (logicId % 8);
-								var newrow = this.translateToLetter(row);
-								var collum = 8-(Math.floor((logicId )/ 8));
-								
-								var prow = (this.previousPicked % 8);
-								var pnewrow = this.translateToLetter(prow);
-								var pcollum = 8-(Math.floor((this.previousPicked)/ 8));
-								var camAxisX=CGFcameraAxis.Z;
-								//for animations
-								this.row = row;
-								console.log(this.row);
-								this.collum = collum;
-								var move = pnewrow + pcollum + '-' + newrow + collum;
-								this.chess.move(move, {sloppy: true});
-							}
-
-
-							if(this.chess.in_check()){	
-								if(this.check==true && !this.chess.game_over()){
-									if(window.confirm("check")==true){
-										console.log("check");
-										this.check=false;
-									}
-								} 
-								else if(this.chess.game_over()){
-									console.log("checkMate");						
-									window.confirm("CheckMate!")==true;
-								}
-								else this.check=true;							
-							}
-
-							this.tabuleiro = this.chess.ascii();
-							console.log(move);
-						}
-
 
 					}
 					
 					this.previousPicked = logicId;
 										
 					//obj:sym id:posicao
-					console.log("Picked object: " + obj + ", with pick id " + customId);
+					//console.log("Picked object: " + obj + ", with pick id " + customId);
 					
 					//logic 
 				}
