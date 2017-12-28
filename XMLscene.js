@@ -8,7 +8,7 @@ var DEGREE_TO_RAD = Math.PI / 180;
 
 
 function HumanOrBot(){
-	var person = prompt("Select Game: Humans or Bot, Bots, aibot");
+	var person = prompt("Select Game: Humans or Bot, Bots, aibot,aihuman");
 	if (person =="Bot" || person == "bot") {
 		return person;
 	}
@@ -25,12 +25,14 @@ function HumanOrBot(){
 	}
 	else if(person == "intHuman" || person == "AIhuman"|| person=="aihuman")
 	{
-		this.chosenDepth = prompt("Select Depth for bot, recommended 4");
 		return person;
 	}
 	
 }
-
+function ChosenDepth(){
+	var person = prompt("Choose ai depth: 1-6");
+		return parseInt(person);
+	}
 function GameOverByTime(color) {
     window.alert("Game Ended: Player " + color + " lost by time");
 }
@@ -70,6 +72,7 @@ function XMLscene(interface) {
 	this.collum = 0;
 	this.humanGame=HumanOrBot();
 	this.gameTime=askForGameTime();
+	this.chosenDepth=ChosenDepth();
 }
 
 XMLscene.prototype = Object.create(CGFscene.prototype);
