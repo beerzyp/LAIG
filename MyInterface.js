@@ -24,7 +24,7 @@ MyInterface.prototype.init = function(application) {
     //  http://workshop.chromeexperiments.com/examples/gui
     
     this.gui = new dat.GUI();
-	
+	this.pecasBrancas="";
 	this.gui.add(this.scene, 'TempoBrancas');
 	this.gui.add(this.scene, 'TempoPretas');
 	this.gui.add(this.scene,'EngineNextMoveTime');
@@ -33,6 +33,8 @@ MyInterface.prototype.init = function(application) {
 			'2D': 1, 			 
 			
 	}).name('Interface Type Game');
+	
+
 
     // add a group of controls (and open/expand by defult)
 	this.gui.add(this.scene, 'selectedExampleShader', {
@@ -57,14 +59,13 @@ MyInterface.prototype.init = function(application) {
 
 MyInterface.prototype.addObjectGroup = function(objs)
 {
-	var group = this.gui.addFolder("Objects");
+	var group = this.gui.addFolder("CapturedWhitePieces");
     group.open();
 	for(var key in objs)
 	{
-		if(objs.hasOwnProperty(key)) {
-			this.scene.objectValues[key] = objs[key][0];
-			//group.add(this.scene.objectValues, key);
-		}
+			group.add(objs, key);
+		
+		
 	}
 	
 }
@@ -75,7 +76,7 @@ MyInterface.prototype.addObjectGroup = function(objs)
  */
 MyInterface.prototype.addLightsGroup = function(lights) {
 
-    var group = this.gui.addFolder("Lights");
+    var group = this.gui.addFolder("CapturedBlackPieces");
     group.open();
 
     // add two check boxes to the group. The identifiers must be members variables of the scene initialized in scene.init as boolean
@@ -92,6 +93,9 @@ MyInterface.prototype.addLightsGroup = function(lights) {
 	this.gui.add(this.scene,'UndoLastMove');
 	this.gui.add(this.scene,'RestartGame');
 	this.gui.add(this.scene,'setCameraView');
+	this.gui.add(this.scene,'WhitePiecesTaken');
+	this.gui.add(this.scene,'BlackPiecesTaken');
+	
 
 }
 
@@ -99,7 +103,15 @@ MyInterface.prototype.addLightsGroup = function(lights) {
 MyInterface.prototype.EngineNextMoveTime = function(time){
 	this.gui.__controllers[2].setValue(time);
 }
+MyInterface.prototype.white = function(string){
+	//this.pecasBrancas+=","+string;
+	this.gui.__controllers[3].setValue(this.pecasBrancas);
+}
 
+MyInterface.prototype.black = function(string){
+	//this.pecasPretas+=","+string;
+	this.gui.__controllers[4].setValue(this.pecasPretas);
+}
 MyInterface.prototype.tempoBrancas = function(time){
 	this.gui.__controllers[0].setValue(time);
 }

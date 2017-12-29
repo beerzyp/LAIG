@@ -29,6 +29,11 @@ function HumanOrBot(){
 	}
 }
 
+function forEach(x){
+	
+	this.counts[x] = (this.counts[x] || 0) + 1;
+}
+
 function ChosenDepth(){
 	var person = prompt("Choose ai depth: 1-6");
 	return parseInt(person);
@@ -36,7 +41,7 @@ function ChosenDepth(){
 
 function GameOverByTime(color) {
     window.confirm("Game Ended: Player " + color + " lost by time");
-	this.chess.reset();
+	this.RestartGame();
 }
 
 function askForGameTime(){
@@ -45,12 +50,12 @@ function askForGameTime(){
 }
 function XMLscene(interface) {
     CGFscene.call(this);
-
+	this.counts=[];
     this.interface = interface;
 	this.count = 0;
 	this.initTime=0;
     this.lightValues = {};
-	this.objectValues = {};
+	this.objectValues = {"pawns":1,"rooks":2,"bishops":3,"queens":4,"knights":5};
 	this.selectedExampleShader = 0;
 	this.board = new BoardLogic();
 	this.temp=[8][8];
@@ -64,6 +69,8 @@ function XMLscene(interface) {
 	this.tabuleiro = this.chess.ascii();
 	this.TempoBrancas="0";
 	this.TempoPretas="0";
+	this.white="";
+	this.black="";
 	this.EngineNextMoveTime="0";
 	this.flagB = 1;
 	this.flagP = 1;
@@ -104,6 +111,8 @@ XMLscene.prototype.init = function(application) {
 	this.check=true;
 	this.colorScale = 1;
 	this.mover = 0;
+	this.blackCapturedPieces=[];
+	this.whiteCapturedPieces=[];
 	this.animations=[];
 	this.pickedPiece = 0;
 	this.pretasTime = 1;
@@ -540,8 +549,21 @@ XMLscene.prototype.logPicking = function ()
 							this.tabuleiro = this.chess.ascii();
 							console.log(move);
 						}
-
-
+					
+					var lastMove=this.chess.history({ verbose: true })[this.chess.history().length-1];
+					if(lastMove!=null){
+						if(lastMove.flags=="c" || lastMove.flags=="e"){
+						var piece=lastMove.captured;
+						if(lastMove.color=="b"){
+							this.blackCapturedPieces.push(piece);
+							//this.interface.black.(piece);
+						}
+						else{
+							this.whiteCapturedPieces.push(piece);
+							//this.interface.white.(piece);
+						}
+						}
+					}
 					
 
 					}
@@ -607,12 +629,62 @@ XMLscene.prototype.UndoLastMove = function(){
 		else this.camera.setPosition(vec3.fromValues(10,40,40));
 }
 
+XMLscene.prototype.BlackPiecesTaken = function(){
+	
+	var sorted=this.blackCapturedPieces.sort();
+	var string="";
+	var points=":";
+	var res="";
+	var end = "; \n";
+	var count=0;
+	for(var i=0;i<sorted.length-1;i++){
+	
+		if(sorted[i]==sorted[i+1]){
+			count++;	
+		}
+		else 
+		{
+			
+			res = res +string.concat(sorted[i], points ,(count+1) , end);
+			count =0;
+		}
+	}
+	res=res + string.concat(sorted[sorted.length-1], points ,(count+1) , end);
+	
+	window.confirm(res);
+}
+
+
+
+XMLscene.prototype.WhitePiecesTaken = function(){
+	
+	var sorted=this.whiteCapturedPieces.sort();
+	var string="";
+	var points=":";
+	var res="";
+	var end = "; \n";
+	var count=0;
+	for(var i=0;i<sorted.length-1;i++){
+	
+		if(sorted[i]==sorted[i+1]){
+			count++;	
+		}
+		else 
+		{
+			
+			res = res +string.concat(sorted[i], points ,(count+1) , end);
+			count =0;
+		}
+	}
+	res=res + string.concat(sorted[sorted.length-1], points ,(count+1) , end);
+	
+	window.confirm(res);
+}
+
 XMLscene.prototype.askForEngineTip = function(){
 	 var bestMove = this.ai.minimaxRoot(this.chosenDepth,this.chess, true);
 	 window.confirm("your best move is: " + bestMove);
 }
-
-
 
 XMLscene.prototype.BotOrHuman=function(){
 

@@ -1621,6 +1621,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 	var controlPoints=[[0,0,0],[100,0,100],[150,50,200],[200,100,300],[300,100,200],[400,100,200],[500,200,200]];
 	var bezAnim= new BezierAnimation(this.scene,20,speed,controlPoints);
 	node.pushAnimation(bezAnim);
+	
 	}
 	if(node.nodeID=="knightPiece"){
 	var speed=2;
@@ -1637,24 +1638,7 @@ MySceneGraph.prototype.displayNode = function(node,texture,material){
 		this.check = this.check + node.children.length;
 	}
 	var i = 0;	
-	for (var key in this.scene.objectValues) {
-		if (this.scene.objectValues.hasOwnProperty(key)) {
-			
-			if (this.scene.objectValues[key]) {
-				if(node.nodeID == key)
-				{
-					this.check = node.children.length;
-					this.scene.setActiveShader(this.scene.testShaders[this.scene.selectedExampleShader]);
-									
-				}						
-			}
-			else {
-				
-			}
-			i++;
-		}			
-	}
-	
+
 	
     for(var j=0;j<node.children.length;j++){//percorre filhos
 	
