@@ -53,6 +53,8 @@ function XMLscene(interface) {
 	this.counts=[];
     this.interface = interface;
 	this.count = 0;
+	this.replay = 0;
+	this.moves = [];
 	this.initTime=0;
     this.lightValues = {};
 	this.objectValues = {"pawns":1,"rooks":2,"bishops":3,"queens":4,"knights":5};
@@ -121,6 +123,8 @@ XMLscene.prototype.init = function(application) {
 	this.minB = 0;
 	this.segP = 0;
 	this.minP = 0;
+	this.flag = 0;
+	this.naoMover = 0;
 	//animations
 	this.period = 0;
 	let initDate= new Date();
@@ -238,7 +242,10 @@ XMLscene.prototype.display = function() {
 	
     this.pushMatrix();
 
-	
+	if(this.naoMover == 1){
+		sleep(2000);
+		this.naoMover = 0;
+	}
     if (this.graph.loadedOk) 
     {        
         // Applies initial transformations.
@@ -278,6 +285,8 @@ XMLscene.prototype.display = function() {
     
 
     this.popMatrix();
+
+	//Counting the time of every player
     if(this.chess.turn()=='b'){
 		if(this.flagP == 1){
 			this.pretasTime = this.initTime;
@@ -315,9 +324,36 @@ XMLscene.prototype.display = function() {
 				GameOverByTime("white");
 		}
 		
+		
+		
 	}
     // ---- Efile:///C:/Users/R/Desktop/projeto/animations/LinearAnimation.jsND Background, camera and axis setup
     
+	//display the replay
+	if(this.replay == 1){
+		sleep(2000);
+		this.chess.move(this.moves[0], {sloppy: true});
+		if(this.tabuleiro != this.chess.ascii()){
+			this.mover = 1;
+		} else{
+			this.mover = 0;
+		}
+		var camAxisX=CGFcameraAxis.Z;
+		if(this.chess.turn()=='b'){
+			this.camera.setPosition(vec3.fromValues(0,0,0));
+			this.camera.rotate(camAxisX,Math.PI);
+			this.camera.setPosition(vec3.fromValues(-10,40,-40));	
+			this.camera.zoom(10);					
+		}
+		else this.camera.setPosition(vec3.fromValues(10,40,40));
+		this.tabuleiro = this.chess.ascii();
+		console.log(this.moves[0]);
+		this.moves.shift();
+		if(this.moves.length == 0){
+			this.naoMover = 1;
+			this.replay = 0;
+		}
+	}
 }
 
 
@@ -366,6 +402,7 @@ XMLscene.prototype.logPicking = function ()
 						var move = pnewrow + pcollum + '-' + newrow + collum;
 						this.chess.move(move, {sloppy: true});
 						if(this.tabuleiro != this.chess.ascii()){
+							this.moves.push(move);
 							this.mover = 1;
 						} else{
 							this.mover = 0;
@@ -569,7 +606,21 @@ XMLscene.prototype.logPicking = function ()
 					}
 					
 					this.previousPicked = logicId;
+					
+
+					//Replay of the Game
+					if(this.chess.game_over()){
+						if (confirm('Wanna see the replay of this game?')) {
+							this.replay = 1;
+							this.chess.reset();
+							this.tabuleiro = this.chess.ascii();
+						} else {
+							//this.replay = 0;
+						}
+					}
 										
+						
+					
 					//obj:sym id:posicao
 					//console.log("Picked object: " + obj + ", with pick id " + customId);
 					
@@ -719,4 +770,13 @@ XMLscene.prototype.RestartGame=function(){
 		this.minB = 0;
 		this.interface.tempoBrancas(this.minB + ':' + this.segB);
 		this.interface.tempoPretas(this.minB + ':' + this.segB);
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }
